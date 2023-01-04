@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 interface iButtonStyledProps {
     size: 'lg' | 'md' | 'sm'
-    theme: 'primary' | 'grey'
+    theme: 'primary' | 'white'
 }
 export const ButtonStyled = styled.button<iButtonStyledProps>`
     font-weight: 600;
@@ -19,7 +19,7 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
                 padding: 10px 20px;
                 font-size: 16px;
                 `
-            case 'md':
+            case 'sm':
                 return css`
                 padding: 10px 20px;
                 font-size: 12px;
@@ -31,34 +31,21 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
         switch (theme) {
             case 'primary':
                 return css`
-                background-color: red;
-                border: 1px solid red;
-                color: grey;
+                background-color: var(--color-primary);
+                color: var(--color-grey50);
+                border-style: none;
                 :hover{
-                background-color: greenyellow;
-                border: 1px solid greenyellow;
-                }
-                `
-            case 'grey':
-                return css`
-                background-color: black;
-                border: 1px solid black;
-                color: blue;
-                :hover{
-                background-color: blue;
-                border: 1px solid blue;
-                color: black;
+                opacity: 0.7;
                 }
                 `
             case 'white':
                 return css`
-                background-color: grey;
-                border: 1px solid grey;
-                color: var(--color-grey2);
+                background-color: transparent;
+                color: var(--color-primary);
+                border: 2px solid var(--color-primary);
                 :hover{
-                background-color: red;
-                border: 1px solid red;
-                color: grey;
+                opacity: 0.7;
+                color: var(--color-primary);
                 }
                 `
         }
