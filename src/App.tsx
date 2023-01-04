@@ -1,7 +1,9 @@
+import { PrincipalRoutes } from "./routes";
+
 export const App = () => {
   return (
     <div>
-      <h1>Start Lets Cook!!!</h1>
+      <PrincipalRoutes/>
     </div>
   );
 };
