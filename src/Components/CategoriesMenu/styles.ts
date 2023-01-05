@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCategoriesMenu = styled.aside`
+  padding: 20px;
   nav {
     display: flex;
     flex-direction: column;
