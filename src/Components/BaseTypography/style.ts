@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { BaseTypography } from ".";
 
 interface IStyledTypography {
-  classText:"Heading" | "Heading1"| "Heading2" | "Heading3" | "Heading4" |  "Body" | "Body600" | "Caption" | "label"
+  classText: "Heading" | "Heading1" | "Heading2" | "Heading3" | "Heading4" | "Body" | "Body600" | "Caption" | "label" | "special"
 }
 
 export const StyledTypography = styled(BaseTypography)`
@@ -55,6 +55,12 @@ export const StyledTypography = styled(BaseTypography)`
       case "Caption":
         return css`
         font-size: 16px;
+        font-weight: 500;
+        text-align: left;
+        `;
+      case "special":
+        return css`
+        font-size: 96px;
         font-weight: 500;
         text-align: left;
         `;

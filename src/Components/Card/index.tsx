@@ -2,8 +2,21 @@ import { StyledTypography } from '../BaseTypography/style'
 import { ImageCards } from './Image'
 import { StyledCard } from './styles'
 
-
-export const Card = ({ element }) => {
+interface IElement {
+  userId: number,
+  img: string,
+  title: string,
+  category: string;
+  validation: string,
+  descripition: string,
+  amounts: string,
+  address: string,
+  id: number,
+}
+interface icard {
+  element: IElement
+}
+export const Card = ({ element }: icard) => {
 
   const {
     title,
