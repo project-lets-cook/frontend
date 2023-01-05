@@ -48,6 +48,15 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
                 color: var(--color-primary);
                 }
                 `
+            case 'transparent':
+                return css`
+                background-color: transparent;
+                color: var(--color-primary);
+                border-style: none;
+                :hover{
+                opacity: 0.7;
+                }
+                `    
         }
     }}
         
