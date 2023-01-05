@@ -1,12 +1,13 @@
 import { ButtonStyled } from "./styles";
 
 interface ibuttonprops {
-  size: "lg" | "md" | "sm";
-  theme: "primary" | "grey" | "white";
-  type: "button" | "submit";
-  onclick?: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
-  disabled?: boolean;
+  size: 'lg' | 'md' | 'sm'
+  theme: 'primary' | 'transparent' | 'white'
+  type: 'button' | 'submit'
+  onclick?: React.MouseEventHandler<HTMLButtonElement>
+  children: React.ReactNode
+  disabled?: boolean
+
 }
 
 export const Button = ({

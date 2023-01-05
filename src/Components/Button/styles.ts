@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 interface iButtonStyledProps {
-  size: "lg" | "md" | "sm";
-  theme: "primary" | "white";
+    size: 'lg' | 'md' | 'sm'
+    theme: 'primary' | 'transparent' | 'white'
 }
 export const ButtonStyled = styled.button<iButtonStyledProps>`
   font-weight: 600;
@@ -9,7 +9,7 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
   align-items: center;
   justify-content: center;
 
-  ${({ size }) => {
+${({ size }) => {
     switch (size) {
       case "lg":
         return css`
@@ -29,28 +29,39 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
         `;
     }
   }}
-
+  
+  
   ${({ theme }) => {
-    switch (theme) {
-      case "primary":
-        return css`
-          background-color: var(--color-primary);
-          color: var(--color-grey50);
-          border-style: none;
-          :hover {
-            opacity: 0.7;
-          }
-        `;
-      case "white":
-        return css`
-          background-color: transparent;
-          color: var(--color-primary);
-          border: 2px solid var(--color-primary);
-          :hover {
-            opacity: 0.7;
-            color: var(--color-primary);
-          }
-        `;
-    }
+      switch (theme) {
+          case 'primary':
+              return css`
+              background-color: var(--color-primary);
+              color: var(--color-grey50);
+              border-style: none;
+              :hover{
+              opacity: 0.7;
+              }
+              `
+          case 'white':
+              return css`
+              background-color: transparent;
+              color: var(--color-primary);
+              border: 2px solid var(--color-primary);
+              :hover{
+              opacity: 0.7;
+              color: var(--color-primary);
+              }
+              `
+          case 'transparent':
+              return css`
+              background-color: transparent;
+              color: var(--color-primary);
+              border-style: none;
+              :hover{
+              opacity: 0.7;
+              }
+              `    
+      }
   }}
+        
 `;
