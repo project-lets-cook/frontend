@@ -10,7 +10,6 @@ export const StyledDashboardDonor = styled.main`
         display: flex;
         justify-content: space-between;
     }
-    
     ul{
         width: 70%;
         display: flex;
@@ -18,6 +17,9 @@ export const StyledDashboardDonor = styled.main`
         align-items: flex-start;
         justify-content: space-around;
         flex-wrap: wrap;
+    }
+    aside{
+        margin-top: 80px;
     }
  
 `
