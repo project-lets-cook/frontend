@@ -18,7 +18,6 @@ export const StyledModal = styled.div`
 
     > header {
       position: absolute;
-      top: 67px;
       right: 49px;
 
       button {

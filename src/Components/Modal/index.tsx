@@ -9,18 +9,18 @@ interface iModalProps {
 export const Modal = ({ children }: iModalProps) => {
   const [openModal, setOpenModal] = useState(true);
 
-  return (
-    openModal && (
-      <StyledModal>
-        <div>
-          <header>
-            <button onClick={() => setOpenModal(false)}>
-              <BsArrowRight size={31} />
-            </button>
-          </header>
-          {children}
-        </div>
-      </StyledModal>
-    )
+  return openModal ? (
+    <StyledModal>
+      <div>
+        <header>
+          <button onClick={() => setOpenModal(false)}>
+            <BsArrowRight size={31} />
+          </button>
+        </header>
+        {children}
+      </div>
+    </StyledModal>
+  ) : (
+    <></>
   );
 };
