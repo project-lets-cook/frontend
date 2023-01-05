@@ -12,7 +12,7 @@ export const StyledHeader = styled.header`
     .background{
         width: 100%;
         height: 100%;
-        background-color: rgb(227,227,227,0.7);
+        background-color: var(--color-grey40);
     }
     .background > div{
         width: 90%;
@@ -26,7 +26,7 @@ export const StyledHeader = styled.header`
 
     }
     .background > div > div{
-      width: 20%;
+      width: 14%;
       height: 60px;
       display: flex;
       flex-direction: row;
@@ -34,8 +34,8 @@ export const StyledHeader = styled.header`
       align-items: center;
     }
     .background > div > div > img {
-      width: 30%;
-      height: 100%;
+      width: 60px;
+      height: 60px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
