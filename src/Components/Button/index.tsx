@@ -1,19 +1,33 @@
-import { ButtonStyled } from './styles'
+import { ButtonStyled } from "./styles";
 
 interface ibuttonprops {
-  size: 'lg' | 'md' | 'sm'
-  theme: 'primary' | 'grey' | 'white'
-  type: 'button' | 'submit'
-  onclick?: React.MouseEventHandler<HTMLButtonElement>
-  children: React.ReactNode
-  disabled?: boolean
+  size: "lg" | "md" | "sm";
+  theme: "primary" | "grey" | "white";
+  type: "button" | "submit";
+  onclick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+  disabled?: boolean;
 }
 
-export const Button = ({ size, theme, type, onclick, children, disabled }: ibuttonprops) => {
-
+export const Button = ({
+  size,
+  theme,
+  type,
+  onclick,
+  children,
+  disabled,
+}: ibuttonprops) => {
   return (
     <>
-      <ButtonStyled size={size} theme={theme} type={type} onClick={onclick} disabled={disabled}>{children}</ButtonStyled>
+      <ButtonStyled
+        size={size}
+        theme={theme}
+        type={type}
+        onClick={onclick}
+        disabled={disabled}
+      >
+        {children}
+      </ButtonStyled>
     </>
-  )
-}
+  );
+};
