@@ -33,15 +33,15 @@ export const LoginForm = () => {
         <form onSubmit={handleSubmit(teste)}>
             <div>
             <Input label={"E-mail"} id ={"email"} type={"email"} register ={register("email")} placeholder ={"Digite seu email aqui"}/>
-            {errors.email?.message && <p>{errors.email.message}</p>}
+            {errors.email?.message && <p className="input-waring">{errors.email.message}</p>}
             </div>
 
             <div>
             <InputPassword label={"Senha"} id ={"password"} register ={register("password")} placeholder ={"Digite sua senha aqui"}/>
-            {errors.password?.message && <p>{errors.password.message}</p>}
+            {errors.password?.message && <p className="input-waring">{errors.password.message}</p>}
             </div>
 
-            <Button size='sm'theme='primary' type='submit'>Entrar</Button>
+            <Button size='lg'theme='primary' type='submit'>Entrar</Button>
         </form>
     )
 }

@@ -5,7 +5,7 @@ export const PasswordBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 100%;
     border-bottom: 3px solid var(--color-grey300);
     outline-style: none;
 

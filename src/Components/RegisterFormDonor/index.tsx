@@ -77,53 +77,53 @@ export const RegisterFormDonor = () => {
         
         <div>
             <Input label={"Nome"} id ={"name"} type={"text"} register ={register("name")} placeholder ={"Digite seu nome aqui"}/>
-            {errors.name?.message && <p>{errors.name.message}</p>}
+            {errors.name?.message && <p className="input-waring">{errors.name.message}</p>}
         </div>
 
 
         <div>
             <Input label={"Telefone"} id ={"telephone"} type={"number"} register ={register("telephone")} placeholder ={"Digite seu telefone aqui"}/>
-            {errors.telephone?.message && <p>{errors.telephone.message}</p>}
+            {errors.telephone?.message && <p className="input-waring">{errors.telephone.message}</p>}
         </div>
 
         <div>
             <Input label={"Endereço"} id ={"place"} type={"text"} register ={register("place")} placeholder ={"Digite seu endereço aqui"}/>
-            {errors.place?.message && <p>{errors.place.message}</p>}
+            {errors.place?.message && <p className="input-waring">{errors.place.message}</p>}
         </div>
 
         <div>
             <Input label={"CPF"} id ={"document"} type={"number"} register ={register("document")} placeholder ={"Digite seu CPF aqui"}/>
-            {errors.document?.message && <p>{errors.document.message}</p>}
+            {errors.document?.message && <p className="input-waring">{errors.document.message}</p>}
         </div>
 
         <div>
             <Input label={"Foto do perfil"} id ={"picture"} type={"text"} register ={register("picture")} placeholder ={"Digite o link de sua foto"}/>
-            {errors.picture?.message && <p>{errors.picture.message}</p>}
+            {errors.picture?.message && <p className="input-waring">{errors.picture.message}</p>}
         </div>
 
         <div>
             <Input label={"E-mail"} id ={"email"} type={"email"} register ={register("email")} placeholder ={"Digite seu email aqui"}/>
-            {errors.email?.message && <p>{errors.email.message}</p>}
+            {errors.email?.message && <p className="input-waring">{errors.email.message}</p>}
         </div>
 
         <div>
             <InputPassword label={"Senha"} id ={"password"} register ={register("password")} placeholder ={"Digite sua senha aqui"}/>
-            {errors.password?.message && <p>{errors.password.message}</p>}
+            {errors.password?.message && <p className="input-waring">{errors.password.message}</p>}
         </div>
             
         <div>
             <InputPassword label={"Repetir senha"} id ={"confirm"} register ={register("confirm")} placeholder ={"Digite novamente sua senha aqui"}/>
-            {errors.confirm?.message && <p>{errors.confirm.message}</p>}
+            {errors.confirm?.message && <p className="input-waring">{errors.confirm.message}</p>}
         </div>
 
         <div>
             <Input label={"Cidade"} id ={"city"} type={"text"} register ={register("city")} placeholder ={"Digite sua cidade aqui"}/>
-            {errors.city?.message && <p>{errors.city.message}</p>}
+            {errors.city?.message && <p className="input-waring">{errors.city.message}</p>}
         </div>
 
         <div>
             <Input label={"Estado"} id ={"country"} type={"text"} register ={register("country")} placeholder ={"Digite seu estado aqui"}/>
-            {errors.country?.message && <p>{errors.country.message}</p>}
+            {errors.country?.message && <p className="input-waring">{errors.country.message}</p>}
         </div>
 
         <Button size='sm'theme='primary' type='submit'>Cadastrar</Button>

@@ -11,7 +11,7 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
             case 'lg':
                 return css`
                 padding: 20px;
-                width: 95%;
+                width: 100%;
                 font-size: 16px;
                 `
             case 'md':
