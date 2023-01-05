@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const StyledCategoriesMenu = styled.aside`
   padding: 20px;
   nav {
+    width: 300px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     margin-left: 50px;
-    padding: 20px 0;
     position: relative;
-    width: 300px;
     border-radius: 20px 0 20px 0;
     background-color: var(--color-grey50);
     box-shadow: 0 5px 50px var(--color-shadow);
@@ -26,7 +27,7 @@ export const StyledCategoriesMenu = styled.aside`
         border: none;
         width: 300px;
         height: 40px;
-        border-radius: 30px;
+        border-radius: 30px  0 0 0px;
         border-bottom-left-radius: 0;
         color: var(--color-grey50);
         background-color: var(--color-primary);

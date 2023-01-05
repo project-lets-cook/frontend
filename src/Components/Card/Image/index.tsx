@@ -1,28 +1,26 @@
-import { StyledTypography } from '../BaseTypography/style'
-import { StyledCard } from './styles'
+import { StyledImageCards } from "./styles"
+import Cereals from "../../../assets/icons/Cereals.svg"
+import Fruits from "../../../assets/icons/fruits.svg"
+import Vegetables from "../../../assets/icons/Vegetables.svg"
+import MeatAndEggs from "../../../assets/icons/MeatAndEggs.svg"
+import Milk from "../../../assets/icons/Milk.png"
+import oils from "../../../assets/icons/oils.svg"
 
+interface icategory {
+  category: string;
+}
 
-export const Card = ({ element }) => {
-
-  const {
-    img,
-    title,
-    category,
-    validation,
-    descripition,
-    amounts,
-    address
-  } = element
-
+export const ImageCards = ({ category }: icategory) => {
+  
   return (
-    <StyledCard>
-      <img src={img} alt={title} type={category} />
-      <div>
-        <StyledTypography classText="Heading4" tag="h3">{title}</StyledTypography>
-        <StyledTypography classText="Body" tag="p">{category}</StyledTypography>
-        <StyledTypography classText="Body" tag="p">{validation}</StyledTypography>
-        <StyledTypography classText="Body" tag="p">Detalhes</StyledTypography>
-      </div>
-    </StyledCard>
+    <StyledImageCards>
+      {category === "Cereals" && < img src={Cereals} alt={category} />}
+      {category === "Vegetables" && <img src={Vegetables} alt={category} />}
+      {category === "Fruits" && <img src={Fruits} alt={category} />}
+      {category === "MeatAndEggs" && <img src={MeatAndEggs} alt={category} />}
+      {category === "Milk" && <img src={Milk} alt={category} />}
+      {category === "oils" && <img src={oils} alt={category} />}
+    </StyledImageCards>
   )
 }
+
