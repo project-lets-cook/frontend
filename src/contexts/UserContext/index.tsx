@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, Children } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../../service/api";
+import { api } from "../../service/api";
 import {
   iUserProviderProps,
   iUserProviderValue,
