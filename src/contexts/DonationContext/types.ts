@@ -6,7 +6,7 @@ export interface iDonationProviderProps {
 }
 
 export interface iDonation {
-  userId: number;
+  userId: string;
   img: string;
   title: string;
   category: string;
@@ -14,7 +14,7 @@ export interface iDonation {
   description: string;
   amounts: string;
   address: string;
-  id: number;
+  id: string;
 }
 
 export interface iDonationProviderValue {
