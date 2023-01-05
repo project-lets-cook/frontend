@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 interface iButtonStyledProps {
     size: 'lg' | 'md' | 'sm'
-    theme: 'primary' | 'white'
+    theme: 'primary' | 'transparent' | 'white'
 }
 export const ButtonStyled = styled.button<iButtonStyledProps>`
     font-weight: 600;
