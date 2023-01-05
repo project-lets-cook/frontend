@@ -35,8 +35,8 @@ export interface iUser {
   id: string;
   name?: string;
   email?: string;
-  profileUrl?: string;
-  phoneNumber?: string;
+  profileImgUrl?: string;
+  telephone?: string;
 }
 
 export interface iUserResponse {
