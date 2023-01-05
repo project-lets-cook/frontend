@@ -1,9 +1,10 @@
-import { StyledDashboardDonor } from "./styled"
 
-export const DashboardDonor = () => {
+
+export const Image = () => {
+
     return (
-        <StyledDashboardDonor>
-            
-        </StyledDashboardDonor>
+        <>
+          <img src="" alt="" />
+        </>
     )
 }

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { DashboardDonor } from "../pages/DashboardDonor";
 import { DashboardReceiver } from "../pages/DashboardReceiver";
 import { InitialPage } from "../pages/InitialPage";
@@ -11,6 +11,7 @@ export const MainRoutes = () => {
       <Route path="/DashboardDonor" element={<DashboardDonor />} />
       <Route path="/DashboardReceiver" element={<DashboardReceiver />} />
       <Route path="/ProfilePage" element={<ProfilePage />} />
+      <Route path="*" element={ <Navigate to="/"/>} />
     </Routes>
   );
 };
