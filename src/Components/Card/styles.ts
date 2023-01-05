@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const StyledCard = styled.li`
+    background-color:var(--color-secondary) ;
     width: 26%;
     height: 270px;
     position: relative;

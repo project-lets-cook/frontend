@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledImageCards = styled.figure`
-    background-color: var(--color-grey50);
+    background-color: var(--color-secondary);
     width: 40%;
     height:40%;
     position: absolute;
@@ -19,7 +19,7 @@ export const StyledImageCards = styled.figure`
     }
     :hover > img {
         transition: ease-out 0.5s;
-        max-height: 130%;
+        max-height: 100%;
     }
 
 `

@@ -21,7 +21,7 @@ export const Card = ({ element }: icard) => {
   const {
     title,
     category,
-    validation,
+    address,
   } = element
 
   return (
@@ -30,7 +30,7 @@ export const Card = ({ element }: icard) => {
       <div>
         <StyledTypography classText="Heading4" tag="h3">{title}</StyledTypography>
         <StyledTypography classText="Body" tag="p">{category}</StyledTypography>
-        <StyledTypography classText="Body" tag="p">{validation}</StyledTypography>
+        <StyledTypography classText="Caption" tag="p">{address}</StyledTypography>
         <StyledTypography classText="Body" tag="p">Detalhes</StyledTypography>
       </div>
     </StyledCard>
