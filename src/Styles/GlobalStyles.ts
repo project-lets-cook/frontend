@@ -19,6 +19,7 @@ export const Global = createGlobalStyle`
   --color-grey40: rgb(227,227,227,0.7);
   --color-grey60: #E1AF9D;
   --color-shadow: #00000015;
+  --color-opacity: #00000070;
   --color-menu-effect: #842807;
 }
 
