@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../service/api";
 import {
@@ -17,6 +17,38 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(false);
+  const [loadingUser, setLoadingUser] = useState(true);
+
+  useEffect(() => {
+    async function loadUser() {
+      const token = localStorage.getItem("TOKEN");
+      const userID = localStorage.getItem("USER");
+
+      if (!token || !userID) {
+        setLoadingUser(false);
+        return null;
+      }
+
+      try {
+        await api.get("http://localhost:3001/", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        setLoading(false);
+        setLoadingUser(false);
+        setUser({ id: userID });
+        navigate("/ProfilePage");
+      } catch (error) {
+        localStorage.removeItem("TOKEN");
+        localStorage.removeItem("USER");
+        navigate("/");
+      } finally {
+        setLoadingUser(false);
+      }
+    }
+    loadUser();
+  }, []);
 
   const userLogin = async (data: iFormLogin): Promise<void> => {
     try {
@@ -57,7 +89,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, userRegister, user, setUser, loading }}
+      value={{ userLogin, userRegister, user, setUser, loading, loadingUser }}
     >
       {children}
     </UserContext.Provider>

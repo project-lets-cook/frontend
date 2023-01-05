@@ -26,6 +26,7 @@ export interface iUserProviderValue {
   setUser: (user: iUser | null) => void;
 
   loading: boolean;
+  loadingUser: boolean;
 
   userLogin: (data: iFormLogin) => Promise<void>;
   userRegister: (data: iFormRegister) => Promise<void>;
