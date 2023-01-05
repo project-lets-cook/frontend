@@ -4,23 +4,21 @@ import { useState } from "react";
 
 interface iModalProps {
   children: React.ReactNode;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Modal = ({ children }: iModalProps) => {
-  const [openModal, setOpenModal] = useState(true);
+export const Modal = ({ children, setShowModal }: iModalProps) => {
 
-  return openModal ? (
+  return (
     <StyledModal>
       <div>
         <header>
-          <button onClick={() => setOpenModal(false)}>
+          <button onClick={() => setShowModal(false)}>
             <BsArrowRight size={31} />
           </button>
         </header>
         {children}
       </div>
     </StyledModal>
-  ) : (
-    <></>
-  );
+  ) 
 };

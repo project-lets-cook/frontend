@@ -35,7 +35,6 @@ export const LoginForm = () => {
   };
 
   return (
-    <Modal>
       <StyledLoginForm>
         <h3>Login</h3>
         <form onSubmit={handleSubmit(teste)}>
@@ -65,6 +64,5 @@ export const LoginForm = () => {
           </Button>
         </form>
       </StyledLoginForm>
-    </Modal>
   );
 };
