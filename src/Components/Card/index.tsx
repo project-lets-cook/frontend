@@ -1,22 +1,19 @@
 import { StyledTypography } from '../BaseTypography/style'
+import { ImageCards } from './Image'
 import { StyledCard } from './styles'
 
 
 export const Card = ({ element }) => {
 
   const {
-    img,
     title,
     category,
     validation,
-    descripition,
-    amounts,
-    address
   } = element
 
   return (
     <StyledCard>
-      <img src={img} alt={title} type={category} />
+      <ImageCards category={category} />
       <div>
         <StyledTypography classText="Heading4" tag="h3">{title}</StyledTypography>
         <StyledTypography classText="Body" tag="p">{category}</StyledTypography>
