@@ -1,20 +1,9 @@
 import React from "react";
+import { iFormRegister } from "../../Components/RegisterFormDonor";
 
 export interface iFormLogin {
   email: string;
   password: string;
-}
-
-export interface iFormRegister {
-  name: string;
-  email: string;
-  password: string;
-  // confirmPassword: StringSchema;
-  businessName: string;
-  cnpj: string;
-  telephone: string;
-  address: string;
-  profileImgUrl: string;
 }
 
 export interface iUserProviderProps {
@@ -34,11 +23,11 @@ export interface iUserProviderValue {
   openModal: boolean;
   modalOpen: () => void;
   modalClose: () => void;
-  openLogin: boolean; 
-  openRegisterReceiver: boolean; 
+  openLogin: boolean;
+  openRegisterReceiver: boolean;
   openRegisterDonor: boolean;
-  modalLogin: () => void; 
-  modalRegisterReceiver: () => void; 
+  modalLogin: () => void;
+  modalRegisterReceiver: () => void;
   modalRegisterDonor: () => void;
 }
 

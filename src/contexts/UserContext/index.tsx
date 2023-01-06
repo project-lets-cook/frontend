@@ -6,10 +6,10 @@ import {
   iUserProviderValue,
   iUser,
   iFormLogin,
-  iFormRegister,
   iUserResponse,
 } from "./types";
 import { toast } from "react-toastify";
+import { iFormRegister } from "../../Components/RegisterFormDonor";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -19,35 +19,35 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [openModal, setOpenModal] = useState(false);
-  const [ openLogin, setOpenLogin ] = useState(false)
-  const [ openRegisterReceiver, setOpenRegisterReceiver ] = useState(false)
-  const [ openRegisterDonor, setOpenRegisterDonor ] = useState(false)
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
+  const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
 
   const modalLogin = () => {
-    setOpenLogin(true)
-    modalOpen()
-  }
+    setOpenLogin(true);
+    modalOpen();
+  };
 
   const modalRegisterReceiver = () => {
-    setOpenRegisterReceiver(true)
-    modalOpen()
-  }
+    setOpenRegisterReceiver(true);
+    modalOpen();
+  };
 
   const modalRegisterDonor = () => {
-    setOpenRegisterDonor(true)
-    modalOpen()
-  }
+    setOpenRegisterDonor(true);
+    modalOpen();
+  };
 
   const modalOpen = () => {
-    setOpenModal(true)
-  }
+    setOpenModal(true);
+  };
 
   const modalClose = () => {
-    setOpenModal(false)
-    setOpenLogin(false)
-    setOpenRegisterReceiver(false)
-    setOpenRegisterDonor(false)
-  }
+    setOpenModal(false);
+    setOpenLogin(false);
+    setOpenRegisterReceiver(false);
+    setOpenRegisterDonor(false);
+  };
 
   useEffect(() => {
     async function loadUser() {
@@ -93,7 +93,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Login realizado com sucesso");
 
-      navigate("/");
+      navigate("/ProfilePage");
     } catch (error) {
       toast.error("Ops! Algo deu errado!");
     } finally {
@@ -103,14 +103,16 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const userRegister = async (data: iFormRegister): Promise<void> => {
     try {
+      console.log("oii");
       setLoading(true);
 
-      await api.post<iUserResponse>("/register", data);
+      await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
 
-      //   navigate("/");
+      navigate("/DashboardDonor");
     } catch (error) {
+      console.log("oiii");
       toast.error("Ops! Algo deu errado");
     } finally {
       setLoading(false);
@@ -119,7 +121,23 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, userRegister, user, setUser, loading, loadingUser, openModal, modalOpen, modalClose, openLogin, openRegisterReceiver, openRegisterDonor, modalLogin, modalRegisterReceiver, modalRegisterDonor }}
+      value={{
+        userLogin,
+        userRegister,
+        user,
+        setUser,
+        loading,
+        loadingUser,
+        openModal,
+        modalOpen,
+        modalClose,
+        openLogin,
+        openRegisterReceiver,
+        openRegisterDonor,
+        modalLogin,
+        modalRegisterReceiver,
+        modalRegisterDonor,
+      }}
     >
       {children}
     </UserContext.Provider>
