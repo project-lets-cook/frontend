@@ -1,23 +1,20 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export const ProtectedRoutes = () => {
   const { user, loadingUser } = useContext(UserContext);
   const location = useLocation();
 
-  console.log(user);
-
   if (loadingUser) {
     return null;
   }
-  //   switch (key) {
-  //     case value:
 
-  //         break;
+  if (!user) {
+    return <Navigate to="/" state={{ from: location }} />
+  } else if (user.donor) {
+    return <Navigate to="/DashboardDonor" />
+  }
+  return <Navigate to="/DashboardReceiver" />
 
-  //     default:
-  //         break;
-  //   }
-  return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
 };

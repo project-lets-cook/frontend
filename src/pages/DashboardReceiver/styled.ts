@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledDashboardDonor = styled.main`
+export const StyledDashboardReceiver = styled.main`
  width: 100%;
  height: 100%;
  display: flex;
@@ -24,5 +24,4 @@ export const StyledDashboardDonor = styled.main`
     aside{
         margin-top: 50px;
     }
- 
 `

@@ -9,9 +9,15 @@ export const Global = createGlobalStyle`
   text-decoration: none;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
 :root {
   --color-primary: #BF3B0B;
-  --color-secondary: #DCEEF2;
+  /* --color-secondary: #DCEEF2; */
+  --color-secondary: #e7fbff;
   --color-grey900: #151515;
   --color-grey300: #878787;
   --color-grey100: #F3F3F3;
@@ -21,6 +27,8 @@ export const Global = createGlobalStyle`
   --color-shadow: #00000015;
   --color-opacity: #00000070;
   --color-menu-effect: #842807;
+  --color-error: #cf0303;
+  --color-success:#00a707;
 }
 
 body,html{

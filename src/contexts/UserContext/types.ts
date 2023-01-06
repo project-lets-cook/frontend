@@ -37,6 +37,7 @@ export interface iUser {
   email?: string;
   profileImgUrl?: string;
   telephone?: string;
+  donor?: boolean;
 }
 
 export interface iUserResponse {

@@ -17,7 +17,7 @@ interface IElement {
 interface icard {
   element: IElement
 }
-export const Card = ({ element }: icard) => {
+export const CardDonor = ({ element }: icard) => {
 
   const {
     title,

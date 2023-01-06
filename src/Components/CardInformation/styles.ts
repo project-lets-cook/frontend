@@ -2,7 +2,8 @@ import pas from "../../assets/icons/pas.png"
 import styled from "styled-components";
 
 export const StyledCardInformation = styled.div`
-    width: 30%;
+    width: 25%;
+    height: 169px;
     flex-direction: column;
     background-image: url(${pas});
     background-position: center;
