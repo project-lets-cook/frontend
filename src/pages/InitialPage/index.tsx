@@ -1,6 +1,6 @@
 import { StyledInitialPage } from "./styled";
 import { Modal } from "../../Components/Modal";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { FormModal } from "../../Components/FormModal";
 import { LoginForm } from "../../Components/LoginForm";

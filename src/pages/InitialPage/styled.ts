@@ -7,11 +7,6 @@ export const StyledInitialPage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   header {
     display: flex;
     justify-content: center;
