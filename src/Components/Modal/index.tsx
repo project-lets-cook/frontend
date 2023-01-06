@@ -1,24 +1,28 @@
 import { StyledModal } from "./styles";
 import { BsArrowRight } from "react-icons/Bs";
-import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 interface iModalProps {
-  children: React.ReactNode;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  children: JSX.Element;
 }
 
-export const Modal = ({ children, setShowModal }: iModalProps) => {
+export const Modal = ({ children }: iModalProps) => {
+
+  const { openModal } = useContext(UserContext);
 
   return (
-    <StyledModal>
-      <div>
-        <header>
-          <button onClick={() => setShowModal(false)}>
-            <BsArrowRight size={31} />
-          </button>
-        </header>
-        {children}
-      </div>
-    </StyledModal>
-  ) 
+    openModal && (
+      <StyledModal>
+        <div>
+          {/* <header>
+            <button type="button" onClick={modalClose}>
+              <BsArrowRight size={31} />
+            </button>
+          </header> */}
+          {children}
+        </div>
+      </StyledModal>
+    )
+  );
 };

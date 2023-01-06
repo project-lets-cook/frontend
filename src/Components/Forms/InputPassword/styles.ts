@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const PasswordBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 95%;
-  border-bottom: 3px solid var(--color-grey300);
-  outline-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 3px solid var(--color-grey300);
+    outline-style: none;
 
   :focus-within {
     border-bottom: 3px solid var(--color-primary);

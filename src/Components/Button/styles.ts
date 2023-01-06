@@ -14,7 +14,7 @@ ${({ size }) => {
       case "lg":
         return css`
           padding: 20px;
-          width: 95%;
+          width: 100%;
           font-size: 16px;
         `;
       case "md":
@@ -29,8 +29,7 @@ ${({ size }) => {
         `;
     }
   }}
-  
-  
+    
   ${({ theme }) => {
       switch (theme) {
           case 'primary':

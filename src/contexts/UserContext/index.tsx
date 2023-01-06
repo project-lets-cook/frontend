@@ -18,6 +18,36 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [ openLogin, setOpenLogin ] = useState(false)
+  const [ openRegisterReceiver, setOpenRegisterReceiver ] = useState(false)
+  const [ openRegisterDonor, setOpenRegisterDonor ] = useState(false)
+
+  const modalLogin = () => {
+    setOpenLogin(true)
+    modalOpen()
+  }
+
+  const modalRegisterReceiver = () => {
+    setOpenRegisterReceiver(true)
+    modalOpen()
+  }
+
+  const modalRegisterDonor = () => {
+    setOpenRegisterDonor(true)
+    modalOpen()
+  }
+
+  const modalOpen = () => {
+    setOpenModal(true)
+  }
+
+  const modalClose = () => {
+    setOpenModal(false)
+    setOpenLogin(false)
+    setOpenRegisterReceiver(false)
+    setOpenRegisterDonor(false)
+  }
 
   useEffect(() => {
     async function loadUser() {
@@ -89,7 +119,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, userRegister, user, setUser, loading, loadingUser }}
+      value={{ userLogin, userRegister, user, setUser, loading, loadingUser, openModal, modalOpen, modalClose, openLogin, openRegisterReceiver, openRegisterDonor, modalLogin, modalRegisterReceiver, modalRegisterDonor }}
     >
       {children}
     </UserContext.Provider>
