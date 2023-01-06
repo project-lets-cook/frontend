@@ -8,7 +8,7 @@ import register from "../../assets/icons/register.png"
 import donate from "../../assets/icons/donate.png"
 import warm from "../../assets/icons/warm.png"
 
-interface IElement {
+ export interface IElement {
   userId: number;
   img: string;
   title: string;
