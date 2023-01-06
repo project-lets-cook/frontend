@@ -11,13 +11,8 @@ export const ProtectedRoutes = () => {
   if (loadingUser) {
     return null;
   }
-    switch (key) {
-      case value:
-
-          break;
-
-      default:
-          break;
-    }
+  // if (user.donor) {
+      
+  //   }
   return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
 };

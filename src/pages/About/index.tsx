@@ -1,9 +1,8 @@
-
-import { Footer } from '../../../../../../Projeto doAcao/frontend/src/Components/footer'
 import { TesteBox } from './styled'
 import logo from '../../assets/icons/logo.png'
 import { CardsAbout } from '../../Components/CardsAbout'
 import { Link } from 'react-router-dom'
+import { Footer } from '../../Components/footer'
 
 
 export const About = () => {
