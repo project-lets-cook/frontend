@@ -7,17 +7,17 @@ export const ProtectedRoutes = () => {
   const location = useLocation();
 
   console.log(user);
-
+ 
   if (loadingUser) {
     return null;
   }
-  //   switch (key) {
-  //     case value:
+    switch (key) {
+      case value:
 
-  //         break;
+          break;
 
-  //     default:
-  //         break;
-  //   }
+      default:
+          break;
+    }
   return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
 };
