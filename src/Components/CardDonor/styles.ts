@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const StyledCard = styled.li`
     background-color:var(--color-secondary) ;
-    width: 26%;
+    width: 23%;
+    min-width: 200px;
     height: 270px;
     position: relative;
     display: flex;
@@ -11,7 +12,8 @@ export const StyledCard = styled.li`
     justify-content: flex-end;
     border-radius: 3px;
     margin-top: 10%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: -2px 0px 21px -3px rgba(0,0,0,0.45);
+    border: 5px solid var(--color-grey50);
     div{
         width: 100%;
         height: 60%;
@@ -21,6 +23,7 @@ export const StyledCard = styled.li`
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        text-align: center;
     }
 
 `

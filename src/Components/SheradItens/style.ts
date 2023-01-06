@@ -5,7 +5,7 @@ interface Ifocus {
 }
 
 export const StyledSheradItens = styled.form`
-  width: 40%;
+  width: 50%;
   height: 60px;
   margin: 0 auto;
   display: flex;
@@ -19,7 +19,7 @@ export const StyledSheradItens = styled.form`
   border-radius: 8px;
   position: absolute;
   bottom: -10%;
-  left: 30%;
+  left: 25%;
   button {
     background-color: transparent;
     border: none;

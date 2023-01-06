@@ -6,20 +6,21 @@ export const StyledDashboardDonor = styled.main`
     .container{
         margin: 0 auto;
         margin-top: 89px;
-        width:90%;
+        width:1100px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     ul{
         width: 70%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
+        gap: 20px;
     }
     aside{
-        margin-top: 80px;
+        margin-top: 60px;
     }
  
 `

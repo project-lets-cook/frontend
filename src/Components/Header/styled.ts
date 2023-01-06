@@ -3,7 +3,7 @@ import header from "../../assets/img/header.png"
 
 export const StyledHeader = styled.header`
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-image: url(${header});
     background-position: center;
     background-repeat: no-repeat;
@@ -34,8 +34,8 @@ export const StyledHeader = styled.header`
       align-items: center;
     }
     .background > div > div > img {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -43,8 +43,8 @@ export const StyledHeader = styled.header`
       border-radius: 5px;
     }
     .background > div > div > svg  {
-      width: 30%;
-      height: 80%;
+      width: 40px;
+      height: 40px;
       display: flex;
       flex-direction: row;
      justify-content: space-between;

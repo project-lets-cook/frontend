@@ -1,4 +1,4 @@
-import { Card } from "../../Components/Card"
+import { Card } from "../../Components/CardDonor"
 import { CardInformation } from "../../Components/CardInformation"
 import { CategoriesMenu } from "../../Components/CategoriesMenu"
 import { Header } from "../../Components/Header"
