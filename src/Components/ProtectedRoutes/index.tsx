@@ -11,8 +11,8 @@ export const ProtectedRoutes = () => {
   if (loadingUser) {
     return null;
   }
-  if (user.donor) {
+  // if (user.donor) {
       
-    }
+  //   }
   return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
 };

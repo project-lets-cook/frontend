@@ -1,4 +1,3 @@
-import { Card } from "../../Components/Card"
 import { CardInformation } from "../../Components/CardInformation"
 import { CategoriesMenu } from "../../Components/CategoriesMenu"
 import { Header } from "../../Components/Header"
@@ -9,6 +8,7 @@ import donate from "../../assets/icons/donate.png"
 import warm from "../../assets/icons/warm.png"
 import { StyledDashboardReceiver } from "./styled"
 import { Footer } from "../../Components/footer"
+import { CardDonor } from "../../Components/CardDonor"
 
 export const DashboardReceiver = () => {
     return (
@@ -23,7 +23,7 @@ export const DashboardReceiver = () => {
         <ul>
           {
             aliments.map((element: IElement) =>
-              <Card element={element} key={element.id} />)
+              <CardDonor element={element} key={element.id} />)
           }
         </ul>
         <CategoriesMenu />
