@@ -1,4 +1,3 @@
-import { Card } from "../../Components/CardDonor"
 import { CardInformation } from "../../Components/CardInformation"
 import { CategoriesMenu } from "../../Components/CategoriesMenu"
 import { Header } from "../../Components/Header"
@@ -7,6 +6,8 @@ import { StyledDashboardDonor } from "./styled"
 import register from "../../assets/icons/register.png"
 import donate from "../../assets/icons/donate.png"
 import warm from "../../assets/icons/warm.png"
+import { CardDonor } from "../../Components/CardDonor"
+import { Footer } from "../../Components/footer"
 
  export interface IElement {
   userId: number;
@@ -34,11 +35,12 @@ export const DashboardDonor = () => {
         <ul>
           {
             aliments.map((element: IElement) =>
-              <Card element={element} key={element.id} />)
+              <CardDonor element={element} key={element.id} />)
           }
         </ul>
         <CategoriesMenu />
       </section>
+      <Footer />
     </StyledDashboardDonor>
   )
 }
