@@ -1,35 +1,95 @@
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import AliceCarousel from "react-alice-carousel";
+import { BsLinkedin } from "react-icons/Bs";
+import { FaGithub } from "react-icons/fa";
+import { ImgWrap, StyledCarousel } from "./style";
+import { ReactElement } from "react";
 
 const responsive = {
   0: { items: 1 },
-  568: { items: 2 },
-  1024: { items: 4 },
+  400: { items: 2 },
+  568: { items: 3 },
+  780: { items: 4 },
+  1024: { items: 5 },
 };
 
-const items = [
-  <div className="item" data-value="1">
-    1
-  </div>,
-  <div className="item" data-value="2">
-    2
-  </div>,
-  <div className="item" data-value="3">
-    3
-  </div>,
-  <div className="item" data-value="4">
-    4
-  </div>,
-  <div className="item" data-value="5">
-    5
-  </div>,
+const team = [
+  {
+    name: "Davi S Santana",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03PBPR977H-4b241aa4920f-512",
+    linkedin: "",
+    github: "",
+  },
+  {
+    name: "Lilian Fernandes",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03QUFWL55E-422d74c631a4-512",
+    linkedin: "",
+    github: "",
+  },
+  {
+    name: "Lucas Rodrigues",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03M3JVRKG8-12ade23204be-512",
+    linkedin: "",
+    github: "",
+  },
+  {
+    name: "Natã Lomeu",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03KV6GAD88-b91d9b18f194-512",
+    linkedin: "",
+    github: "",
+  },
+  {
+    name: "Renata Costa",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03P34Z7H2S-4c6bcbc14409-512",
+    linkedin: "",
+    github: "",
+  },
+  {
+    name: "Tamir S. Ferreira",
+    avatar: "https://ca.slack-edge.com/TQZR39SET-U03MXQXUQLC-34319a016b9b-512",
+    linkedin: "",
+    github: "",
+  },
 ];
+
+const items: ReactElement[] = [];
+
+team.map((dev, index) =>
+  items.push(
+    <StyledCarousel key={index}>
+      <ImgWrap>
+        <img src={dev.avatar} alt="imagem de avatar" draggable="false" />
+      </ImgWrap>
+      <h4>{dev.name}</h4>
+      <hr />
+      <div>
+        <span>
+          <a href={dev.linkedin} target="_blank">
+            <BsLinkedin /> Linkedin
+          </a>
+        </span>
+        <span>
+          <a href={dev.github} target="_blank">
+            <FaGithub /> Github
+          </a>
+        </span>
+      </div>
+    </StyledCarousel>
+  )
+);
 
 export const Carousel = () => (
   <AliceCarousel
     mouseTracking
+    touchTracking
     items={items}
     responsive={responsive}
     controlsStrategy="alternate"
+    disableButtonsControls
+    animationDuration={4000}
+    autoPlay
+    paddingLeft={70}
+    autoPlayStrategy="default"
+    infinite
   />
 );
