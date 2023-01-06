@@ -1,4 +1,5 @@
 import { StyledTypography } from '../BaseTypography/style'
+import { Button } from '../Button';
 import { ImageCards } from './Image'
 import { StyledCard } from './styles'
 
@@ -31,7 +32,7 @@ export const Card = ({ element }: icard) => {
         <StyledTypography classText="Heading4" tag="h3">{title}</StyledTypography>
         <StyledTypography classText="Body" tag="p">{category}</StyledTypography>
         <StyledTypography classText="Caption" tag="p">{address}</StyledTypography>
-        <StyledTypography classText="Body" tag="p">Detalhes</StyledTypography>
+        <Button size={'md'} theme={'transparent'} type={'button'} onclick={() => console.log("to funcionando")}>Detalhes</Button>
       </div>
     </StyledCard>
   )

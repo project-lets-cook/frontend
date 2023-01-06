@@ -7,11 +7,9 @@ import { LoginForm } from "../../Components/LoginForm";
 import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
 import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 
-
 export const InitialPage = () => {
 
     const { openLogin, openRegisterReceiver, openRegisterDonor, modalLogin, modalRegisterReceiver, modalRegisterDonor } = useContext(UserContext);
-
 
     return (
         <StyledInitialPage>
