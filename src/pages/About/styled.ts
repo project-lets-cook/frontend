@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledAbout = styled.div`
-  background-color: var(--color-secondary);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,9 +9,13 @@ export const StyledAbout = styled.div`
   justify-content: space-between;
   position: relative;
 
-  & > div {
+  > div {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  & > header {
     width: 95%;
-    /* min-height: 300px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,10 +24,10 @@ export const StyledAbout = styled.div`
 
     & > img {
       margin-top: 50px;
-      /* width: 300px; */
     }
 
     & > a {
+      font-size: 15px;
       color: black;
       font-weight: 600;
       position: absolute;

@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
 * {
+  
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,8 +17,7 @@ export const Global = createGlobalStyle`
 
 :root {
   --color-primary: #BF3B0B;
-  /* --color-secondary: #DCEEF2; */
-  --color-secondary: #e7fbff;
+  --color-secondary: #DCEEF2;
   --color-grey900: #151515;
   --color-grey300: #878787;
   --color-grey100: #F3F3F3;
@@ -32,6 +32,7 @@ export const Global = createGlobalStyle`
 }
 
 body,html{
+    user-select: none;
     width: 100vw;
     height: 100vh;
 }
