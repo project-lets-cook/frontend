@@ -6,6 +6,7 @@ export const StyledModal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 
   > div {
     position: fixed;
@@ -18,7 +19,6 @@ export const StyledModal = styled.div`
 
     > header {
       position: absolute;
-      top: 67px;
       right: 49px;
 
       button {

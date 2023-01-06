@@ -1,23 +1,25 @@
 import { StyledModal } from "./styles";
 import { BsArrowRight } from "react-icons/Bs";
-import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 interface iModalProps {
-  children: React.ReactNode;
+  children: JSX.Element;
 }
 
 export const Modal = ({ children }: iModalProps) => {
-  const [openModal, setOpenModal] = useState(true);
+
+  const { openModal } = useContext(UserContext);
 
   return (
     openModal && (
       <StyledModal>
         <div>
-          <header>
-            <button onClick={() => setOpenModal(false)}>
+          {/* <header>
+            <button type="button" onClick={modalClose}>
               <BsArrowRight size={31} />
             </button>
-          </header>
+          </header> */}
           {children}
         </div>
       </StyledModal>

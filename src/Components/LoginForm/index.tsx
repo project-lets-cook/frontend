@@ -1,47 +1,68 @@
-import * as yup from "yup"
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Forms/Input";
 import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
+import { Modal } from "../Modal";
+import { StyledLoginForm } from "./styles";
 
 interface IdataLogin {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 type FormLogin = {
-    email: string;
-    password: string;
-}
+  email: string;
+  password: string;
+};
 
 export const LoginForm = () => {
+  const validate = yup.object().shape({
+    email: yup.string().required("O email é obrigatório"),
 
-    const validate = yup.object().shape({
-        email: yup.string().required("O email é obrigatório"),
+    password: yup.string().required("A senha é obrigatória"),
+  });
 
-        password: yup.string().required("A senha é obrigatória")
-    })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormLogin>({ resolver: yupResolver(validate) });
 
-    const { register, handleSubmit, formState: { errors }, } = useForm<FormLogin>({ resolver: yupResolver(validate) })
+  const teste = (data: IdataLogin) => {
+    console.log(data);
+  };
 
-    const teste = (data:IdataLogin) => {
-        console.log(data)
-    }
-
-    return (
+  return (
+      <StyledLoginForm>
+        <h3>Login</h3>
         <form onSubmit={handleSubmit(teste)}>
-            <div>
-            <Input label={"E-mail"} id ={"email"} type={"email"} register ={register("email")} placeholder ={"Digite seu email aqui"}/>
+          <div>
+            <Input
+              label={"E-mail"}
+              id={"email"}
+              type={"email"}
+              register={register("email")}
+              placeholder={"Digite seu email aqui"}
+            />
             {errors.email?.message && <p>{errors.email.message}</p>}
-            </div>
+          </div>
 
-            <div>
-            <InputPassword label={"Senha"} id ={"password"} register ={register("password")} placeholder ={"Digite sua senha aqui"}/>
+          <div>
+            <InputPassword
+              label={"Senha"}
+              id={"password"}
+              register={register("password")}
+              placeholder={"Digite sua senha aqui"}
+            />
             {errors.password?.message && <p>{errors.password.message}</p>}
-            </div>
+          </div>
 
-            <Button size='sm'theme='primary' type='submit'>Entrar</Button>
+          <Button size="lg" theme="primary" type="submit">
+            Entrar
+          </Button>
         </form>
-    )
-}
+      </StyledLoginForm>
+  );
+};
