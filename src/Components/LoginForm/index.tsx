@@ -4,8 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Forms/Input";
 import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
-interface IdataLogin {
+export interface iFormLogin {
   email: string;
   password: string;
 }
@@ -16,6 +18,8 @@ type FormLogin = {
 };
 
 export const LoginForm = () => {
+  const { userLogin } = useContext(UserContext);
+
   const validate = yup.object().shape({
     email: yup.string().required("O email é obrigatório"),
 
@@ -28,7 +32,8 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<FormLogin>({ resolver: yupResolver(validate) });
 
-  const teste = (data: IdataLogin) => {
+  const teste = (data: iFormLogin) => {
+    userLogin(data);
     console.log(data);
   };
 

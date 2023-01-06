@@ -4,34 +4,29 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Forms/Input";
 import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+import { StringSchema } from "yup";
 
-interface IdataRegisterDonor {
+export interface iFormRegister {
   name: string;
-  telephone: string;
-  place: string;
-  document: string;
-  picture: string;
   email: string;
   password: string;
-  confirm: string;
-  city: string;
-  country: string;
+  confirmPassword: StringSchema;
+  businessName: string;
+  document: string;
+  telephone: string;
+  address: iFormAddress;
+  profileImgUrl: string;
 }
-
-type FormRegisterDonor = {
-  name: string;
-  telephone: string;
-  place: string;
-  document: string;
-  picture: string;
-  email: string;
-  password: string;
-  confirm: string;
+export interface iFormAddress {
+  street: string;
   city: string;
-  country: string;
-};
-
+  state: string;
+}
 export const RegisterFormDonor = () => {
+  const { userRegister, loading } = useContext(UserContext);
+
   const validate = yup.object().shape({
     name: yup
       .string()
@@ -82,14 +77,33 @@ export const RegisterFormDonor = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormRegisterDonor>({ resolver: yupResolver(validate) });
+  } = useForm<iFormRegister>({
+    resolver: yupResolver(validate),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      businessName: "",
+      document: "",
+      telephone: "",
+      address: {
+        street: "",
+        city: "",
+        state: "",
+      },
+      profileImgUrl: "",
+    },
+  });
 
-  const teste = (data: IdataRegisterDonor) => {
+  const submitRegister = (data: iFormRegister) => {
+    userRegister(data);
+
     console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(teste)}>
+    <form onSubmit={handleSubmit(submitRegister)}>
       <div>
         <Input
           label={"Nome"}
@@ -107,7 +121,7 @@ export const RegisterFormDonor = () => {
         <Input
           label={"Telefone"}
           id={"telephone"}
-          type={"number"}
+          type={"text"}
           register={register("telephone")}
           placeholder={"Digite seu telefone aqui"}
         />
@@ -121,11 +135,11 @@ export const RegisterFormDonor = () => {
           label={"Endereço"}
           id={"place"}
           type={"text"}
-          register={register("place")}
+          register={register("address")}
           placeholder={"Digite seu endereço aqui"}
         />
-        {errors.place?.message && (
-          <p className="input-waring">{errors.place.message}</p>
+        {errors.address?.message && (
+          <p className="input-waring">{errors.address.message}</p>
         )}
       </div>
 
@@ -133,7 +147,7 @@ export const RegisterFormDonor = () => {
         <Input
           label={"CPF"}
           id={"document"}
-          type={"number"}
+          type={"text"}
           register={register("document")}
           placeholder={"Digite seu CPF aqui"}
         />
@@ -147,11 +161,11 @@ export const RegisterFormDonor = () => {
           label={"Foto do perfil"}
           id={"picture"}
           type={"text"}
-          register={register("picture")}
+          register={register("profileImgUrl")}
           placeholder={"Digite o link de sua foto"}
         />
-        {errors.picture?.message && (
-          <p className="input-waring">{errors.picture.message}</p>
+        {errors.profileImgUrl?.message && (
+          <p className="input-waring">{errors.profileImgUrl.message}</p>
         )}
       </div>
 
@@ -184,11 +198,11 @@ export const RegisterFormDonor = () => {
         <InputPassword
           label={"Repetir senha"}
           id={"confirm"}
-          register={register("confirm")}
+          register={register("confirmPassword")}
           placeholder={"Digite novamente sua senha aqui"}
         />
-        {errors.confirm?.message && (
-          <p className="input-waring">{errors.confirm.message}</p>
+        {errors.confirmPassword?.message && (
+          <p className="input-waring">{errors.confirmPassword.message}</p>
         )}
       </div>
 
@@ -197,11 +211,11 @@ export const RegisterFormDonor = () => {
           label={"Cidade"}
           id={"city"}
           type={"text"}
-          register={register("city")}
+          register={register("address.city")}
           placeholder={"Digite sua cidade aqui"}
         />
-        {errors.city?.message && (
-          <p className="input-waring">{errors.city.message}</p>
+        {errors.address?.city?.message && (
+          <p className="input-waring">{errors.address?.city.message}</p>
         )}
       </div>
 
@@ -210,16 +224,16 @@ export const RegisterFormDonor = () => {
           label={"Estado"}
           id={"country"}
           type={"text"}
-          register={register("country")}
+          register={register("address.state")}
           placeholder={"Digite seu estado aqui"}
         />
-        {errors.country?.message && (
-          <p className="input-waring">{errors.country.message}</p>
+        {errors.address?.state?.message && (
+          <p className="input-waring">{errors.address?.state.message}</p>
         )}
       </div>
 
-      <Button size="lg" theme="primary" type="submit">
-        Cadastrar
+      <Button size="sm" theme="primary" type="submit" disabled={loading}>
+        {loading ? "Cadastrando..." : "Cadastrar"}
       </Button>
     </form>
   );
