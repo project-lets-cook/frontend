@@ -7,6 +7,7 @@ import register from "../../assets/icons/register.png"
 import donate from "../../assets/icons/donate.png"
 import warm from "../../assets/icons/warm.png"
 import { CardDonor } from "../../Components/CardDonor"
+import { Footer } from "../../Components/footer"
 
  export interface IElement {
   userId: number;
@@ -39,6 +40,7 @@ export const DashboardDonor = () => {
         </ul>
         <CategoriesMenu />
       </section>
+      <Footer />
     </StyledDashboardDonor>
   )
 }

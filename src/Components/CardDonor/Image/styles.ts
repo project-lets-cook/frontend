@@ -6,7 +6,7 @@ export const StyledImageCards = styled.figure`
     height:150px;
     position: absolute;
     top: -25%;
-    left: +13%;
+    left: 20px;
     border-radius: 50%;
     border: 5px solid var(--color-grey50);
     display: flex;

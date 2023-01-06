@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const StyledDashboardDonor = styled.main`
  width: 100%;
  height: 100%;
+ display: flex;
+ flex-direction: column;
+ gap: 80px;
     .container{
         margin: 0 auto;
-        margin-top: 89px;
         width:1100px;
         display: flex;
         justify-content: space-around;
@@ -17,10 +19,10 @@ export const StyledDashboardDonor = styled.main`
         align-items: flex-start;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 40px;
     }
     aside{
-        margin-top: 60px;
+        margin-top: 50px;
     }
  
 `
