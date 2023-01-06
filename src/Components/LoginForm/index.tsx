@@ -4,8 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Forms/Input";
 import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
-import { Modal } from "../Modal";
-import { StyledLoginForm } from "./styles";
 
 interface IdataLogin {
   email: string;
@@ -35,34 +33,31 @@ export const LoginForm = () => {
   };
 
   return (
-      <StyledLoginForm>
-        <h3>Login</h3>
-        <form onSubmit={handleSubmit(teste)}>
-          <div>
-            <Input
-              label={"E-mail"}
-              id={"email"}
-              type={"email"}
-              register={register("email")}
-              placeholder={"Digite seu email aqui"}
-            />
-            {errors.email?.message && <p>{errors.email.message}</p>}
-          </div>
+    <form onSubmit={handleSubmit(teste)}>
+      <div>
+        <Input
+          label={"E-mail"}
+          id={"email"}
+          type={"email"}
+          register={register("email")}
+          placeholder={"Digite seu email aqui"}
+        />
+        {errors.email?.message && <p>{errors.email.message}</p>}
+      </div>
 
-          <div>
-            <InputPassword
-              label={"Senha"}
-              id={"password"}
-              register={register("password")}
-              placeholder={"Digite sua senha aqui"}
-            />
-            {errors.password?.message && <p>{errors.password.message}</p>}
-          </div>
+      <div>
+        <InputPassword
+          label={"Senha"}
+          id={"password"}
+          register={register("password")}
+          placeholder={"Digite sua senha aqui"}
+        />
+        {errors.password?.message && <p>{errors.password.message}</p>}
+      </div>
 
-          <Button size="lg" theme="primary" type="submit">
-            Entrar
-          </Button>
-        </form>
-      </StyledLoginForm>
+      <Button size="lg" theme="primary" type="submit">
+        Entrar
+      </Button>
+    </form>
   );
 };
