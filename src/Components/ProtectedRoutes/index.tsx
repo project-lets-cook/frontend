@@ -6,13 +6,14 @@ export const ProtectedRoutes = () => {
   const { user, loadingUser } = useContext(UserContext);
   const location = useLocation();
 
-  console.log(user);
- 
   if (loadingUser) {
     return null;
   }
-  if (user.donor) {
-      
-    }
-  return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
+
+  if (!user) {
+    return <Navigate to="/" state={{ from: location }} />
+  } else if (user.donor) {
+    return <Navigate to="/DashboardDonor" />
+  }
+  return <Navigate to="/DashboardReceiver" />
 };

@@ -34,11 +34,11 @@ export interface iUserProviderValue {
   openModal: boolean;
   modalOpen: () => void;
   modalClose: () => void;
-  openLogin: boolean; 
-  openRegisterReceiver: boolean; 
+  openLogin: boolean;
+  openRegisterReceiver: boolean;
   openRegisterDonor: boolean;
-  modalLogin: () => void; 
-  modalRegisterReceiver: () => void; 
+  modalLogin: () => void;
+  modalRegisterReceiver: () => void;
   modalRegisterDonor: () => void;
 }
 
@@ -48,6 +48,7 @@ export interface iUser {
   email?: string;
   profileImgUrl?: string;
   telephone?: string;
+  donor?: boolean;
 }
 
 export interface iUserResponse {
