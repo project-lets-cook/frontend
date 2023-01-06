@@ -1,5 +1,6 @@
 import React from "react";
-import { iFormRegister } from "../../Components/RegisterFormDonor";
+import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
+import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
 
 export interface iFormLogin {
   email: string;
@@ -18,8 +19,9 @@ export interface iUserProviderValue {
   loadingUser: boolean;
 
   userLogin: (data: iFormLogin) => Promise<void>;
-  userRegister: (data: iFormRegister) => Promise<void>;
-
+  userRegisterDonor: (data: iFormRegisterDonor) => Promise<void>;
+  userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<void>;
+  
   openModal: boolean;
   modalOpen: () => void;
   modalClose: () => void;

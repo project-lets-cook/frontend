@@ -4,8 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Forms/Input";
 import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
-interface IdataRegisterReceiver {
+export interface iFormRegisterReceiver {
   company: string;
   cnpj: string;
   telephone: string;
@@ -17,23 +19,12 @@ interface IdataRegisterReceiver {
   confirm: string;
   city: string;
   country: string;
+  donor: boolean;
 }
 
-type FormRegisterReceiver = {
-  company: string;
-  cnpj: string;
-  telephone: string;
-  place: string;
-  sponsor: string;
-  picture: string;
-  email: string;
-  password: string;
-  confirm: string;
-  city: string;
-  country: string;
-};
-
 export const RegisterFormReceiver = () => {
+  const { userRegisterReceiver, loading } = useContext(UserContext);
+
   const validate = yup.object().shape({
     company: yup.string().required("O campo é obrigatório"),
 
@@ -82,14 +73,19 @@ export const RegisterFormReceiver = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormRegisterReceiver>({ resolver: yupResolver(validate) });
+  } = useForm<iFormRegisterReceiver>({
+     resolver: yupResolver(validate),
+     defaultValues: {
+      donor: false
+     }
+  });
 
-  const teste = (data: IdataRegisterReceiver) => {
-    console.log(data);
+  const submitRegisterReceiver = (data: iFormRegisterReceiver ) => {
+    userRegisterReceiver(data)
   };
 
   return (
-    <form onSubmit={handleSubmit(teste)}>
+    <form onSubmit={handleSubmit(submitRegisterReceiver)}>
       <div>
         <Input
           label={"Razão Social"}
@@ -120,7 +116,7 @@ export const RegisterFormReceiver = () => {
         <Input
           label={"Telefone"}
           id={"telephone"}
-          type={"number"}
+          type={"text"}
           register={register("telephone")}
           placeholder={"Digite seu telefone aqui"}
         />
@@ -231,8 +227,8 @@ export const RegisterFormReceiver = () => {
         )}
       </div>
 
-      <Button size="lg" theme="primary" type="submit">
-        Cadastrar
+      <Button size="sm" theme="primary" type="submit" disabled={loading}>
+        {loading ? "Cadastrando..." : "Cadastrar"}
       </Button>
     </form>
   );

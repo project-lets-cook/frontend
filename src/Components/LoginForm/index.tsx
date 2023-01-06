@@ -32,13 +32,13 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<FormLogin>({ resolver: yupResolver(validate) });
 
-  const teste = (data: iFormLogin) => {
+  const login = (data: iFormLogin) => {
     userLogin(data);
     console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(teste)}>
+    <form onSubmit={handleSubmit(login)}>
       <div>
         <Input
           label={"E-mail"}
