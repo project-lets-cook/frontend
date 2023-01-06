@@ -13,11 +13,13 @@ export const StyledModal = styled.div`
     top: 0;
     right: 0;
     width: 80%;
-    max-width: 513px;
+    max-width: 450px;
     height: 100vh;
+    /* padding: 0 30px 0 30px; */
     background-color: var(--color-grey50);
 
-    > header {
+    /* > header {
+      background-color: red;
       position: absolute;
       right: 49px;
 
@@ -25,6 +27,6 @@ export const StyledModal = styled.div`
         border: none;
         background: none;
       }
-    }
+    } */
   }
 `;

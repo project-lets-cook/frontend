@@ -21,6 +21,8 @@ export const Global = createGlobalStyle`
   --color-shadow: #00000015;
   --color-opacity: #00000070;
   --color-menu-effect: #842807;
+  --color-error: #cf0303;
+  --color-success:#00a707;
 }
 
 body,html{

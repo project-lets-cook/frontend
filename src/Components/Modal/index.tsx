@@ -8,21 +8,20 @@ interface iModalProps {
 }
 
 export const Modal = ({ children }: iModalProps) => {
-
   const { openModal } = useContext(UserContext);
 
-  return (
-    openModal && (
-      <StyledModal>
-        <div>
-          {/* <header>
+  return openModal ? (
+    <StyledModal>
+      <div>
+        {/* <header>
             <button type="button" onClick={modalClose}>
               <BsArrowRight size={31} />
             </button>
           </header> */}
-          {children}
-        </div>
-      </StyledModal>
-    )
+        {children}
+      </div>
+    </StyledModal>
+  ) : (
+    <></>
   );
 };
