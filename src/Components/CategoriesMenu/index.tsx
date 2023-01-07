@@ -1,14 +1,15 @@
 import { StyledCategoriesMenu } from "./styles";
 
 const categories = [
-  "Açúcares e doces",
-  "Carnes e ovos",
-  "Cereais, pães e tubérculos",
+  "Todas as Categorias",
+  "Açúcares e Doces",
+  "Carnes e Ovos",
+  "Cereais, Pães e Tubérculos",
   "Frutas",
   "Hortaliças",
-  "Leite e derivados",
+  "Leite e Derivados",
   "Leguminosas",
-  "Óleos e gorduras",
+  "Óleos e Gorduras",
 ];
 
 export const CategoriesMenu = () => {

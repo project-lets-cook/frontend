@@ -30,8 +30,8 @@ const team = [
   {
     name: "Lucas Rodrigues",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03M3JVRKG8-12ade23204be-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/lucas-rodrigues-da-silva-168274201/",
+    github: "https://github.com/LucasRodrigues23",
   },
   {
     name: "Natã Lomeu",
