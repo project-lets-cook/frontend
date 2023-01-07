@@ -9,7 +9,8 @@ import {
   iUserResponse,
 } from "./types";
 import { toast } from "react-toastify";
-import { iFormRegister } from "../../Components/RegisterFormDonor";
+import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
+import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -84,7 +85,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     try {
       setLoading(true);
 
-      const response = await api.post<iUserResponse>("/login", data);
+      const response = await api.post<iUserResponse>("login", data);
+
+      const typeOfUser = response.data.user.donor
 
       setUser(response.data.user);
 
@@ -93,7 +96,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Login realizado com sucesso");
 
-      navigate("/ProfilePage");
+      typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
     } catch (error) {
       toast.error("Ops! Algo deu errado!");
     } finally {
@@ -101,18 +104,46 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const userRegister = async (data: iFormRegister): Promise<void> => {
+  const userRegisterDonor = async (data: iFormRegisterDonor): Promise<void> => {
     try {
-      console.log("oii");
       setLoading(true);
 
-      await api.post<iUserResponse>("register", data);
+      const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
+      console.log(response)
+      modalClose()
+      modalLogin()
 
-      navigate("/DashboardDonor");
+      // setUser(response.data.user);
+      // window.localStorage.setItem("TOKEN", response.data.accessToken);
+      // window.localStorage.setItem("USER", response.data.user.id);
+      // const typeOfUser = response.data.user.donor
+      // typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
     } catch (error) {
-      console.log("oiii");
+      toast.error("Ops! Algo deu errado");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const userRegisterReceiver = async (data: iFormRegisterReceiver): Promise<void> => {
+    try {
+      setLoading(true);
+
+      const response = await api.post<iUserResponse>("register", data);
+
+      toast.success("Conta criada com sucesso!");
+      
+      modalClose()
+      modalLogin()
+      console.log(response)
+      // setUser(response.data.user);
+      // window.localStorage.setItem("TOKEN", response.data.accessToken);
+      // window.localStorage.setItem("USER", response.data.user.id);
+      // const typeOfUser = response.data.user.donor
+      // typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
+    } catch (error) {
       toast.error("Ops! Algo deu errado");
     } finally {
       setLoading(false);
@@ -123,7 +154,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     <UserContext.Provider
       value={{
         userLogin,
-        userRegister,
+        userRegisterDonor,
         user,
         setUser,
         loading,
@@ -137,6 +168,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalLogin,
         modalRegisterReceiver,
         modalRegisterDonor,
+        userRegisterReceiver
       }}
     >
       {children}
