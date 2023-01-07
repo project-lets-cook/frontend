@@ -23,19 +23,22 @@ export const InputPassword = ({
   return (
     <>
       <PasswordBox>
+        {/* <div> */}
+        {/* <div> */}
+        <input
+          id={id}
+          type={visible ? "text" : "password"}
+          placeholder={placeholder}
+          {...register}
+          disabled={disabled}
+          required={true}
+        ></input>
         <label htmlFor={id}>{label}</label>
-        <div>
-          <input
-            id={id}
-            type={visible ? "text" : "password"}
-            placeholder={placeholder}
-            {...register}
-            disabled={disabled}
-          ></input>
-          <button type="button" onClick={() => setVisible(!visible)}>
-            {visible ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
-          </button>
-        </div>
+        {/* </div> */}
+        <button type="button" onClick={() => setVisible(!visible)}>
+          {visible ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
+        </button>
+        {/* </div> */}
       </PasswordBox>
     </>
   );

@@ -28,14 +28,20 @@ export const InitialPage = () => {
       {openRegisterReceiver && (
         <Modal
           children={
-            <FormModal name={"Registro"} children={<RegisterFormReceiver />} />
+            <FormModal
+              name={"Registro Donatário"}
+              children={<RegisterFormReceiver />}
+            />
           }
         />
       )}
       {openRegisterDonor && (
         <Modal
           children={
-            <FormModal name={"Registro"} children={<RegisterFormDonor />} />
+            <FormModal
+              name={"Registro Doador"}
+              children={<RegisterFormDonor />}
+            />
           }
         />
       )}
