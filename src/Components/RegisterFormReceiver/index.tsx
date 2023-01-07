@@ -74,18 +74,19 @@ export const RegisterFormReceiver = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<iFormRegisterReceiver>({
-     resolver: yupResolver(validate),
-     defaultValues: {
-      donor: false
-     }
+    mode: "onBlur",
+    resolver: yupResolver(validate),
+    defaultValues: {
+      donor: false,
+    },
   });
 
-  const submitRegisterReceiver = (data: iFormRegisterReceiver ) => {
-    userRegisterReceiver(data)
+  const submitRegisterReceiver = (data: iFormRegisterReceiver) => {
+    userRegisterReceiver(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(submitRegisterReceiver)}>
+    <form onSubmit={handleSubmit(submitRegisterReceiver)} noValidate>
       <div>
         <Input
           label={"Razão Social"}
@@ -168,7 +169,7 @@ export const RegisterFormReceiver = () => {
         <Input
           label={"E-mail"}
           id={"email"}
-          type={"email"}
+          type={"text"}
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
@@ -227,7 +228,7 @@ export const RegisterFormReceiver = () => {
         )}
       </div>
 
-      <Button size="sm" theme="primary" type="submit" disabled={loading}>
+      <Button size="lg" theme="primary" type="submit" disabled={loading}>
         {loading ? "Cadastrando..." : "Cadastrar"}
       </Button>
     </form>

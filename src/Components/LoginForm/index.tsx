@@ -30,7 +30,10 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormLogin>({ resolver: yupResolver(validate) });
+  } = useForm<FormLogin>({
+    mode: "onBlur",
+    resolver: yupResolver(validate),
+  });
 
   const login = (data: iFormLogin) => {
     userLogin(data);
@@ -38,12 +41,12 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(login)}>
+    <form onSubmit={handleSubmit(login)} noValidate>
       <div>
         <Input
           label={"E-mail"}
           id={"email"}
-          type={"email"}
+          type={"text"}
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />

@@ -77,9 +77,10 @@ export const RegisterFormDonor = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<iFormRegisterDonor>({
+    mode: "onBlur",
     resolver: yupResolver(validate),
     defaultValues: {
-      donor: true
+      donor: true,
     },
   });
 
@@ -88,7 +89,7 @@ export const RegisterFormDonor = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitRegisterDonor)}>
+    <form onSubmit={handleSubmit(submitRegisterDonor)} noValidate>
       <div>
         <Input
           label={"Nome"}
@@ -158,7 +159,7 @@ export const RegisterFormDonor = () => {
         <Input
           label={"E-mail"}
           id={"email"}
-          type={"email"}
+          type={"text"}
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
@@ -217,7 +218,7 @@ export const RegisterFormDonor = () => {
         )}
       </div>
 
-      <Button size="sm" theme="primary" type="submit" disabled={loading}>
+      <Button size="lg" theme="primary" type="submit" disabled={loading}>
         {loading ? "Cadastrando..." : "Cadastrar"}
       </Button>
     </form>
