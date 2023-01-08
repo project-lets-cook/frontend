@@ -56,4 +56,11 @@ export const StyledHeader = styled.header`
      justify-content: space-between;
       align-items: center;
     }
+
+    .background button, svg {
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: none;
+    }
 `
