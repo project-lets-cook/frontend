@@ -21,7 +21,7 @@ export interface iUserProviderValue {
   userLogin: (data: iFormLogin) => Promise<void>;
   userRegisterDonor: (data: iFormRegisterDonor) => Promise<void>;
   userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<void>;
-  
+
   openModal: boolean;
   modalOpen: () => void;
   modalClose: () => void;
