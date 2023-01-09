@@ -26,14 +26,10 @@ export const InputStyled = styled.div`
   }
 
   & > label {
-    /* margin-left: 20px; */
     border-style: none;
     color: var(--color-grey300);
-    /* padding: 0px 5px; */
     align-self: start;
     width: max-content;
-    /* top: -5px; */
-
     position: absolute;
     left: 0;
   }
@@ -62,8 +58,7 @@ export const InputStyled = styled.div`
     :focus ~ label {
       transform: translateY(-15px);
       font-size: 0.8rem;
-      /* padding: 0 10px; */
-      background-color: var(--color-white);
+      background-color: var(--color-grey50);
     }
   }
 `;

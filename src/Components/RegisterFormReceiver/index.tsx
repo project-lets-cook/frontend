@@ -45,7 +45,7 @@ export const RegisterFormReceiver = () => {
     email: yup
       .string()
       .required("O email é obrigatório")
-      .email("É necessário fornecer um email"),
+      .email("É necessário fornecer um email válido"),
 
     password: yup
       .string()
