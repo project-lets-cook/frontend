@@ -36,9 +36,8 @@ export const InputStyled = styled.div`
 
   & > input {
     width: 100%;
-    margin-left: 10px;
+    margin: 0 10px;
     padding: 5px;
-    border-style: none;
     outline-style: none;
     border-radius: 5px;
     border-style: none;
@@ -56,9 +55,8 @@ export const InputStyled = styled.div`
 
     :valid ~ label,
     :focus ~ label {
-      transform: translateY(-15px);
+      transform: translateY(-20px);
       font-size: 0.8rem;
-      background-color: var(--color-grey50);
     }
   }
 `;

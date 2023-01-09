@@ -61,4 +61,27 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
         `;
     }
   }}
+
+@media screen and (max-width: 520px) {
+    ${({ size }) => {
+      switch (size) {
+        case "lg":
+          return css`
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+          `;
+        /*         case "md":
+          return css`
+            padding: 15px 50px;
+            font-size: 16px;
+          `;
+        case "sm":
+          return css`
+            padding: 10px 20px;
+            font-size: 12px;
+          `; */
+      }
+    }}
+  }
 `;
