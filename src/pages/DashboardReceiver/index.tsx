@@ -37,3 +37,4 @@ export const DashboardReceiver = () => {
     </StyledDashboardReceiver>
   )
 }
+
