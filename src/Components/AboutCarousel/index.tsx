@@ -36,14 +36,14 @@ const team = [
   {
     name: "Natã Lomeu",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03KV6GAD88-b91d9b18f194-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/natangaf/",
+    github: "https://github.com/Natangaf",
   },
   {
     name: "Renata Costa",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03P34Z7H2S-4c6bcbc14409-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/renataracosta/",
+    github: "https://github.com/Ray-Costa",
   },
   {
     name: "Tamir S. Ferreira",
