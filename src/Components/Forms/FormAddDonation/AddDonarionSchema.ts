@@ -1,1 +1,1 @@
-import yup* as
+import * as yup from "yup";

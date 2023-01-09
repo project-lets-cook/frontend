@@ -32,7 +32,7 @@ const receiver: ReactElement[] = [
   <CardInformation
     img={sherad}
     value="2"
-    text="Procure a categoria que sua ONG necessita"
+    text="Procure os produtos que sua ONG necessita"
   />,
 ];
 
