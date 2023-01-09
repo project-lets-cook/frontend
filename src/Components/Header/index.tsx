@@ -3,14 +3,17 @@ import { FiLogOut } from "react-icons/fi"
 import logo from "../../assets/icons/logo.png"
 import imgError from "../../assets/img/imgnotfound.jpg"
 import { SheradItens } from "../SheradItens"
-import { SyntheticEvent } from "react"
+import { SyntheticEvent, useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
+
 
 export const Header = () => {
+
+const { userLogout } = useContext(UserContext)
 
 const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     (event.target as HTMLImageElement).src =`${imgError}`;
    }
-
 
     return (
         <StyledHeader>
@@ -19,7 +22,9 @@ const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
                     <img src={logo} alt="" />
                     <div>
                         <img src="img" alt="name" onError={addDefaultImg}/>
-                        <FiLogOut />
+                        <button type="button" onClick={userLogout}>
+                            <FiLogOut />
+                        </button>
                     </div>
                 </div>
             <SheradItens />

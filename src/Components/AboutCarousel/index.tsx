@@ -2,7 +2,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import { BsLinkedin } from "react-icons/Bs";
 import { FaGithub } from "react-icons/fa";
-import { ImgWrap, StyledCarousel } from "./style";
+import { ImgWrap, StyledAboutCarousel } from "./styles";
 import { ReactElement } from "react";
 
 const responsive = {
@@ -30,20 +30,20 @@ const team = [
   {
     name: "Lucas Rodrigues",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03M3JVRKG8-12ade23204be-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/lucas-rodrigues-da-silva-168274201/",
+    github: "https://github.com/LucasRodrigues23",
   },
   {
     name: "Natã Lomeu",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03KV6GAD88-b91d9b18f194-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/natangaf/",
+    github: "https://github.com/Natangaf",
   },
   {
     name: "Renata Costa",
     avatar: "https://ca.slack-edge.com/TQZR39SET-U03P34Z7H2S-4c6bcbc14409-512",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/renataracosta/",
+    github: "https://github.com/Ray-Costa",
   },
   {
     name: "Tamir S. Ferreira",
@@ -57,7 +57,7 @@ const items: ReactElement[] = [];
 
 team.map((dev, index) =>
   items.push(
-    <StyledCarousel key={index}>
+    <StyledAboutCarousel key={index}>
       <ImgWrap>
         <img src={dev.avatar} alt="imagem de avatar" draggable="false" />
       </ImgWrap>
@@ -75,11 +75,11 @@ team.map((dev, index) =>
           </a>
         </span>
       </div>
-    </StyledCarousel>
+    </StyledAboutCarousel>
   )
 );
 
-export const Carousel = () => (
+export const AboutCarousel = () => (
   <AliceCarousel
     mouseTracking
     touchTracking

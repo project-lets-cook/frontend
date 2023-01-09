@@ -6,9 +6,6 @@ interface iButtonStyledProps {
 export const ButtonStyled = styled.button<iButtonStyledProps>`
   font-weight: 600;
   letter-spacing: 1px;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 
   ${({ size }) => {
     switch (size) {
@@ -48,12 +45,13 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
           color: var(--color-primary);
           border: 2px solid var(--color-primary);
           :hover {
-            opacity: 0.7;
-            color: var(--color-primary);
+            background-color: var(--color-primary);
+            color: var(--color-grey50);
           }
         `;
       case "transparent":
         return css`
+          font-weight: 700;
           background-color: transparent;
           color: var(--color-primary);
           border-style: none;

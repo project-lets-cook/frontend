@@ -21,14 +21,15 @@ export const Input = ({
   return (
     <>
       <InputStyled>
-        <label htmlFor={id}>{label}</label>
         <input
           id={id}
           type={type}
           placeholder={placeholder}
           {...register}
           disabled={disabled}
+          required={true}
         />
+        <label htmlFor={id}>{label}</label>
       </InputStyled>
     </>
   );

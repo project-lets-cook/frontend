@@ -12,6 +12,9 @@ export const StyledInitialPage = styled.div`
     justify-content: center;
     align-items: center;
     height: 150px;
+    /* svg {
+      font-size: 35px;
+    } */
   }
 
   header > div {
@@ -25,7 +28,7 @@ export const StyledInitialPage = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20%;
+    gap: 70px;
     height: 80vh;
 
     > div {
@@ -33,6 +36,13 @@ export const StyledInitialPage = styled.div`
       flex-direction: column;
       align-items: center;
       width: 490px;
+
+      > div {
+        /* background-color: red; */
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
 
       > p {
         font-weight: 600;

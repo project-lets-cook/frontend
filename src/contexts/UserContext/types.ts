@@ -31,6 +31,7 @@ export interface iUserProviderValue {
   modalLogin: () => void;
   modalRegisterReceiver: () => void;
   modalRegisterDonor: () => void;
+  userLogout: () => void;
 }
 
 export interface iUser {
