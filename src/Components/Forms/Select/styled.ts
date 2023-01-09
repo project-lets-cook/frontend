@@ -4,19 +4,19 @@ export const SelectCityStyled = styled.form`
     width: 250px;
     margin-bottom: 20px;
     position: absolute;
-    top: -61px;
-    right: 213px;
+    top: -58px;
+    right: 218px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
     > select {
     -webkit-appearance: none;
-    background-color: var(--color-primary);
-    color: var(--color-grey50);
-    padding: 13px;
+    background-color: var(--color-secondary);
+    color: var(--color-grey300);
+    padding: 10px;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     border-style: none;
     outline-style: none;
