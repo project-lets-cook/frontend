@@ -7,6 +7,7 @@ import { LoginForm } from "../../Components/LoginForm";
 import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
 import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
+import { StepsCarousel } from "../../Components/StepsCarousel";
 
 export const InitialPage = () => {
   const {
@@ -58,26 +59,32 @@ export const InitialPage = () => {
       <main className="container">
         <div className="register-donor-box">
           <p>Tenho um empreendimento e quero evitar o desperdício de comida</p>
-          <Button
-            size="md"
-            theme="white"
-            type="button"
-            onclick={modalRegisterDonor}
-          >
-            Cadastre-se e doe
-          </Button>
+          <div>
+            <Button
+              size="md"
+              theme="white"
+              type="button"
+              onclick={modalRegisterDonor}
+            >
+              Cadastre-se e doe
+            </Button>
+            <StepsCarousel mode={"donor"} />
+          </div>
         </div>
 
         <div className="register-receiver-box">
           <p>Sou uma ONG precisando de doações</p>
-          <Button
-            size="md"
-            theme="white"
-            type="button"
-            onclick={modalRegisterReceiver}
-          >
-            Receba doações agora
-          </Button>
+          <div>
+            <Button
+              size="md"
+              theme="white"
+              type="button"
+              onclick={modalRegisterReceiver}
+            >
+              Receba doações
+            </Button>
+            <StepsCarousel mode={"receiver"} />
+          </div>
         </div>
       </main>
     </StyledInitialPage>

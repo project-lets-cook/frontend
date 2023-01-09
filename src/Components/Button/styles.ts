@@ -51,6 +51,7 @@ export const ButtonStyled = styled.button<iButtonStyledProps>`
         `;
       case "transparent":
         return css`
+          font-weight: 700;
           background-color: transparent;
           color: var(--color-primary);
           border-style: none;

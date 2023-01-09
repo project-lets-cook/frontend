@@ -150,6 +150,12 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
+  const userLogout = () => {
+    setUser(null)
+    window.localStorage.clear()
+    navigate("/") 
+  }
+  
   return (
     <UserContext.Provider
       value={{
@@ -168,7 +174,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalLogin,
         modalRegisterReceiver,
         modalRegisterDonor,
-        userRegisterReceiver
+        userRegisterReceiver,
+        userLogout
       }}
     >
       {children}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyledCategoriesMenu } from "./styles";
 
 const categories = [
@@ -13,11 +14,19 @@ const categories = [
 ];
 
 export const CategoriesMenu = () => {
+  const [selected, setSelected] = useState("Todas as Categorias");
+
   return (
     <StyledCategoriesMenu>
       <nav>
         {categories.map((category, index) => (
-          <button key={index}>{category}</button>
+          <button
+            className={category === selected ? "selected-menu" : ""}
+            key={index}
+            onClick={() => setSelected(category)}
+          >
+            {category}
+          </button>
         ))}
       </nav>
     </StyledCategoriesMenu>

@@ -1,23 +1,17 @@
 import styled from "styled-components";
-import header from "../../assets/img/header.png";
+import header from "../../assets/img/header.webp";
 
 export const StyledHeader = styled.header`
-  width: 100%;
-  height: 200px;
+  width: 100vw;
+  height: 120px;
   background-image: url(${header});
   background-position: center;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
-  position: relative;
-  .background {
-    width: 100%;
-    height: 150px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    width: 100%;
-    height: 100%;
+
+  /* position: relative; */
+
+  > div {
     background-color: var(--color-grey40);
   }
   .background > div {
