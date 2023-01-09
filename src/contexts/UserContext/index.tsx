@@ -87,7 +87,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       const response = await api.post<iUserResponse>("login", data);
 
-      const typeOfUser = response.data.user.donor
+      const typeOfUser = response.data.user.donor;
 
       setUser(response.data.user);
 
@@ -96,7 +96,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Login realizado com sucesso");
 
-      typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
+      typeOfUser ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
     } catch (error) {
       toast.error("Ops! Algo deu errado!");
     } finally {
@@ -111,9 +111,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-      console.log(response)
-      modalClose()
-      modalLogin()
+      console.log(response);
+      modalClose();
+      modalLogin();
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -127,17 +127,19 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const userRegisterReceiver = async (data: iFormRegisterReceiver): Promise<void> => {
+  const userRegisterReceiver = async (
+    data: iFormRegisterReceiver
+  ): Promise<void> => {
     try {
       setLoading(true);
 
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-      
-      modalClose()
-      modalLogin()
-      console.log(response)
+
+      modalClose();
+      modalLogin();
+      console.log(response);
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
       // window.localStorage.setItem("USER", response.data.user.id);
@@ -168,7 +170,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalLogin,
         modalRegisterReceiver,
         modalRegisterDonor,
-        userRegisterReceiver
+        userRegisterReceiver,
       }}
     >
       {children}
