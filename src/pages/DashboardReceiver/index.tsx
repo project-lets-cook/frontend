@@ -1,51 +1,39 @@
-import { CardInformation } from "../../Components/CardInformation"
-import { CategoriesMenu } from "../../Components/CategoriesMenu"
-import { Header } from "../../Components/Header"
-import { aliments } from "../../services/base"
-import { IElement } from "../DashboardDonor"
-import register from "../../assets/icons/register.png"
-import donate from "../../assets/icons/donate.png"
-import warm from "../../assets/icons/warm.png"
-import { StyledDashboardReceiver } from "./styled"
-import { Footer } from "../../Components/footer"
-import { CardDonor } from "../../Components/CardDonor"
-import { Button } from "../../Components/Button"
-import { useContext } from "react"
-import { Modal } from "../../Components/Modal"
-import { ProductInfos } from "../../Components/ProductInfsos"
-import { UserContext } from "../../contexts/UserContext"
+import { CategoriesMenu } from "../../Components/CategoriesMenu";
+import { Header } from "../../Components/Header";
+import { aliments } from "../../services/base";
+import { StyledDashboardDonor } from "../DashboardDonor/styled";
+import { CardDonor } from "../../Components/CardDonor";
+import { Footer } from "../../Components/footer";
+import { SheradItens } from "../../Components/SheradItens";
+import { SelectCity } from "../../Components/Forms/Select";
+
+export interface IElement {
+  userId: number;
+  img: string;
+  title: string;
+  category: string;
+  validation: string;
+  descripition: string;
+  amounts: string;
+  address: string;
+  id: number;
+}
 
 export const DashboardReceiver = () => {
-  const {openModal, modalOpen} = useContext(UserContext)
-  console.log(openModal)
   return (
-    <StyledDashboardReceiver>
-      {openModal && <Modal><ProductInfos /></Modal>}
+    <StyledDashboardDonor>
       <Header />
-      <Button size={"lg"} theme={"primary"} type={"button"} onclick={() => modalOpen()}>Teste</Button>
       <section className="container">
-        <CardInformation
-          img={register}
-          value="1"
-          text="Registre-se no do.Ação"
-        />
-        <CardInformation img={donate} value="2" text="Cadastre sua doação" />
-        <CardInformation
-          img={warm}
-          value="3"
-          text="Aqueça seu coração com uma doação bem-sucedida"
-        />
-      </section>
-      <section className="container">
+        <SheradItens />
+        <SelectCity />
+        <CategoriesMenu />
         <ul>
           {aliments.map((element: IElement) => (
             <CardDonor element={element} key={element.id} />
           ))}
         </ul>
-        <CategoriesMenu />
       </section>
       <Footer />
-    </StyledDashboardReceiver>
-  )
-}
-
+    </StyledDashboardDonor>
+  );
+};
