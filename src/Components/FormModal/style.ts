@@ -9,6 +9,7 @@ export const StyledFormModal = styled.div`
   padding: 0 30px;
 
   form p {
+    text-align: right;
     margin-top: 5px;
     font-size: 11px;
     color: var(--color-error);
@@ -51,7 +52,7 @@ export const StyledFormModal = styled.div`
     margin-top: 5px;
     color: var(--color-primary);
   }
-  ::-webkit-scrollbar-track {
+  /*  ::-webkit-scrollbar-track {
     background-color: var(--color-grey100);
   }
   ::-webkit-scrollbar {
@@ -60,5 +61,5 @@ export const StyledFormModal = styled.div`
   }
   ::-webkit-scrollbar-thumb {
     background: var(--color-primary);
-  }
+  } */
 `;
