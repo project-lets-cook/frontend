@@ -4,7 +4,7 @@ export const SelectCity = () => {
     return (
         <SelectCityStyled>
             <select>
-                <option hidden>Selecionar Cidade</option>
+                <option hidden>Escolher Cidade</option>
             </select>
         </SelectCityStyled>
     )
