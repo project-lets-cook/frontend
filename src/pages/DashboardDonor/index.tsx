@@ -11,13 +11,11 @@ import { Navigate } from "react-router-dom";
 
 export interface IElement {
   userId: number;
-  img: string;
   title: string;
   category: string;
   validation: string;
   descripition: string;
-  amounts: string;
-  address: string;
+  amounts: number;
   id: number;
 }
 

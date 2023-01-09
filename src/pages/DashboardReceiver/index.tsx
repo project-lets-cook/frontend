@@ -28,20 +28,15 @@ export const DashboardReceiver = () => {
     ( !user?.donor ? <StyledDashboardReceiver>
       {openModal && <Modal><ProductInfos /></Modal>}
       <Header />
-      <Button size={"lg"} theme={"primary"} type={"button"} onclick={() => modalOpen()}>Teste</Button>
       <section className="container">
-        <CardInformation img={register} value="1" text="Registre-se no do.Ação" />
-        <CardInformation img={donate} value="2" text="Cadastre sua doação" />
-        <CardInformation img={warm} value="3" text="Aqueça seu coração com uma doação bem-sucedida" />
-      </section>
-      <section className="container">
-        <ul>
-          {
-            aliments.map((element: IElement) =>
-              <CardDonor element={element} key={element.id} />)
-          }
-        </ul>
+        <SheradItens />
+        <SelectCity />
         <CategoriesMenu />
+        <ul>
+          {aliments.map((element: IElement) => (
+            <CardDonor element={element} key={element.id} />
+          ))}
+        </ul>
       </section>
       <Footer />
     </StyledDashboardReceiver> 

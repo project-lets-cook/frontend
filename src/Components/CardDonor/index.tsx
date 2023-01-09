@@ -1,25 +1,26 @@
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { StyledTypography } from "../BaseTypography/style";
 import { Button } from "../Button";
 import { ImageCards } from "./Image";
 import { StyledCard } from "./styles";
 
-interface IElement {
+export interface IElement {
   userId: number;
-  img: string;
   title: string;
   category: string;
   validation: string;
   descripition: string;
-  amounts: string;
-  address: string;
+  amounts: number;
   id: number;
 }
+
 interface icard {
   element: IElement;
 }
 export const CardDonor = ({ element }: icard) => {
-  const { title, category, address } = element;
-
+  const { title, category} = element;
+  const { typeUser, modalOpen } = useContext(UserContext)
   return (
     <StyledCard>
       <ImageCards category={category} />
@@ -31,18 +32,23 @@ export const CardDonor = ({ element }: icard) => {
         <StyledTypography classText="Body" tag="p">
           {category}
         </StyledTypography>
-        <StyledTypography classText="Caption" tag="p">
-          {address}
-        </StyledTypography>
         {/* <hr /> */}
-        <Button
+        {typeUser? <Button
           size={"md"}
           theme={"transparent"}
           type={"button"}
-          onclick={() => console.log("to funcionando")}
+          onclick={() => modalOpen()}
         >
           Detalhes
-        </Button>
+        </Button>: <Button
+          size={"md"}
+          theme={"transparent"}
+          type={"button"}
+          onclick={() => modalOpen()}
+        >
+          Detalhes
+        </Button>}
+        
       </div>
     </StyledCard>
   );

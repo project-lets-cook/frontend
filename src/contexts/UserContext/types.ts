@@ -13,6 +13,7 @@ export interface iUserProviderProps {
 
 export interface iUserProviderValue {
   user: iUser | null;
+  typeUser: boolean;
   setUser: (user: iUser | null) => void;
 
   loading: boolean;
@@ -21,7 +22,7 @@ export interface iUserProviderValue {
   userLogin: (data: iFormLogin) => Promise<void>;
   userRegisterDonor: (data: iFormRegisterDonor) => Promise<void>;
   userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<void>;
-  
+
   openModal: boolean;
   modalOpen: () => void;
   modalClose: () => void;
@@ -47,4 +48,5 @@ export interface iUserResponse {
   accessToken: string;
 
   user: iUser;
+  donor: boolean;
 }
