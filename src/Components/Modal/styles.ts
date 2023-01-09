@@ -12,8 +12,8 @@ export const StyledModal = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    width: 80%;
-    max-width: 450px;
+    width: 85%;
+    max-width: 400px;
     height: 100vh;
     background-color: var(--color-grey50);
   }
@@ -70,5 +70,11 @@ export const StyledModal = styled.div`
     overflow-y: auto;
     height: 100%;
     padding: 0 30px;
+  }
+
+  @media screen and (max-width: 520px) {
+    .modal-box {
+      padding: 0 15px;
+    }
   }
 `;
