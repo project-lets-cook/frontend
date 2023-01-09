@@ -3,22 +3,21 @@ import { Button } from "../Button";
 import { ImageCards } from "./Image";
 import { StyledCard } from "./styles";
 
-interface IElement {
+export interface IElement {
   userId: number;
-  img: string;
   title: string;
   category: string;
   validation: string;
   descripition: string;
-  amounts: string;
-  address: string;
+  amounts: number;
   id: number;
 }
+
 interface icard {
   element: IElement;
 }
 export const CardDonor = ({ element }: icard) => {
-  const { title, category, address } = element;
+  const { title, category} = element;
 
   return (
     <StyledCard>
@@ -30,9 +29,6 @@ export const CardDonor = ({ element }: icard) => {
 
         <StyledTypography classText="Body" tag="p">
           {category}
-        </StyledTypography>
-        <StyledTypography classText="Caption" tag="p">
-          {address}
         </StyledTypography>
         {/* <hr /> */}
         <Button
