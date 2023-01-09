@@ -69,6 +69,6 @@ export const aliments = [
     validation: "20/04/23",
     descripition: "genhei da frima e Nào vou utilizar",
     amounts: 2,
-    id: 7
+    id: 8
   }
 ];
