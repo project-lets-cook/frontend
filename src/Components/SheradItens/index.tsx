@@ -1,16 +1,17 @@
-
 import { useState } from "react";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { StyledSheradItens } from "./style";
-import { BiSearch } from "react-icons/bi"
+import { BiSearch } from "react-icons/bi";
 
 export function SheradItens() {
   const [focus, setFocus] = useState(false);
   // const { register, handleSubmit } = useForm()
 
   return (
-    <StyledSheradItens focus={focus}  >
-      <button><BiSearch/></button>
+    <StyledSheradItens focus={focus}>
+      <button>
+        <BiSearch />
+      </button>
       <input
         required
         placeholder="Digitar Pesquisa"
@@ -18,7 +19,6 @@ export function SheradItens() {
         onFocus={() => setFocus(!focus)}
         onBlur={() => setFocus(false)}
       />
-      
     </StyledSheradItens>
   );
 }

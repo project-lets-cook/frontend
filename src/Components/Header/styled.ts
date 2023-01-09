@@ -47,14 +47,16 @@ export const StyledHeader = styled.header`
     align-items: center;
     border-radius: 5px;
   }
-  .background > div > div > svg {
+  .background > div > div > button {
     width: 40px;
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    cursor: pointer;
+    background-color: transparent;
+    border-style: none;
+    font-size: 40px;
+    color: var(--color-grey300);
   }
 `;

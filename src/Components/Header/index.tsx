@@ -28,9 +28,11 @@ export const Header = () => {
       <div className="background">
         <div>
           <img src={logo} alt="" />
-          <div onClick={() => logout()}>
+          <div>
             <img src="img" alt="name" onError={addDefaultImg} />
-            <FiLogOut />
+            <button onClick={() => logout()}>
+              <FiLogOut />
+            </button>
           </div>
         </div>
         <SheradItens />
