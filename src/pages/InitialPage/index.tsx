@@ -7,6 +7,7 @@ import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
 import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
 import { StepsCarousel } from "../../Components/StepsCarousel";
+import { Navigate } from "react-router-dom";
 
 export const InitialPage = () => {
   const {
@@ -16,9 +17,12 @@ export const InitialPage = () => {
     modalLogin,
     modalRegisterReceiver,
     modalRegisterDonor,
+    user
   } = useContext(UserContext);
 
-  return (
+  const token = localStorage.getItem("TOKEN");
+
+  return ( token === null ?
     <StyledInitialPage>
       {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
@@ -75,5 +79,7 @@ export const InitialPage = () => {
         </div>
       </main>
     </StyledInitialPage>
+    :
+    <Navigate to="/DashboardReceiver"/>
   );
 };

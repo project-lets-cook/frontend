@@ -1,27 +1,32 @@
-import { CategoriesMenu } from "../../Components/CategoriesMenu";
-import { Header } from "../../Components/Header";
-import { aliments } from "../../services/base";
-import { StyledDashboardDonor } from "../DashboardDonor/styled";
-import { CardDonor } from "../../Components/CardDonor";
-import { Footer } from "../../Components/footer";
-import { SheradItens } from "../../Components/SheradItens";
-import { SelectCity } from "../../Components/Forms/Select";
-
-export interface IElement {
-  userId: number;
-  img: string;
-  title: string;
-  category: string;
-  validation: string;
-  descripition: string;
-  amounts: string;
-  address: string;
-  id: number;
-}
+import { CardInformation } from "../../Components/CardInformation"
+import { CategoriesMenu } from "../../Components/CategoriesMenu"
+import { Header } from "../../Components/Header"
+import { aliments } from "../../services/base"
+import { IElement } from "../DashboardDonor"
+import register from "../../assets/icons/register.png"
+import donate from "../../assets/icons/donate.png"
+import warm from "../../assets/icons/warm.png"
+import { StyledDashboardReceiver } from "./styled"
+import { Footer } from "../../Components/footer"
+import { CardDonor } from "../../Components/CardDonor"
+import { Button } from "../../Components/Button"
+import { useContext } from "react"
+import { Modal } from "../../Components/Modal"
+import { ProductInfos } from "../../Components/ProductInfsos"
+import { UserContext } from "../../contexts/UserContext"
+import { Navigate } from "react-router-dom"
 
 export const DashboardReceiver = () => {
-  return (
-    <StyledDashboardDonor>
+
+  const {openModal, modalOpen, user, loadingUser} = useContext(UserContext)
+
+  if (loadingUser) {
+    return null
+  }
+
+  return ( user ?
+    ( !user?.donor ? <StyledDashboardReceiver>
+      {openModal && <Modal><ProductInfos /></Modal>}
       <Header />
       <section className="container">
         <SheradItens />
@@ -34,6 +39,9 @@ export const DashboardReceiver = () => {
         </ul>
       </section>
       <Footer />
-    </StyledDashboardDonor>
-  );
-};
+    </StyledDashboardReceiver> 
+    : 
+    <Navigate to= "/DashboardDonor"/>)
+    : <Navigate to = "/"/>
+  )
+}

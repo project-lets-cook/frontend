@@ -5,6 +5,9 @@ import { StyledDashboardDonor } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
 import { Footer } from "../../Components/footer";
 import { SheradItens } from "../../Components/SheradItens";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { Navigate } from "react-router-dom";
 
 export interface IElement {
   userId: number;
@@ -17,19 +20,30 @@ export interface IElement {
 }
 
 export const DashboardDonor = () => {
-  return (
-    <StyledDashboardDonor>
-      <Header />
-      <section className="container">
-        <SheradItens />
-        <CategoriesMenu />
-        <ul>
-          {aliments.map((element: IElement) => (
-            <CardDonor element={element} key={element.id} />
-          ))}
-        </ul>
-      </section>
-      <Footer />
-    </StyledDashboardDonor>
-  );
+
+  const { user, loadingUser } = useContext(UserContext)
+
+  if (loadingUser) {
+    return null
+  }
+
+    return ( user ? 
+       (user?.donor ? 
+        <StyledDashboardDonor>
+        <Header />
+        <section className="container">
+          <SheradItens />
+          <CategoriesMenu />
+          <ul>
+            {aliments.map((element: IElement) => (
+              <CardDonor element={element} key={element.id} />
+            ))}
+          </ul>
+        </section>
+        <Footer />
+      </StyledDashboardDonor> 
+      :
+      <Navigate to="/DashboardReceiver"/>)
+      : <Navigate to= "/"/>
+    );
 };
