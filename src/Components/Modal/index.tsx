@@ -11,16 +11,19 @@ interface iModalProps {
 export const Modal = ({ children, name }: iModalProps) => {
   const { openModal, modalClose } = useContext(UserContext);
 
-  return openModal &&
+  return openModal ? (
     <StyledModal>
-        <div className="modal-box">
-          <header className="default-modal-header">
-            <p>{name}</p>
-            <button type="button" onClick={modalClose}>
-              <BsArrowRight size={31} />
-            </button>
-          </header>
-          <div className="form-input-box">{children}</div>
-        </div>
+      <div className="modal-box">
+        <header className="default-modal-header">
+          <p>{name}</p>
+          <button type="button" onClick={modalClose}>
+            <BsArrowRight size={31} />
+          </button>
+        </header>
+        <div className="form-input-box">{children}</div>
+      </div>
     </StyledModal>
+  ) : (
+    <></>
+  );
 };
