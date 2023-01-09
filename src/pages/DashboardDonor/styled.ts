@@ -13,7 +13,6 @@ export const StyledDashboardDonor = styled.main`
     align-items: center;
     justify-content: space-between;
     position: relative;
-
     /* background-color: red; */
     padding: 20px 0;
     margin-bottom: 50px;

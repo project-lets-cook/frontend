@@ -1,8 +1,7 @@
-import React from 'react'
 import { StyledTypography } from '../BaseTypography/style'
 import { Button } from '../Button'
 import { ProductInfosStyled } from './styled'
-import  Cereals  from "../../assets/icons/Cereals.svg"
+import  Cereals  from "../../assets/img/Cereals.jpeg"
 
 export const ProductInfos = () => {
   return (

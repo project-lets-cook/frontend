@@ -9,11 +9,11 @@ import { UserContext } from "../../contexts/UserContext"
 
 export const Header = () => {
 
-const { userLogout } = useContext(UserContext)
+    const { userLogout } = useContext(UserContext)
 
-const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
-    (event.target as HTMLImageElement).src =`${imgError}`;
-   }
+    const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
+        (event.target as HTMLImageElement).src = `${imgError}`;
+    }
 
     return (
         <StyledHeader>
@@ -21,13 +21,13 @@ const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
                 <div>
                     <img src={logo} alt="" />
                     <div>
-                        <img src="img" alt="name" onError={addDefaultImg}/>
+                        <img src="img" alt="name" onError={addDefaultImg} />
                         <button type="button" onClick={userLogout}>
                             <FiLogOut />
                         </button>
                     </div>
                 </div>
-            <SheradItens />
+                <SheradItens />
             </div>
         </StyledHeader>
     )

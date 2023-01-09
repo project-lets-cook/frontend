@@ -17,6 +17,7 @@ interface IStyledTypography {
 
 export const StyledTypography = styled(BaseTypography)`
   margin: 0;
+
   ${({ classText }: IStyledTypography) => {
     switch (classText) {
       case "Heading":
