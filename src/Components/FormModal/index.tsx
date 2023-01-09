@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { StyledFormModal } from "./style";
 
 interface iFormModal {
-  name: string;
+  name?: string;
   children: JSX.Element;
 }
 
