@@ -8,9 +8,6 @@ import { UserContext } from "../../contexts/UserContext"
 
 
 export const Header = () => {
-  const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
-    (event.target as HTMLImageElement).src = `${imgError}`;
-  };
 
 const { userLogout } = useContext(UserContext)
 
