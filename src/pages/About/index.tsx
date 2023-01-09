@@ -2,7 +2,7 @@ import { StyledAbout } from "./styled";
 import logo from "../../assets/icons/logo.png";
 import { Link } from "react-router-dom";
 import { Footer } from "../../Components/footer";
-import { Carousel } from "../../Components/Carousel";
+import { AboutCarousel } from "../../Components/AboutCarousel";
 
 export const About = () => {
   return (
@@ -12,7 +12,7 @@ export const About = () => {
           <Link to="/">Voltar para Home</Link>
           <img src={logo} alt="" />
         </header>
-        <Carousel />
+        <AboutCarousel />
         <Footer />
       </StyledAbout>
     </>

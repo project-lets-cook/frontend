@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCarousel = styled.div`
+export const StyledAboutCarousel = styled.div`
   margin: 100px 0 20px 0;
   padding: 0 5px;
   width: 200px;

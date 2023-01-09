@@ -15,18 +15,6 @@ export const StyledModal = styled.div`
     width: 80%;
     max-width: 450px;
     height: 100vh;
-    /* padding: 0 30px 0 30px; */
     background-color: var(--color-grey50);
-
-    /* > header {
-      background-color: red;
-      position: absolute;
-      right: 49px;
-
-      button {
-        border: none;
-        background: none;
-      }
-    } */
   }
 `;
