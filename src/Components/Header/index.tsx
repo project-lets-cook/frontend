@@ -28,10 +28,6 @@ export const Header = () => {
                         </button>
                     </div>
                 </div>
-                {/* <span>
-                    <SheradItens />
-                    <SelectCity />
-                </span> */}
             </div>
         </StyledHeader>
     )
