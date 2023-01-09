@@ -8,13 +8,13 @@ interface Ifocus {
 export const StyledSheradItens = styled.form`
   display: flex;
   align-items: center;
-  width: 850px;
+  width: 500px;
   height: 50px;
   background: var(--color-grey50);
   border-radius: 4px;
   position: absolute;
   top: -65px;
-  right: 150px;
+  right: 330px;
   border: 1px solid
     ${({ focus }: Ifocus) =>
       focus ? "var(--color-primary)" : "var(--color-grey300)"};
@@ -41,5 +41,10 @@ export const StyledSheradItens = styled.form`
     width: 90%;
     outline: none;
     border: none;
+
+    ::placeholder {
+      color: var(--color-grey300);
+      font-size: 14px;
+    }
   }
 `;

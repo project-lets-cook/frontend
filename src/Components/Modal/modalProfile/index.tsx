@@ -32,15 +32,15 @@ export const ModalProfileReceptor = () => {
     <ModalProfileStyled>
       <img src={user?.profileImgUrl} alt={user?.name} />
       <div id="text">
-        <span id="nome">Nome</span>
-        <span>email@mail.com</span>
-        <span>xx xxxxx - xxxx</span>
+        <span id="nome">{user?.name}</span>
+        <span>{user?.email}</span>
+        <span>{user?.telephone}</span>
       </div>
 
       <form onSubmit={handleSubmit(testeModalProfile)}>
         <Input
-          label={"Cidade"}
-          id={"cidade"}
+          label={"Endereço"}
+          id={"Endereço"}
           type={"text"}
           register={register("address")}
           placeholder={"Digite seu novo endereço"}

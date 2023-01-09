@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledInitialPage = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
   background-image: url("../../src/assets/img/banner.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,9 +12,6 @@ export const StyledInitialPage = styled.div`
     justify-content: center;
     align-items: center;
     height: 150px;
-    /* svg {
-      font-size: 35px;
-    } */
   }
 
   header > div {
@@ -25,6 +22,7 @@ export const StyledInitialPage = styled.div`
   }
 
   main {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +36,6 @@ export const StyledInitialPage = styled.div`
       width: 490px;
 
       > div {
-        /* background-color: red; */
         display: flex;
         gap: 20px;
         align-items: center;
@@ -50,6 +47,53 @@ export const StyledInitialPage = styled.div`
         text-align: center;
         margin-bottom: 20px;
         color: var(--color-grey900);
+      }
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    padding: 15px;
+  }
+
+  @media screen and (max-width: 520px) {
+    background: none;
+
+    header {
+      height: auto;
+      margin: 20px 0 30px 0;
+
+      > div {
+        > img {
+          width: 130px;
+        }
+        button {
+          padding: 10px 20px;
+        }
+      }
+    }
+    main {
+      width: 100%;
+      height: 100%;
+      gap: 30px;
+      padding-bottom: 20px;
+
+      button {
+        width: 100%;
+      }
+
+      > div {
+        width: 100%;
+
+        border: 3px solid var(--color-secondary);
+        padding: 15px 15px;
+        border-radius: 5px;
+        > p {
+          font-size: 18px;
+        }
+
+        > div {
+          width: 100%;
+          flex-direction: column-reverse;
+        }
       }
     }
   }
