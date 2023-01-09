@@ -2,7 +2,6 @@ import { StyledInitialPage } from "./styled";
 import { Modal } from "../../Components/Modal";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { FormModal } from "../../Components/FormModal";
 import { LoginForm } from "../../Components/LoginForm";
 import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
 import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
@@ -21,12 +20,12 @@ export const InitialPage = () => {
 
   return (
     <StyledInitialPage>
-      {openLogin && (
-        <Modal
-          children={<FormModal name={"Login"} children={<LoginForm />} />}
-        />
-      )}
-      {openRegisterReceiver && (
+      
+      {openLogin && <Modal children={<LoginForm />} name={"Login"}/>}
+      {openRegisterReceiver && <Modal children={<RegisterFormReceiver />} name={"Registro Donatário"}/>}
+      { openRegisterDonor && <Modal children={<RegisterFormDonor />} name={"Registro Doador"}/>}
+
+      {/* {openRegisterReceiver && (
         <Modal
           children={
             <FormModal
@@ -45,7 +44,7 @@ export const InitialPage = () => {
             />
           }
         />
-      )}
+      )} */}
 
       <header>
         <div className="container">
