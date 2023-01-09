@@ -29,22 +29,25 @@ export const StyledHeader = styled.header`
         gap: 40px;
 
         > img {
-          width: 35px;
-          height: 35px;
+          width: 50px;
+          height: 50px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          border-radius: 5px;
+          border-radius: 50%;
         }
 
-        > svg {
+        > button {
           width: 30px;
           height: 30px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
+          background-color: transparent;
+          border-style: none;
+          color: var(--color-grey300);
         }
       }
     }

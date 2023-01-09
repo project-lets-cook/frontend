@@ -5,6 +5,7 @@ import imgError from "../../assets/img/imgnotfound.jpg"
 import { SheradItens } from "../SheradItens"
 import { SyntheticEvent, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
+import { SelectCity } from "../Forms/Select"
 
 
 export const Header = () => {
@@ -27,7 +28,6 @@ export const Header = () => {
                         </button>
                     </div>
                 </div>
-                <SheradItens />
             </div>
         </StyledHeader>
     )
