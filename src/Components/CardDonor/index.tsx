@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { StyledTypography } from "../BaseTypography/style";
 import { Button } from "../Button";
 import { ImageCards } from "./Image";
@@ -18,7 +20,7 @@ interface icard {
 }
 export const CardDonor = ({ element }: icard) => {
   const { title, category} = element;
-
+  const { typeUser, modalOpen } = useContext(UserContext)
   return (
     <StyledCard>
       <ImageCards category={category} />
@@ -31,14 +33,22 @@ export const CardDonor = ({ element }: icard) => {
           {category}
         </StyledTypography>
         {/* <hr /> */}
-        <Button
+        {typeUser? <Button
           size={"md"}
           theme={"transparent"}
           type={"button"}
-          onclick={() => console.log("to funcionando")}
+          onclick={() => modalOpen()}
         >
           Detalhes
-        </Button>
+        </Button>: <Button
+          size={"md"}
+          theme={"transparent"}
+          type={"button"}
+          onclick={() => modalOpen()}
+        >
+          Detalhes
+        </Button>}
+        
       </div>
     </StyledCard>
   );

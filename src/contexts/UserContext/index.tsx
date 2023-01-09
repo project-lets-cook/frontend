@@ -11,6 +11,7 @@ import {
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
+import { FaLessThan } from "react-icons/fa";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -23,6 +24,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
+  const [typeUser , setTypeUser] = useState(false)
 
   const modalLogin = () => {
     setOpenLogin(true);
@@ -90,6 +92,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const typeOfUser = response.data.user.donor;
 
       setUser(response.data.user);
+      setTypeUser(response.data.donor)
 
       window.localStorage.setItem("TOKEN", response.data.accessToken);
       window.localStorage.setItem("USER", response.data.user.id);
@@ -177,7 +180,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterReceiver,
         modalRegisterDonor,
         userRegisterReceiver,
-        userLogout
+        userLogout,
+        typeUser
       }}
     >
       {children}
