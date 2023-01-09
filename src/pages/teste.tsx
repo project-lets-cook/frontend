@@ -8,13 +8,5 @@ import { UserContext, UserProvider } from "../contexts/UserContext";
 export const Teste = () => {
   const { modalOpen } = useContext(UserContext);
   modalOpen();
-  return (
-    <>
-      <Modal>
-        <FormModal>
-          <ModalProductDescription id="1" />
-        </FormModal>
-      </Modal>
-    </>
-  );
+  return <></>;
 };
