@@ -14,12 +14,18 @@ import { useContext } from "react"
 import { Modal } from "../../Components/Modal"
 import { ProductInfos } from "../../Components/ProductInfsos"
 import { UserContext } from "../../contexts/UserContext"
+import { Navigate } from "react-router-dom"
 
 export const DashboardReceiver = () => {
-  const {openModal, modalOpen} = useContext(UserContext)
-  console.log(openModal)
-  return (
-    <StyledDashboardReceiver>
+
+  const {openModal, modalOpen, user, loadingUser} = useContext(UserContext)
+
+  if (loadingUser) {
+    return null
+  }
+
+  return ( user ?
+    ( !user?.donor ? <StyledDashboardReceiver>
       {openModal && <Modal><ProductInfos /></Modal>}
       <Header />
       <Button size={"lg"} theme={"primary"} type={"button"} onclick={() => modalOpen()}>Teste</Button>
@@ -38,6 +44,9 @@ export const DashboardReceiver = () => {
         <CategoriesMenu />
       </section>
       <Footer />
-    </StyledDashboardReceiver>
+    </StyledDashboardReceiver> 
+    : 
+    <Navigate to= "/DashboardDonor"/>)
+    : <Navigate to = "/"/>
   )
 }

@@ -55,31 +55,27 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const token = localStorage.getItem("TOKEN");
       const userID = localStorage.getItem("USER");
 
-      if (!token || !userID) {
+      if (!token && !userID) {
         setLoadingUser(false);
-        return null;
+        return;
       }
 
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+
       try {
-        await api.get("http://localhost:3001/", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-        setLoading(false);
-        setLoadingUser(false);
-        setUser({ id: userID });
-        navigate("/ProfilePage");
-      } catch (error) {
-        localStorage.removeItem("TOKEN");
-        localStorage.removeItem("USER");
-        navigate("/");
+        const response = await api.get(`/users/${userID}`, config)
+        setUser(response.data)
+      }
+       catch (error) {
+        window.localStorage.clear();
       } finally {
         setLoadingUser(false);
       }
     }
     loadUser();
-  }, []);
+    }, []);
 
   const userLogin = async (data: iFormLogin): Promise<void> => {
     try {
@@ -88,15 +84,15 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("login", data);
 
       const typeOfUser = response.data.user.donor
-
       setUser(response.data.user);
 
+      window.localStorage.clear();
       window.localStorage.setItem("TOKEN", response.data.accessToken);
       window.localStorage.setItem("USER", response.data.user.id);
 
-      toast.success("Login realizado com sucesso");
+      toast.success("Login realizado com sucesso")
 
-      typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
+      typeOfUser ? navigate("/DashboardDonor") : navigate("/DashboardReceiver")
     } catch (error) {
       toast.error("Ops! Algo deu errado!");
     } finally {
@@ -111,7 +107,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-      console.log(response)
       modalClose()
       modalLogin()
 
@@ -137,7 +132,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       
       modalClose()
       modalLogin()
-      console.log(response)
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
       // window.localStorage.setItem("USER", response.data.user.id);
@@ -151,11 +145,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   };
 
   const userLogout = () => {
-    setUser(null)
     window.localStorage.clear()
     navigate("/") 
   }
-  
+
   return (
     <UserContext.Provider
       value={{
@@ -175,7 +168,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterReceiver,
         modalRegisterDonor,
         userRegisterReceiver,
-        userLogout
+        userLogout,
       }}
     >
       {children}
