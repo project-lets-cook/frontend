@@ -30,7 +30,7 @@ export const RegisterFormDonor = () => {
     name: yup
       .string()
       .required("O nome é obrigatório")
-      .min(3, "O nome precisa ter mais que 2 caracteres")
+      .min(3, "O nome precisa ter no mínimo 2 caracteres")
       .max(100, "O nome pode ter até 100 caracteres"),
 
     telephone: yup.string().required("O telefone é obrigatório"),
@@ -48,7 +48,7 @@ export const RegisterFormDonor = () => {
     email: yup
       .string()
       .required("O email é obrigatório")
-      .email("É necessário fornecer um email"),
+      .email("É necessário fornecer um email válido"),
 
     password: yup
       .string()

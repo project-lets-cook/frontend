@@ -2,7 +2,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import { BsLinkedin } from "react-icons/Bs";
 import { FaGithub } from "react-icons/fa";
-import { ImgWrap, StyledCarousel } from "./style";
+import { ImgWrap, StyledAboutCarousel } from "./styles";
 import { ReactElement } from "react";
 
 const responsive = {
@@ -57,7 +57,7 @@ const items: ReactElement[] = [];
 
 team.map((dev, index) =>
   items.push(
-    <StyledCarousel key={index}>
+    <StyledAboutCarousel key={index}>
       <ImgWrap>
         <img src={dev.avatar} alt="imagem de avatar" draggable="false" />
       </ImgWrap>
@@ -75,11 +75,11 @@ team.map((dev, index) =>
           </a>
         </span>
       </div>
-    </StyledCarousel>
+    </StyledAboutCarousel>
   )
 );
 
-export const Carousel = () => (
+export const AboutCarousel = () => (
   <AliceCarousel
     mouseTracking
     touchTracking

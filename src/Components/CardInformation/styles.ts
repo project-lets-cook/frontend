@@ -1,36 +1,44 @@
-import pas from "../../assets/icons/pas.png"
+import pas from "../../assets/icons/pas.png";
 import styled from "styled-components";
 
 export const StyledCardInformation = styled.div`
-    width: 25%;
-    height: 169px;
-    flex-direction: column;
-    background-image: url(${pas});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  margin-left: 15px;
+  width: 130px;
+  height: 125px;
+  background-image: url(${pas});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > div {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
-    div{
-        width:50%;
-        height: 70%;
-        display: flex;  
-        align-items: flex-end;
-        justify-content: flex-start;
-    }
-    h2{
-        color:var(--color-grey60) ;
-    }
-    img{
-        height: 100%;
-    }
-    p{
-        text-align: center;
-        width:50%;
-        overflow-wrap: break-word;
+    height: 85px;
+    /* width: 10px; */
+    align-items: baseline;
+
+    > img {
+      position: relative;
+      left: -20px;
+      top: 5px;
+      height: 100%;
+      /* width: 60%; */
     }
 
-`
+    > h2 {
+      font-size: 45px;
+      color: var(--color-primary);
+    }
+  }
+
+  p {
+    margin-top: 10px;
+    /* margin-left: 50px; */
+    font-size: 11px;
+    font-weight: 600;
+    width: 140px;
+    overflow-wrap: break-word;
+  }
+`;
