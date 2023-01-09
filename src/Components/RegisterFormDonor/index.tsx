@@ -8,24 +8,23 @@ import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { StringSchema } from "yup";
 
-export interface iFormRegister {
+export interface iFormRegisterDonor {
   name: string;
   email: string;
   password: string;
   confirmPassword: StringSchema;
   businessName: string;
-  document: string;
-  telephone: string;
-  address: iFormAddress;
-  profileImgUrl: string;
-}
-export interface iFormAddress {
+  cpf: string;
   street: string;
+  telephone: string;
+  profileImgUrl: string;
   city: string;
   state: string;
+  donor: boolean;
 }
+
 export const RegisterFormDonor = () => {
-  const { userRegister, loading } = useContext(UserContext);
+  const { userRegisterDonor, loading } = useContext(UserContext);
 
   const validate = yup.object().shape({
     name: yup
@@ -36,15 +35,15 @@ export const RegisterFormDonor = () => {
 
     telephone: yup.string().required("O telefone é obrigatório"),
 
-    place: yup.string().required("O endereço é obrigatório"),
+    street: yup.string().required("O endereço é obrigatório"),
 
-    document: yup
+    cpf: yup
       .string()
       .required("O campo é obrigatório")
       .min(11, "O campo precisa ter 11 caracteres")
       .max(11, "O campo precisa ter 11 caracteres"),
 
-    picture: yup.string().required("O campo é obrigatório"),
+    profileImgUrl: yup.string().required("O campo é obrigatório"),
 
     email: yup
       .string()
@@ -63,47 +62,34 @@ export const RegisterFormDonor = () => {
       )
       .min(8, "É necessário uma senha de no mínimo 8 caracteres"),
 
-    confirm: yup
+    confirmPassword: yup
       .string()
       .required("É necessário confirmar sua senha")
       .oneOf([yup.ref("password")], "As senhas não coincidem"),
 
     city: yup.string().required("A cidade é obrigatório"),
 
-    country: yup.string().required("O estado é obrigatório"),
+    state: yup.string().required("O estado é obrigatório"),
   });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iFormRegister>({
+  } = useForm<iFormRegisterDonor>({
+    mode: "onBlur",
     resolver: yupResolver(validate),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      businessName: "",
-      document: "",
-      telephone: "",
-      address: {
-        street: "",
-        city: "",
-        state: "",
-      },
-      profileImgUrl: "",
+      donor: true,
     },
   });
 
-  const submitRegister = (data: iFormRegister) => {
-    userRegister(data);
-
-    console.log(data);
+  const submitRegisterDonor = (data: iFormRegisterDonor) => {
+    userRegisterDonor(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(submitRegister)}>
+    <form onSubmit={handleSubmit(submitRegisterDonor)} noValidate>
       <div>
         <Input
           label={"Nome"}
@@ -135,11 +121,11 @@ export const RegisterFormDonor = () => {
           label={"Endereço"}
           id={"place"}
           type={"text"}
-          register={register("address")}
+          register={register("street")}
           placeholder={"Digite seu endereço aqui"}
         />
-        {errors.address?.message && (
-          <p className="input-waring">{errors.address.message}</p>
+        {errors.street?.message && (
+          <p className="input-waring">{errors.street.message}</p>
         )}
       </div>
 
@@ -148,11 +134,11 @@ export const RegisterFormDonor = () => {
           label={"CPF"}
           id={"document"}
           type={"text"}
-          register={register("document")}
+          register={register("cpf")}
           placeholder={"Digite seu CPF aqui"}
         />
-        {errors.document?.message && (
-          <p className="input-waring">{errors.document.message}</p>
+        {errors.cpf?.message && (
+          <p className="input-waring">{errors.cpf.message}</p>
         )}
       </div>
 
@@ -173,7 +159,7 @@ export const RegisterFormDonor = () => {
         <Input
           label={"E-mail"}
           id={"email"}
-          type={"email"}
+          type={"text"}
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
@@ -211,11 +197,11 @@ export const RegisterFormDonor = () => {
           label={"Cidade"}
           id={"city"}
           type={"text"}
-          register={register("address.city")}
+          register={register("city")}
           placeholder={"Digite sua cidade aqui"}
         />
-        {errors.address?.city?.message && (
-          <p className="input-waring">{errors.address?.city.message}</p>
+        {errors.city?.message && (
+          <p className="input-waring">{errors.city.message}</p>
         )}
       </div>
 
@@ -224,15 +210,15 @@ export const RegisterFormDonor = () => {
           label={"Estado"}
           id={"country"}
           type={"text"}
-          register={register("address.state")}
+          register={register("state")}
           placeholder={"Digite seu estado aqui"}
         />
-        {errors.address?.state?.message && (
-          <p className="input-waring">{errors.address?.state.message}</p>
+        {errors.state?.message && (
+          <p className="input-waring">{errors.state.message}</p>
         )}
       </div>
 
-      <Button size="sm" theme="primary" type="submit" disabled={loading}>
+      <Button size="lg" theme="primary" type="submit" disabled={loading}>
         {loading ? "Cadastrando..." : "Cadastrar"}
       </Button>
     </form>
