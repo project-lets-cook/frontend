@@ -94,11 +94,11 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       window.localStorage.setItem("TOKEN", response.data.accessToken);
       window.localStorage.setItem("USER", response.data.user.id);
 
-      toast.success("Login realizado com sucesso");
+      toast.success("Login realizado com sucesso!");
 
       typeOfUser ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
     } catch (error) {
-      toast.error("Ops! Algo deu errado!");
+      toast.error("Ops! Usuário ou Senha inválido!");
     } finally {
       setLoading(false);
     }
@@ -121,6 +121,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       // const typeOfUser = response.data.user.donor
       // typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
     } catch (error) {
+      console.log(error);
       toast.error("Ops! Algo deu errado");
     } finally {
       setLoading(false);
@@ -153,11 +154,11 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   };
 
   const userLogout = () => {
-    setUser(null)
-    window.localStorage.clear()
-    navigate("/") 
-  }
-  
+    setUser(null);
+    window.localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -177,7 +178,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterReceiver,
         modalRegisterDonor,
         userRegisterReceiver,
-        userLogout
+        userLogout,
       }}
     >
       {children}
