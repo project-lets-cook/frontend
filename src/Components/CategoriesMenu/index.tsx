@@ -3,14 +3,13 @@ import { StyledCategoriesMenu } from "./styles";
 
 const categories = [
   "Todas as Categorias",
-  "Açúcares e Doces",
-  "Carnes e Ovos",
-  "Cereais, Pães e Tubérculos",
-  "Frutas",
+  "Cereais",
   "Hortaliças",
+  "Frutas",
+  "Carnes & Ovos",
   "Leite e Derivados",
-  "Leguminosas",
-  "Óleos e Gorduras",
+  "Óleos & Gorduras",
+  "Cesta Basica",
   "Não Pereciveis",
 ];
 

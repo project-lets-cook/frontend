@@ -22,17 +22,17 @@ export const InitialPage = () => {
 
   const token = localStorage.getItem("TOKEN");
 
-  return ( token === null ?
+  return (token === null ?
     <StyledInitialPage>
       {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
         <Modal
-          children={<RegisterFormReceiver />}
-          name={"Registro Donatário"}
+          children={<RegisterFormDonor />}
+          name={"Registro Doador"}
         />
       )}
       {openRegisterDonor && (
-        <Modal children={<RegisterFormDonor />} name={"Registro Doador"} />
+        <Modal children={<RegisterFormReceiver />} name={"Registro Donatário"} />
       )}
 
       <header>
@@ -80,6 +80,6 @@ export const InitialPage = () => {
       </main>
     </StyledInitialPage>
     :
-    <Navigate to="/DashboardReceiver"/>
+    <Navigate to="/DashboardReceiver" />
   );
 };

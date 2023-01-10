@@ -12,7 +12,7 @@ export interface iDonation {
   category: string;
   validation: string;
   description: string;
-  amounts: string;
+  amounts: number;
   address: string;
   id: string;
 }
@@ -30,6 +30,7 @@ export interface iDonationProviderValue {
   donations: iDonation[];
   donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
+
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void
 }
