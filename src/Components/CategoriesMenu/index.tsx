@@ -11,7 +11,6 @@ const categories = [
   "Óleos & Gorduras",
   "Cesta Basica",
   "Não Pereciveis",
-  "Não Pereciveis",
 ];
 
 export const CategoriesMenu = () => {
