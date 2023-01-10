@@ -10,7 +10,6 @@ export const ProtectedRoutes = () => {
     return null
   }
 
-  
   return user ? <Outlet/> : <Navigate to="/" />
 
 };

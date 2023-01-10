@@ -10,7 +10,6 @@ import { Navigate } from "react-router-dom";
 import { StyledDashboard } from "../DashboardDonor/styled";
 import { SheradItens } from "../../Components/SheradItens";
 import { DonationContext } from "../../contexts/DonationContext";
-import { SelectCity } from "../../Components/Forms/Select";
 
 export const DashboardReceiver = () => {
 
@@ -30,9 +29,9 @@ export const DashboardReceiver = () => {
             <CardDonor
               element={element}
               key={element.id}
-             setModal={function (value: SetStateAction<boolean>): void {
-                  throw new Error("Function not implemented.");
-                }}/>
+              setModal={function (value: SetStateAction<boolean>): void {
+                throw new Error("Function not implemented.");
+              }} />
           ))}
         </ul>
       </section>

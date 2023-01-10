@@ -25,9 +25,6 @@ export const CardDonor = ({ element, setModal }: icard) => {
   const { isDonor, modalOpen } = useContext(UserContext);
   const { getDonationbyId } = useContext(DonationContext);
 
-  const openDonationInfos = (id: number) => {
-    getDonationbyId(id);
-  };
   return (
     <StyledCard>
       <ImageCards category={category} />
@@ -54,7 +51,7 @@ export const CardDonor = ({ element, setModal }: icard) => {
             size={"md"}
             theme={"transparent"}
             type={"button"}
-            onclick={() => getDonationbyId(id)}
+              onclick={() => getDonationbyId(id)}
           >
             Detalhes
           </Button>

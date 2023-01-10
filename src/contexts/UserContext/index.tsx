@@ -27,8 +27,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
   const [isDonor, setIsDonor] = useState(false)
 
-  const { getProducts } = useContext(DonationContext)
-
   const modalLogin = () => {
     setOpenLogin(true);
     modalOpen();
@@ -73,7 +71,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         const response = await api.get(`/users/${userID}`, config)
         setUser(response.data)
         setIsDonor(response.data.donor)
-        getProducts()
       }
       catch (error) {
         console.log(error);
@@ -99,7 +96,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       window.localStorage.setItem("USER", response.data.user.id);
 
       toast.success("Login realizado com sucesso!");
-      getProducts()
       setOpenModal(false)
 
       await isDonor ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");

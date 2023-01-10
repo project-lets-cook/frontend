@@ -17,7 +17,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donationInfo, setInfoDonation] = useState<iDonationInfo[]>([])
   const { user, setOpenModal } = useContext(UserContext)
 
-  const getProducts = async () => {
+  useEffect(() => {
+    const getProducts = async () => {
       const token = localStorage.getItem("TOKEN");
 
       if (!token) {
@@ -36,8 +37,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
         console.error(error)
       }
     }
-  
-
+    getProducts()
+  }, [])
   const getDonationbyId = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
 
@@ -64,7 +65,6 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setFilteredDonations,
       getDonationbyId,
       donationInfo,
-      getProducts
     }}>
       {children}
     </DonationContext.Provider>
