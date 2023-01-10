@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { DonationContext } from "../../contexts/DonationContext";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledTypography } from "../BaseTypography/style";
 import { Button } from "../Button";
@@ -6,21 +7,27 @@ import { ImageCards } from "./Image";
 import { StyledCard } from "./styles";
 
 export interface IElement {
-  userId: string;
+  userId: number;
   title: string;
   category: string;
   validation: string;
-  description: string;
+  descripition: string;
   amounts: number;
-  id: string;
+  id: number;
 }
 
 interface icard {
   element: IElement;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const CardDonor = ({ element }: icard) => {
-  const { title, category } = element;
-  const { typeUser, modalOpen } = useContext(UserContext);
+export const CardDonor = ({ element, setModal }: icard) => {
+  const { title, category, id } = element;
+  const { isDonor, modalOpen } = useContext(UserContext);
+  const { getDonationbyId } = useContext(DonationContext);
+
+  const openDonationInfos = (id: number) => {
+    getDonationbyId(id);
+  };
   return (
     <StyledCard>
       <ImageCards category={category} />
@@ -33,7 +40,7 @@ export const CardDonor = ({ element }: icard) => {
           {category}
         </StyledTypography>
         {/* <hr /> */}
-        {typeUser ? (
+        {isDonor ? (
           <Button
             size={"md"}
             theme={"transparent"}
@@ -47,7 +54,7 @@ export const CardDonor = ({ element }: icard) => {
             size={"md"}
             theme={"transparent"}
             type={"button"}
-            onclick={() => modalOpen()}
+            onclick={() => getDonationbyId(id)}
           >
             Detalhes
           </Button>

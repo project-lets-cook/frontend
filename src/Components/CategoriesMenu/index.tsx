@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DonationContext } from "../../contexts/DonationContext";
 import { StyledCategoriesMenu } from "./styles";
 
-const categories = [
+export const categories = [
   "Todas as Categorias",
   "Cereais",
   "Hortaliças",
@@ -14,7 +15,19 @@ const categories = [
 ];
 
 export const CategoriesMenu = () => {
+  const { donations, setFilteredDonations } = useContext(DonationContext);
   const [selected, setSelected] = useState("Todas as Categorias");
+
+  const filterCategoy = (category: string) => {
+    setSelected(category);
+    if (category === "Todas as Categorias") {
+      setFilteredDonations(donations);
+    } else {
+      setFilteredDonations(
+        donations.filter((donation) => donation.category === category)
+      );
+    }
+  };
 
   return (
     <StyledCategoriesMenu>
@@ -23,7 +36,7 @@ export const CategoriesMenu = () => {
           <button
             className={category === selected ? "selected-menu" : ""}
             key={index}
-            onClick={() => setSelected(category)}
+            onClick={() => filterCategoy(category)}
           >
             {category}
           </button>

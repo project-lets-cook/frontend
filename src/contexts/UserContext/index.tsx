@@ -186,7 +186,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterDonor,
         userRegisterReceiver,
         userLogout,
-        isDonor
+        isDonor,
+        setOpenModal
       }}
     >
       {children}
