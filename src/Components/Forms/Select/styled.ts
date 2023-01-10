@@ -5,12 +5,13 @@ export const SelectCityStyled = styled.form`
     margin-bottom: 20px;
     position: absolute;
     top: -58px;
-    right: 218px;
+    right: 305px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
     > select {
+    max-width: 250px;
     -webkit-appearance: none;
     background-color: var(--color-secondary);
     color: var(--color-grey300);
@@ -22,5 +23,14 @@ export const SelectCityStyled = styled.form`
     outline-style: none;
     border-radius: 2px;
     cursor: pointer;
+
+    & > option {
+        color: var(--color-grey900);
+    }
+
+    & > option:checked {
+        color: var(--color-primary);
+        font-weight: 800;
+    }
     }
 `
