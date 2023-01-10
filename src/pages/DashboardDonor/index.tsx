@@ -17,7 +17,7 @@ export interface IElement {
   category: string;
   validation: string;
   description: string;
-  amounts: string;
+  amounts: number;
   id: string;
 }
 
