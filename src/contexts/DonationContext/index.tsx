@@ -1,7 +1,9 @@
 import React, { Children, useEffect } from "react";
 import { createContext, useState, useContext } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../services/api";
-import { UserContext } from "../UserContext";
+import { UserContext, UserProvider } from "../UserContext";
+import { iUser } from "../UserContext/types";
 import {
   iDonation,
   iDonationInfo,
@@ -14,7 +16,9 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
-  const [donationInfo, setInfoDonation] = useState<iDonationInfo[]>([])
+  const [donationInfo, setInfoDonation] = useState<iDonationInfo>([])
+  const [myDonations, setMyDonations] = useState<iDonation[]>([]);
+  const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>([]);
   const { user, setOpenModal } = useContext(UserContext)
 
   useEffect(() => {
@@ -58,6 +62,53 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
   }
 
+  const requestDonation = async (user: iUser, id: string) => {
+    const token = localStorage.getItem("TOKEN");
+    if (!token) {
+      return null
+    }
+    try {
+      await api.patch(`donation/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`
+        },
+        data: [
+          {
+            requests: user
+          },
+      ]
+      })
+      toast.success("Sua Solicitação foi enviada!");
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+     const getMyDonations = async () => {
+    const token = localStorage.getItem("TOKEN");
+    const userId = localStorage.getItem('USER')
+    if (!token) {
+      return null
+    }
+   
+    try {
+      const {data} = await api.get(`donation?userId=${userId}`, {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      
+      setMyDonations(data)
+      setFilteredMyDonations(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  getMyDonations()
+  }, [])
+  
+ 
   return (
     <DonationContext.Provider value={{
       donations,
@@ -65,6 +116,10 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setFilteredDonations,
       getDonationbyId,
       donationInfo,
+      requestDonation,
+      myDonations,
+      filteredMyDonations,
+      setFilteredMyDonations
     }}>
       {children}
     </DonationContext.Provider>

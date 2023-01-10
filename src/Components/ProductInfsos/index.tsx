@@ -11,10 +11,12 @@ import Milk from "../../assets/img/Milk.jpg"
 import oils from "../../assets/img/oils.jpg"
 import basicbasket from "../../assets/img/basicbasket.jpg"
 import NoPherecives from "../../assets/img/NoPherecives.jpg"
+import { UserContext } from '../../contexts/UserContext'
 
 export const ProductInfos = () => {
 
-  const { donationInfo } = useContext(DonationContext)
+  const { donationInfo, requestDonation } = useContext(DonationContext)
+  const { user } = useContext(UserContext)
 
   if (donationInfo) {
     return (
@@ -32,7 +34,7 @@ export const ProductInfos = () => {
         <StyledTypography classText="Caption" tag="h6">Categoria: {donationInfo.category}</StyledTypography>
         <StyledTypography classText="Caption" tag="h6">Quantidade: {donationInfo.amounts}</StyledTypography>
         <StyledTypography classText="Caption" tag="p">{donationInfo.descripition}</StyledTypography>
-        <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => console.log('funcionei')}>Solicitar Doação</Button>
+        <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => requestDonation(user, donationInfo.id)}>Solicitar Doação</Button>
       </ProductInfosStyled>
     )
   } else {
