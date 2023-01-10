@@ -1,5 +1,6 @@
 import { SetStateAction } from "react";
 import React from "react";
+import { iUser } from "../UserContext/types";
 
 export interface iDonationProviderProps {
   children: React.ReactNode;
@@ -19,19 +20,24 @@ export interface iDonation {
   };
 }
 export interface iDonationInfo {
-  userId?: number;
-  title?: string;
-  category?: string;
-  validation?: string;
-  descripition?: string;
-  amounts?: string;
-  id?: number;
+  userId: number;
+  title: string;
+  category: string;
+  validation: string;
+  descripition: string;
+  amounts: string;
+  id: number;
 }
 
 export interface iDonationProviderValue {
   donations: iDonation[];
   donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
+  myDonations: iDonation[];
+  filteredMyDonations: iDonation[];
+  setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
+  requestDonation: (user: iUser, id: string) => void;
+
 }

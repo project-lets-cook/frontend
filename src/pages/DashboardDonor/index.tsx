@@ -10,10 +10,9 @@ import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardDonor = () => {
-  const { filteredDonations } = useContext(DonationContext);
+  const { filteredMyDonations } = useContext(DonationContext);
   const { user, loadingUser ,isDonor } = useContext(UserContext);
-
-
+ 
   return (isDonor ? (
     <StyledDashboard>
       <Header />
@@ -21,7 +20,7 @@ export const DashboardDonor = () => {
         <SearchItens />
         <CategoriesMenu />
         <ul>
-          {filteredDonations.map((element) => (
+          {filteredMyDonations.map((element) => (
             <CardDonor
               element={element}
               key={element.id}
