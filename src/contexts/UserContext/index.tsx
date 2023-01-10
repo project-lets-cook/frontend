@@ -7,6 +7,7 @@ import {
   iUser,
   iFormLogin,
   iUserResponse,
+  iEditAdrress,
 } from "./types";
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
@@ -24,7 +25,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
-  const [typeUser , setTypeUser] = useState(false)
+  const [typeUser, setTypeUser] = useState(false);
 
   const modalLogin = () => {
     setOpenLogin(true);
@@ -67,17 +68,16 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       };
 
       try {
-        const response = await api.get(`/users/${userID}`, config)
-        setUser(response.data)
-      }
-       catch (error) {
+        const response = await api.get(`/users/${userID}`, config);
+        setUser(response.data);
+      } catch (error) {
         window.localStorage.clear();
       } finally {
         setLoadingUser(false);
       }
     }
     loadUser();
-    }, []);
+  }, []);
 
   const userLogin = async (data: iFormLogin): Promise<void> => {
     try {
@@ -87,7 +87,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const typeOfUser = response.data.user.donor;
 
       setUser(response.data.user);
-      setTypeUser(response.data.donor)
+      setTypeUser(response.data.donor);
 
       window.localStorage.clear();
       window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -96,7 +96,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.success("Login realizado com sucesso!");
 
       typeOfUser ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
-
     } catch (error) {
       toast.error("Ops! Usuário ou Senha inválido!");
     } finally {
@@ -112,8 +111,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Conta criada com sucesso!");
 
-      modalClose()
-      modalLogin()
+      modalClose();
+      modalLogin();
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -137,9 +136,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-    
-      modalClose()
-      modalLogin()
+
+      modalClose();
+      modalLogin();
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -152,11 +151,30 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(false);
     }
   };
+  const editAdress = async (data: iEditAdrress): Promise<void> => {
+    try {
+      setLoading(true);
+      const userId = window.localStorage.getItem("USER");
+      const token = localStorage.getItem("TOKEN");
+
+      await api.patch(`/users/${userId}`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+
+      toast.success("Endereço alterado com sucesso!");
+    } catch (error) {
+      toast.error("Ops! Algo deu errado");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const userLogout = () => {
-    window.localStorage.clear()
-    navigate("/") 
-  }
+    window.localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <UserContext.Provider
@@ -178,7 +196,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterDonor,
         userRegisterReceiver,
         userLogout,
-        typeUser
+        typeUser,
+        editAdress,
       }}
     >
       {children}

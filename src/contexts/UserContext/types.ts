@@ -7,6 +7,10 @@ export interface iFormLogin {
   password: string;
 }
 
+export interface iEditAdrress {
+  address: string;
+}
+
 export interface iUserProviderProps {
   children: React.ReactNode;
 }
@@ -22,6 +26,7 @@ export interface iUserProviderValue {
   userLogin: (data: iFormLogin) => Promise<void>;
   userRegisterDonor: (data: iFormRegisterDonor) => Promise<void>;
   userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<void>;
+  editAdress: (data: iEditAdrress) => Promise<void>;
 
   openModal: boolean;
   modalOpen: () => void;
