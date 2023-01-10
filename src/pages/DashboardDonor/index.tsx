@@ -8,14 +8,17 @@ import { SetStateAction, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
+import { ProductDonor } from "../../Components/ProductDonor";
+import { Modal } from "../../Components/Modal";
 
 export const DashboardDonor = () => {
   const { filteredDonations } = useContext(DonationContext);
-  const { user, loadingUser ,isDonor } = useContext(UserContext);
+  const { user, loadingUser, isDonor, openModal } = useContext(UserContext);
 
 
   return (isDonor ? (
     <StyledDashboard>
+      {openModal && <Modal name={""}><ProductDonor /></Modal>}
       <Header />
       <section className="container">
         <SearchItens />

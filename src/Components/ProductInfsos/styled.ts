@@ -7,7 +7,7 @@ export const ProductInfosStyled = styled.div`
     flex-direction: column;
     gap: 20px;
 
-    & > img {
+    & > figure img {
         width: 100%;
         height: 150px;
 

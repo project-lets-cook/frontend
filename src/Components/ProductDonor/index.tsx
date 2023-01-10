@@ -3,26 +3,22 @@ import { Button } from '../Button'
 import { ProductInfosStyled } from './styled'
 import { DonationContext } from '../../contexts/DonationContext'
 import { useContext } from 'react'
-import NoPherecives from "../../assets/img/NoPherecives.jpg"
+import { ImageCategories } from '../ImageCategories'
 
-export const ProductInfos = () => {
-
-  const { donationInfo } = useContext(DonationContext)
-
-  if (donationInfo) {
-    return (
-      <ProductInfosStyled>
-        <img src={NoPherecives} alt={"Não Pereciveis"} />
-        <StyledTypography classText="Heading3" tag="h2">{donationInfo.title}</StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">Cidade/Estado</StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">Categoria: {donationInfo.category}</StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">Quantidade: {donationInfo.amounts}</StyledTypography>
-        <StyledTypography classText="Caption" tag="p">{donationInfo.descripition}</StyledTypography>
-        <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => console.log('funcionei')}>Solicitar Doação</Button>
-      </ProductInfosStyled>
-    )
-  } else {
-    )
-  }
+export const ProductDonor = () => {
+  const { donation } = useContext(DonationContext)
+  console.log(donation);
+  const request = donation.request
+  return (
+    <ProductInfosStyled>
+      <ImageCategories category={donation.category} />
+      <StyledTypography classText="Heading3" tag="h2">{donation.title}</StyledTypography>
+      <ul>
+        {request.map((element) => {
+          <CardReceiver element={element } />
+        })}
+      </ul>
+    </ProductInfosStyled>
+  )
 
 }

@@ -1,5 +1,6 @@
 import { SetStateAction } from "react";
 import React from "react";
+import { iUser } from "../UserContext/types";
 
 export interface iDonationProviderProps {
   children: React.ReactNode;
@@ -26,13 +27,15 @@ export interface iDonationInfo {
   descripition?: string;
   amounts?: string;
   id?: number;
+  request?: Array<iUser> 
 }
+// interface Irequest extends Array<iUser> 
 
 export interface iDonationProviderValue {
   donations: iDonation[];
-  donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
-  getDonationForDonor: (id: number) => void;
+  donation: iDonationInfo
+  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
 }

@@ -1,4 +1,4 @@
-import React, { Children, useEffect } from "react";
+import { useEffect } from "react";
 import { createContext, useState, useContext } from "react";
 import { api } from "../../services/api";
 import { UserContext } from "../UserContext";
@@ -14,7 +14,8 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
-  const [donationInfo, setInfoDonation] = useState<iDonationInfo[]>([])
+  const [donationInfo, setInfoDonation] = useState<iDonationInfo>({})
+  const [donation, setDonation] = useState<iDonationInfo>({})
   const { user, setOpenModal } = useContext(UserContext)
 
   useEffect(() => {
@@ -51,26 +52,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`
         }
       })
-      setInfoDonation(data)
-      setOpenModal(true)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  const getDonationForDonor = async (id: number) => {
-    
-    const token = localStorage.getItem("TOKEN");
-    
-    if (!token) {
-      return null
-    }
-    try {
-      const { data } = await api.get(`donation/${id}`, {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      })
-      setInfoDonation(data)
+      setDonation(data)
       setOpenModal(true)
     } catch (error) {
       console.error(error)
@@ -83,8 +65,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       filteredDonations,
       setFilteredDonations,
       getDonationbyId,
-      donationInfo,
-      getDonationForDonor,
+      donation,
+      setDonation
     }}>
       {children}
     </DonationContext.Provider>
