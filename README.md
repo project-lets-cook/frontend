@@ -10,7 +10,7 @@
 <blockquote align="center">“Você deve desaprender o que aprendeu - Mestre Yoda”</blockquote>
 
 <p align="center">
-  <a href="#Functions">principais Funções</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#Functions">principais Funções</a>
 </p>
 
 ## **Functions**
