@@ -21,23 +21,26 @@ export interface iDonation {
 }
 export interface iDonationInfo {
   userId: number;
-  title: string;
-  category: string;
-  validation: string;
-  descripition: string;
-  amounts: string;
-  id: number;
+  title?: string;
+  category?: string;
+  validation?: string;
+  descripition?: string;
+  amounts?: string;
+  id?: number;
+  request?: Array<iUser> 
 }
 
 export interface iDonationProviderValue {
   donations: iDonation[];
-  donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
   myDonations: iDonation[];
   filteredMyDonations: iDonation[];
   setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
-  requestDonation: (user: iUser, id: string) => void;
+  donation: iDonationInfo
+  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
+  requestDonation: (user: iUser, id: number) => void;
+  user: iUser 
 
 }

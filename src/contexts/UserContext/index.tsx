@@ -23,6 +23,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalPoducts, setModalPoducts] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);

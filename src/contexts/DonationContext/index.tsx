@@ -1,4 +1,4 @@
-import React, { Children, useEffect } from "react";
+import { useEffect } from "react";
 import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
@@ -16,7 +16,8 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
-  const [donationInfo, setInfoDonation] = useState<iDonationInfo>([])
+  const [donationInfo, setInfoDonation] = useState<iDonationInfo>()
+  const [donation, setDonation] = useState<iDonationInfo>()
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>([]);
   const { user, setOpenModal } = useContext(UserContext)
@@ -55,7 +56,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`
         }
       })
-      setInfoDonation(data)
+      setDonation(data)
       setOpenModal(true)
     } catch (error) {
       console.error(error)
@@ -115,11 +116,13 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       filteredDonations,
       setFilteredDonations,
       getDonationbyId,
-      donationInfo,
+      donation,
+      setDonation,
       requestDonation,
       myDonations,
       filteredMyDonations,
-      setFilteredMyDonations
+      setFilteredMyDonations,
+      user
     }}>
       {children}
     </DonationContext.Provider>
