@@ -13,10 +13,9 @@ export const StyledDashboardDonor = styled.main`
     align-items: center;
     justify-content: space-between;
     position: relative;
-
     /* background-color: red; */
     padding: 20px 0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     > ul {
       width: 100%;
@@ -27,7 +26,7 @@ export const StyledDashboardDonor = styled.main`
       justify-content: center;
       flex-wrap: wrap;
       gap: 30px;
-      max-height: 630px;
+      max-height: 500px;
       overflow-y: auto;
       /* position: relative; */
     }

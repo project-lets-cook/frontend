@@ -2,12 +2,12 @@ import { StyledInitialPage } from "./styled";
 import { Modal } from "../../Components/Modal";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { FormModal } from "../../Components/FormModal";
 import { LoginForm } from "../../Components/LoginForm";
 import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
 import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
 import { StepsCarousel } from "../../Components/StepsCarousel";
+import { Navigate } from "react-router-dom";
 
 export const InitialPage = () => {
   const {
@@ -17,34 +17,22 @@ export const InitialPage = () => {
     modalLogin,
     modalRegisterReceiver,
     modalRegisterDonor,
+    user
   } = useContext(UserContext);
 
-  return (
+  const token = localStorage.getItem("TOKEN");
+
+  return ( token === null ?
     <StyledInitialPage>
-      {openLogin && (
-        <Modal
-          children={<FormModal name={"Login"} children={<LoginForm />} />}
-        />
-      )}
+      {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
         <Modal
-          children={
-            <FormModal
-              name={"Registro Donatário"}
-              children={<RegisterFormReceiver />}
-            />
-          }
+          children={<RegisterFormReceiver />}
+          name={"Registro Donatário"}
         />
       )}
       {openRegisterDonor && (
-        <Modal
-          children={
-            <FormModal
-              name={"Registro Doador"}
-              children={<RegisterFormDonor />}
-            />
-          }
-        />
+        <Modal children={<RegisterFormDonor />} name={"Registro Doador"} />
       )}
 
       <header>
@@ -58,7 +46,10 @@ export const InitialPage = () => {
 
       <main className="container">
         <div className="register-donor-box">
-          <p>Tenho um empreendimento e quero evitar o desperdício de comida</p>
+          <p>
+            Tenho um empreendimento, quero ajudar o próximo e evitar o descarte
+            de alimentos
+          </p>
           <div>
             <Button
               size="md"
@@ -73,7 +64,7 @@ export const InitialPage = () => {
         </div>
 
         <div className="register-receiver-box">
-          <p>Sou uma ONG precisando de doações</p>
+          <p>Sou uma ONG precisando de doações, ajudamos à quem tem fome</p>
           <div>
             <Button
               size="md"
@@ -88,5 +79,7 @@ export const InitialPage = () => {
         </div>
       </main>
     </StyledInitialPage>
+    :
+    <Navigate to="/DashboardReceiver"/>
   );
 };

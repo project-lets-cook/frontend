@@ -11,6 +11,7 @@ const categories = [
   "Leite e Derivados",
   "Leguminosas",
   "Óleos e Gorduras",
+  "Não Pereciveis",
 ];
 
 export const CategoriesMenu = () => {
