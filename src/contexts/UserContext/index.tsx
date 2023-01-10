@@ -77,19 +77,20 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       }
       catch (error) {
         console.log(error);
+        window.localStorage.clear();
       } finally {
         setLoadingUser(false);
       }
     }
     loadUser();
-    }, []);
+  }, []);
 
   const userLogin = async (data: iFormLogin): Promise<void> => {
     try {
       setLoading(true);
 
       const response = await api.post<iUserResponse>("login", data);
-      const isDonorResponse:any = response.data.user.donor;
+      const isDonorResponse: any = response.data.user.donor;
 
       setUser(response.data.user);
       setIsDonor(isDonorResponse)
@@ -100,6 +101,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       toast.success("Login realizado com sucesso!");
       getProducts()
       setOpenModal(false)
+
       await isDonor ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
 
     } catch (error) {
@@ -143,7 +145,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-    
+
       modalClose()
       modalLogin()
 
@@ -161,7 +163,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const userLogout = () => {
     window.localStorage.clear()
-    navigate("/") 
+    navigate("/")
   }
 
   return (
