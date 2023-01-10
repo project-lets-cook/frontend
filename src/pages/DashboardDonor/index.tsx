@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
+import { SelectCity } from "../../Components/Forms/Select";
 
 export interface IElement {
   userId: string;
@@ -21,8 +22,7 @@ export interface IElement {
 }
 
 export const DashboardDonor = () => {
-  const { filteredDonations, setFilteredDonations } =
-    useContext(DonationContext);
+  const { filteredDonations, donations } = useContext(DonationContext);
   const { user, loadingUser } = useContext(UserContext);
 
   if (loadingUser) {
@@ -35,13 +35,14 @@ export const DashboardDonor = () => {
         <Header />
         <section className="container">
           <SheradItens />
+          <SelectCity />
           <CategoriesMenu />
           <ul>
             {filteredDonations && filteredDonations.length
               ? filteredDonations.map((element: IElement) => (
                   <CardDonor element={element} key={element.id} />
                 ))
-              : aliments.map((element: IElement) => (
+              : donations.map((element: IElement) => (
                   <CardDonor element={element} key={element.id} />
                 ))}
           </ul>
