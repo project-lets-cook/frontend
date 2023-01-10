@@ -25,7 +25,7 @@ export const StyledDashboardDonor = styled.main`
       align-items: flex-start;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
       max-height: 500px;
       overflow-y: auto;
       /* position: relative; */

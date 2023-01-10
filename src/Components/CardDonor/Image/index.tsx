@@ -15,14 +15,14 @@ interface icategory {
 export const ImageCards = ({ category }: icategory) => {
   return (
     <StyledImageCards>
-      {category === "Cereais" && < img src={Cereals} alt={"Cereais"} />}
-      {category === "Hortaliças" && <img src={Vegetables} alt={"Hortaliças"} />}
-      {category === "Frutas" && <img src={Fruits} alt={"Frutas"} />}
-      {category === "Carnes & Ovos" && <img src={MeatAndEggs} alt={"Carnes & Ovos"} />}
-      {category === "Leite e Derivados" && <img src={Milk} alt={"Leite e Derivados"} />}
-      {category === "Oleos & Gorduras" && <img src={oils} alt={"Oleos & Gorduras"} />}
-      {category === "Cesta Basica" && <img src={basicbasket} alt={"Cesta Basica"} />}
-      {category === "Não Pereciveis" && <img src={NoPherecives} alt={"Não Pereciveis"} />}
+      {category === "Cereals" && < img src={Cereals} alt={"Cereais"} />}
+      {category === "Vegetables" && <img src={Vegetables} alt={"Hortaliças"} />}
+      {category === "Fruits" && <img src={Fruits} alt={"Frutas"} />}
+      {category === "MeatAndEggs" && <img src={MeatAndEggs} alt={"Carnes & Ovos"} />}
+      {category === "Milk" && <img src={Milk} alt={"Leite e Derivados"} />}
+      {category === "oils" && <img src={oils} alt={"Oleos & Gorduras"} />}
+      {category === "basicbasket" && <img src={basicbasket} alt={"Cesta Basica"} />}
+      {category === "NoPherecives" && <img src={NoPherecives} alt={"Não Pereciveis"} />}
     </StyledImageCards>
   );
 };
