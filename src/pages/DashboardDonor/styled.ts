@@ -18,7 +18,7 @@ export const StyledDashboardDonor = styled.main`
     margin-bottom: 20px;
 
     > ul {
-      /* width: 60%; */
+      width: 100%;
       padding: 5px 0;
       display: flex;
       flex-direction: row;
