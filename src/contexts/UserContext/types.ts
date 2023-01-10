@@ -13,7 +13,7 @@ export interface iUserProviderProps {
 
 export interface iUserProviderValue {
   user: iUser | null;
-  typeUser: boolean;
+  isDonor: boolean;
   setUser: (user: iUser | null) => void;
 
   loading: boolean;
@@ -48,5 +48,4 @@ export interface iUserResponse {
   accessToken: string;
 
   user: iUser;
-  donor: boolean;
 }

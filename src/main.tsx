@@ -9,11 +9,11 @@ import { Global } from "./Styles/GlobalStyles";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <DonationProvider>
+      <DonationProvider>
+        <UserProvider>
           <App />
-        </DonationProvider>
-      </UserProvider>
+        </UserProvider>
+      </DonationProvider>
       <Global />
     </BrowserRouter>
   </React.StrictMode>

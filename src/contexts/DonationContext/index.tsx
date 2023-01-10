@@ -15,35 +15,34 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [filteredDonations, setFilteredDonations ] = useState<iDonation[]>([]);
   const {user} = useContext(UserContext)
 
-  useEffect(() => {
 
-      const getProducts = async () => {
-          const token = localStorage.getItem("TOKEN");
-          
-          if (!token) {
-              return null
-          }
-          try {
-              const { data } = await api.get('donation/', {
-                  headers: {
-                      authorization: `Bearer ${token}`
-                  }
-              })
+  const getProducts = async () => {
+    const token = localStorage.getItem("TOKEN");
 
-              setDonations(data)
-              setFilteredDonations(data)
-          } catch (error) {
-              console.error(error)
-          }
-      }
-      getProducts()
-  }, [])
+    if (!token) {
+      return null
+    }
+    try {
+      const { data } = await api.get('donation/', {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+
+      setDonations(data)
+      setFilteredDonations(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  
   
   return (
     <DonationContext.Provider value={{ 
      donations,
      filteredDonations,
-     setFilteredDonations,
+      setFilteredDonations,
+      getProducts,
      }}>
       {children}
     </DonationContext.Provider>

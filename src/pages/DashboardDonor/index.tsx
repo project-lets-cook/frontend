@@ -22,37 +22,31 @@ export interface IElement {
 }
 
 export const DashboardDonor = () => {
+  const { user, loadingUser, isDonor  } = useContext(UserContext);
   const { filteredDonations, donations } = useContext(DonationContext);
-  const { user, loadingUser } = useContext(UserContext);
 
-  if (loadingUser) {
-    return null;
-  }
-
-  return user ? (
-    user?.donor ? (
-      <StyledDashboard>
-        <Header />
-        <section className="container">
-          <SheradItens />
-          <SelectCity />
-          <CategoriesMenu />
-          <ul>
-            {filteredDonations && filteredDonations.length
-              ? filteredDonations.map((element: IElement) => (
-                  <CardDonor element={element} key={element.id} />
-                ))
-              : donations.map((element: IElement) => (
-                  <CardDonor element={element} key={element.id} />
-                ))}
-          </ul>
-        </section>
-        <Footer />
-      </StyledDashboard>
-    ) : (
-      <Navigate to="/DashboardReceiver" />
-    )
-  ) : (
-    <Navigate to="/" />
+  
+  return (isDonor ? (
+    <StyledDashboard>
+      <Header />
+      <section className="container">
+        <SheradItens />
+        <SelectCity />
+        <CategoriesMenu />
+        <ul>
+          {filteredDonations && filteredDonations.length
+            ? filteredDonations.map((element: IElement) => (
+              <CardDonor element={element} key={element.id} />
+            ))
+            : donations.map((element: IElement) => (
+              <CardDonor element={element} key={element.id} />
+            ))}
+        </ul>
+      </section>
+      <Footer />
+    </StyledDashboard>
+      ) : ( 
+        <Navigate to="/DashboardReceiver" />
+      )
   );
 };

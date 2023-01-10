@@ -20,15 +20,12 @@ import { DonationContext } from "../../contexts/DonationContext"
 
 export const DashboardReceiver = () => {
 
-  const {openModal, modalOpen, user, loadingUser} = useContext(UserContext)
-  const {filteredDonations} = useContext(DonationContext)
+  const { openModal, modalOpen, isDonor, loadingUser } = useContext(UserContext)
+  const { filteredDonations } = useContext(DonationContext)
 
-  if (loadingUser) {
-    return null
-  }
 
-  return ( user ?
-    ( !user?.donor ? <StyledDashboard>
+  return (!isDonor ? (
+    <StyledDashboard>
       {openModal && <Modal name={""}><ProductInfos /></Modal>}
       <Header />
       <section className="container">
@@ -42,9 +39,8 @@ export const DashboardReceiver = () => {
         </ul>
       </section>
       <Footer />
-    </StyledDashboard> 
-    : 
-    <Navigate to= "/DashboardDonor"/>)
-    : <Navigate to = "/"/>
+    </StyledDashboard>
+  ) :
+    (<Navigate to="/DashboardDonor" />)
   )
 }

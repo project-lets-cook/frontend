@@ -20,6 +20,6 @@ export interface iDonation {
 export interface iDonationProviderValue {
   donations: iDonation[];
   filteredDonations: iDonation[];
-
+  getProducts: () => void;
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
 }
