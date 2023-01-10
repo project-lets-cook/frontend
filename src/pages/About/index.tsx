@@ -1,8 +1,8 @@
 import { StyledAbout } from "./styled";
 import logo from "../../assets/icons/logo.png";
 import { Link } from "react-router-dom";
-import { Footer } from "../../Components/footer";
 import { AboutCarousel } from "../../Components/AboutCarousel";
+import { StyledTypography } from "../../Components/BaseTypography/style";
 
 export const About = () => {
   return (
@@ -12,8 +12,10 @@ export const About = () => {
           <Link to="/">Voltar para Home</Link>
           <img src={logo} alt="" />
         </header>
+        <StyledTypography classText="Heading2" tag="h3">
+          Integrantes da Equipe:
+        </StyledTypography>
         <AboutCarousel />
-        <Footer />
       </StyledAbout>
     </>
   );
