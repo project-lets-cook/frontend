@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
+import { AddDonarionForm } from "../../Components/Forms/FormAddDonation"
 import { UserContext } from "../../contexts/UserContext"
 
 export const ProfilePage = () => {
@@ -13,6 +14,7 @@ export const ProfilePage = () => {
     return ( user ? 
         <div>
             <h1>Profile Page</h1>
+            <AddDonarionForm />
         </div>
         : <Navigate to= "/"/>
     )

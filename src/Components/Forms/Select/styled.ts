@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const SelectCityStyled = styled.div`
   width: auto;
 

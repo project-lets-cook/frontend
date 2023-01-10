@@ -10,7 +10,7 @@ import { SelectCity } from "../Forms/Select"
 
 export const Header = () => {
 
-    const { userLogout } = useContext(UserContext)
+    const { userLogout, user } = useContext(UserContext)
 
     const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
         (event.target as HTMLImageElement).src = `${imgError}`;
@@ -22,7 +22,9 @@ export const Header = () => {
                 <div>
                     <img src={logo} alt="" />
                     <div>
-                        <img src="img" alt="name" onError={addDefaultImg} />
+                        {user? <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} />:
+                          <img src={imgError} alt='profilepic' />}
+                        
                         <button type="button" onClick={userLogout}>
                             <FiLogOut />
                         </button>

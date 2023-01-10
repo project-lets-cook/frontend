@@ -4,10 +4,12 @@ import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 interface iInputProps {
   label: string;
   id: string;
-  type: "text" | "password" | "email" | "number";
+  type?: "text" | "password" | "email" | "number";
   placeholder: string;
   register?: UseFormRegisterReturn;
   disabled?: boolean;
+  rows?: string
+  cols?: string
 }
 
 export const Input = ({

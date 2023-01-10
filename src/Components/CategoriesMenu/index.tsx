@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { DonationContext } from "../../contexts/DonationContext";
 import { StyledCategoriesMenu } from "./styles";
 
-const categories = [
+export const categories = [
   "Todas as Categorias",
   "Cereais",
   "Hortaliças",
