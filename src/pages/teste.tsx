@@ -10,9 +10,7 @@ export const Teste = () => {
   modalOpen();
   return (
     <>
-      <Modal name="Atualizar doação">
-        <ModalProductUpdate />
-      </Modal>
+      <ModalProductUpdate />
     </>
   );
 };

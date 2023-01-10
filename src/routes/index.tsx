@@ -17,8 +17,8 @@ export const MainRoutes = () => {
         <Route path="/DashboardDonor" element={<DashboardDonor />} />
         <Route path="/DashboardReceiver" element={<DashboardReceiver />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/teste" element={<Teste />} />
       </Route>
+      <Route path="/teste" element={<Teste />} />
     </Routes>
   );
 };

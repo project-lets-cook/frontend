@@ -6,20 +6,19 @@ export const PasswordBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 3px solid var(--color-grey300);
+  border-bottom: 2px solid var(--color-grey300);
   outline-style: none;
   position: relative;
-  /* height: 50px; */
 
   :focus-within {
-    border-bottom: 3px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
     outline-style: none;
     & > label {
       color: var(--color-primary);
     }
   }
   :hover {
-    border-bottom: 3px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
 
     & > label {
       color: var(--color-primary);
@@ -27,23 +26,14 @@ export const PasswordBox = styled.div`
   }
 
   & > label {
-    /* transform: translateY(-20px); */
-    /* margin-left: 10px; */
+    font-size: 15px;
     border-style: none;
     color: var(--color-grey300);
-    /* padding: 0px 2px; */
     align-self: start;
     width: max-content;
-    /* top: -10px; */
-
     position: absolute;
     left: 0;
   }
-
-  /* & > div {
-    display: flex;
-    justify-content: space-between;
-    width: 100%; */
 
   & > input {
     width: 100%;
@@ -52,9 +42,6 @@ export const PasswordBox = styled.div`
     outline-style: none;
     border-radius: 5px;
     border-style: none;
-    /* transform: translateY(-60px); */
-    /* background-color: red; */
-    /* background-color: red; */
 
     ::placeholder {
       color: var(--color-grey50);
@@ -65,11 +52,12 @@ export const PasswordBox = styled.div`
         color: var(--color-grey300);
       }
     }
+
     :valid ~ label,
     :focus ~ label {
+      font-weight: 700;
       transform: translateY(-20px);
       font-size: 0.8rem;
-      /* padding: 0 10px; */
       background-color: var(--color-white);
     }
   }

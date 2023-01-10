@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledInitialPage = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   background-image: url("../../src/assets/img/banner.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,7 +11,7 @@ export const StyledInitialPage = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
+    height: 100px;
   }
 
   header > div {
@@ -26,7 +26,7 @@ export const StyledInitialPage = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 70px;
+    gap: 60px;
     height: 80vh;
 
     > div {
@@ -50,12 +50,14 @@ export const StyledInitialPage = styled.div`
       }
     }
   }
+
   > footer {
-    margin-top: 30px;
-    position: static;
+    position: fixed;
   }
+
   @media screen and (max-width: 1280px) {
-    > header, main {
+    > header,
+    main {
       padding: 15px;
     }
   }
@@ -80,7 +82,7 @@ export const StyledInitialPage = styled.div`
       width: 100%;
       height: 100%;
       gap: 30px;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
 
       button {
         width: 100%;
@@ -101,6 +103,9 @@ export const StyledInitialPage = styled.div`
           flex-direction: column-reverse;
         }
       }
+    }
+    Footer {
+      position: static;
     }
   }
 `;

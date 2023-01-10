@@ -2,7 +2,7 @@ import { CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
-import { Footer } from "../../Components/footer";
+import { Footer } from "../../Components/Footer";
 import { SearchItens } from "../../Components/SearchItens";
 import { SetStateAction, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -14,6 +14,7 @@ export const DashboardDonor = () => {
   const { user, loadingUser ,isDonor } = useContext(UserContext);
  
   return (isDonor ? (
+
     <StyledDashboard>
       <Header />
       <section className="container">
@@ -35,6 +36,5 @@ export const DashboardDonor = () => {
     </StyledDashboard>
   ) : (
     <Navigate to="/DashboardReceiver" />
-  )
-  )
+  );
 };
