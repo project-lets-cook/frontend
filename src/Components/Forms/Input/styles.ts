@@ -6,19 +6,19 @@ export const InputStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 3px solid var(--color-grey300);
+  border-bottom: 2px solid var(--color-grey300);
   outline-style: none;
   position: relative;
 
   :focus-within {
-    border-bottom: 3px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
     outline-style: none;
     & > label {
       color: var(--color-primary);
     }
   }
   :hover {
-    border-bottom: 3px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
 
     & > label {
       color: var(--color-primary);
@@ -26,6 +26,7 @@ export const InputStyled = styled.div`
   }
 
   & > label {
+    font-size: 15px;
     border-style: none;
     color: var(--color-grey300);
     align-self: start;
@@ -56,8 +57,13 @@ export const InputStyled = styled.div`
 
     :valid ~ label,
     :focus ~ label {
+      font-weight: 700;
       transform: translateY(-20px);
       font-size: 0.8rem;
+    }
+    :-webkit-autofill,
+    :-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
     }
   }
 `;

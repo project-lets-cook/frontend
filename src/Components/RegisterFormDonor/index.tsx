@@ -7,6 +7,7 @@ import { Button } from "../Button";
 import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { StringSchema } from "yup";
+import { Loader } from "../Loader";
 
 export interface iFormRegisterDonor {
   name: string;
@@ -98,8 +99,10 @@ export const RegisterFormDonor = () => {
           register={register("name")}
           placeholder={"Digite seu nome aqui"}
         />
-        {errors.name?.message && (
+        {errors.name?.message ? (
           <p className="input-waring">{errors.name.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -111,8 +114,10 @@ export const RegisterFormDonor = () => {
           register={register("telephone")}
           placeholder={"Digite seu telefone aqui"}
         />
-        {errors.telephone?.message && (
+        {errors.telephone?.message ? (
           <p className="input-waring">{errors.telephone.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -124,8 +129,10 @@ export const RegisterFormDonor = () => {
           register={register("street")}
           placeholder={"Digite seu endereço aqui"}
         />
-        {errors.street?.message && (
+        {errors.street?.message ? (
           <p className="input-waring">{errors.street.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -137,8 +144,10 @@ export const RegisterFormDonor = () => {
           register={register("cpf")}
           placeholder={"Digite seu CPF aqui"}
         />
-        {errors.cpf?.message && (
+        {errors.cpf?.message ? (
           <p className="input-waring">{errors.cpf.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -150,8 +159,10 @@ export const RegisterFormDonor = () => {
           register={register("profileImgUrl")}
           placeholder={"Digite o link de sua foto"}
         />
-        {errors.profileImgUrl?.message && (
+        {errors.profileImgUrl?.message ? (
           <p className="input-waring">{errors.profileImgUrl.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -163,8 +174,10 @@ export const RegisterFormDonor = () => {
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
-        {errors.email?.message && (
+        {errors.email?.message ? (
           <p className="input-waring">{errors.email.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -175,8 +188,10 @@ export const RegisterFormDonor = () => {
           register={register("password")}
           placeholder={"Digite sua senha aqui"}
         />
-        {errors.password?.message && (
+        {errors.password?.message ? (
           <p className="input-waring">{errors.password.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -187,8 +202,10 @@ export const RegisterFormDonor = () => {
           register={register("confirmPassword")}
           placeholder={"Digite novamente sua senha aqui"}
         />
-        {errors.confirmPassword?.message && (
+        {errors.confirmPassword?.message ? (
           <p className="input-waring">{errors.confirmPassword.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -200,8 +217,10 @@ export const RegisterFormDonor = () => {
           register={register("city")}
           placeholder={"Digite sua cidade aqui"}
         />
-        {errors.city?.message && (
+        {errors.city?.message ? (
           <p className="input-waring">{errors.city.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -213,13 +232,15 @@ export const RegisterFormDonor = () => {
           register={register("state")}
           placeholder={"Digite seu estado aqui"}
         />
-        {errors.state?.message && (
+        {errors.state?.message ? (
           <p className="input-waring">{errors.state.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
       <Button size="lg" theme="primary" type="submit" disabled={loading}>
-        {loading ? "Cadastrando..." : "Cadastrar"}
+        {!loading ? "Cadastrar" : <Loader />}
       </Button>
     </form>
   );

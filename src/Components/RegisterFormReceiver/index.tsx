@@ -6,6 +6,7 @@ import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { Loader } from "../Loader";
 
 export interface iFormRegisterReceiver {
   company: string;
@@ -95,8 +96,10 @@ export const RegisterFormReceiver = () => {
           register={register("company")}
           placeholder={"Digite seu nome aqui"}
         />
-        {errors.company?.message && (
+        {errors.company?.message ? (
           <p className="input-waring">{errors.company.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -108,8 +111,10 @@ export const RegisterFormReceiver = () => {
           register={register("cnpj")}
           placeholder={"Digite seu CNPJ aqui"}
         />
-        {errors.cnpj?.message && (
+        {errors.cnpj?.message ? (
           <p className="input-waring">{errors.cnpj.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -121,8 +126,10 @@ export const RegisterFormReceiver = () => {
           register={register("telephone")}
           placeholder={"Digite seu telefone aqui"}
         />
-        {errors.telephone?.message && (
+        {errors.telephone?.message ? (
           <p className="input-waring">{errors.telephone.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -134,8 +141,10 @@ export const RegisterFormReceiver = () => {
           register={register("place")}
           placeholder={"Digite seu endereço aqui"}
         />
-        {errors.place?.message && (
+        {errors.place?.message ? (
           <p className="input-waring">{errors.place.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -147,8 +156,10 @@ export const RegisterFormReceiver = () => {
           register={register("sponsor")}
           placeholder={"Digite o nome do responsável aqui"}
         />
-        {errors.sponsor?.message && (
+        {errors.sponsor?.message ? (
           <p className="input-waring">{errors.sponsor.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -160,8 +171,10 @@ export const RegisterFormReceiver = () => {
           register={register("picture")}
           placeholder={"Digite o link de sua foto"}
         />
-        {errors.picture?.message && (
+        {errors.picture?.message ? (
           <p className="input-waring">{errors.picture.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -173,8 +186,10 @@ export const RegisterFormReceiver = () => {
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
-        {errors.email?.message && (
+        {errors.email?.message ? (
           <p className="input-waring">{errors.email.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -185,8 +200,10 @@ export const RegisterFormReceiver = () => {
           register={register("password")}
           placeholder={"Digite sua senha aqui"}
         />
-        {errors.password?.message && (
+        {errors.password?.message ? (
           <p className="input-waring">{errors.password.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -197,8 +214,10 @@ export const RegisterFormReceiver = () => {
           register={register("confirm")}
           placeholder={"Digite novamente sua senha aqui"}
         />
-        {errors.confirm?.message && (
+        {errors.confirm?.message ? (
           <p className="input-waring">{errors.confirm.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -210,8 +229,10 @@ export const RegisterFormReceiver = () => {
           register={register("city")}
           placeholder={"Digite sua cidade aqui"}
         />
-        {errors.city?.message && (
+        {errors.city?.message ? (
           <p className="input-waring">{errors.city.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
@@ -223,13 +244,15 @@ export const RegisterFormReceiver = () => {
           register={register("country")}
           placeholder={"Digite seu estado aqui"}
         />
-        {errors.country?.message && (
+        {errors.country?.message ? (
           <p className="input-waring">{errors.country.message}</p>
+        ) : (
+          <p></p>
         )}
       </div>
 
       <Button size="lg" theme="primary" type="submit" disabled={loading}>
-        {loading ? "Cadastrando..." : "Cadastrar"}
+        {!loading ? "Cadastrar" : <Loader />}
       </Button>
     </form>
   );
