@@ -50,8 +50,14 @@ export const StyledInitialPage = styled.div`
       }
     }
   }
+  > footer {
+    margin-top: 30px;
+    position: static;
+  }
   @media screen and (max-width: 1280px) {
-    padding: 15px;
+    > header, main {
+      padding: 15px;
+    }
   }
 
   @media screen and (max-width: 520px) {
