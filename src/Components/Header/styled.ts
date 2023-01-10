@@ -55,10 +55,12 @@ export const StyledHeader = styled.header`
       }
     }
 
-.background button, svg {
+    .background button,
+    svg {
       width: 40px;
       height: 40px;
       background-color: transparent;
       border: none;
     }
-`
+  }
+`;

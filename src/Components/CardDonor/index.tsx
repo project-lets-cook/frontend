@@ -3,16 +3,16 @@ import { Button } from "../Button";
 import { ImageCards } from "./Image";
 import { StyledCard } from "./styles";
 
-interface IElement {
-  userId: number;
+export interface IElement {
+  userId: string;
   img: string;
   title: string;
   category: string;
   validation: string;
-  descripition: string;
+  description?: string;
   amounts: string;
   address: string;
-  id: number;
+  id: string;
 }
 interface icard {
   element: IElement;
