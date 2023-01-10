@@ -7,14 +7,14 @@ import { DonationUpdateStyled } from "./modalProductUpdate";
 import { DonationContext } from "../../../contexts/DonationContext";
 
 interface IdataProductUpdate {
-  validation: string;
+  amounts: number;
 }
 
 type FormProductUpdate = {
-  validation: string;
+  amounts: number;
 };
 
-export const ModalProductUpdate = ({ id }: { id: number }) => {
+export const ModalProductUpdate = ({ id }: { id?: number }) => {
   const { donations } = useContext(DonationContext);
 
   const product = donations.find((donation) => id === donation.id);
@@ -52,11 +52,11 @@ export const ModalProductUpdate = ({ id }: { id: number }) => {
         </div>
         <form onSubmit={handleSubmit(testeModalProductUpdate)}>
           <Input
-            label={"Vencimento"}
-            id={"dueDate"}
-            type={"text"}
-            placeholder={"Digite aqui o vencimento"}
-            register={register("validation")}
+            label={"Quantidade"}
+            id={"amounts"}
+            type={"number"}
+            placeholder={"Digite aqui a quantidade"}
+            register={register("amounts")}
           ></Input>
           <Button size={"lg"} theme={"primary"} type={"submit"}>
             Atualizar Doação
