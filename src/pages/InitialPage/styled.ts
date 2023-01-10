@@ -54,6 +54,17 @@ export const StyledInitialPage = styled.div`
     margin-top: 30px;
     position: static;
   }
+
+  .login-form .loading-icon {
+    animation: loadingIcon 2s;
+  }
+
+  @keyframes loadingIcon {
+    to {
+      transform: rotate(2turn);
+    }
+  }
+
   @media screen and (max-width: 1280px) {
     > header, main {
       padding: 15px;

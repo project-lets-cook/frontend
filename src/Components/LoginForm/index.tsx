@@ -6,6 +6,7 @@ import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import spinner from "../../assets/icons/spinner.svg"
 
 export interface iFormLogin {
   email: string;
@@ -18,7 +19,7 @@ type FormLogin = {
 };
 
 export const LoginForm = () => {
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, loading } = useContext(UserContext);
 
   const validate = yup.object().shape({
     email: yup.string().required("O email é obrigatório"),
@@ -41,7 +42,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(login)} noValidate>
+    <form onSubmit={handleSubmit(login)} noValidate className="login-form">
       <div>
         <Input
           label={"E-mail"}
@@ -64,7 +65,7 @@ export const LoginForm = () => {
       </div>
 
       <Button size="lg" theme="primary" type="submit">
-        Entrar
+        {loading ? <><img className="loading-icon" src={spinner} alt="loading-icon" /></> : <>Entrar</>} 
       </Button>
     </form>
   );
