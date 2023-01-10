@@ -15,6 +15,7 @@ export const StyledSheradItens = styled.form`
   position: absolute;
   top: -65px;
   right: 330px;
+
   border: 1px solid
     ${({ focus }: Ifocus) =>
       focus ? "var(--color-primary)" : "var(--color-grey300)"};
@@ -29,6 +30,7 @@ export const StyledSheradItens = styled.form`
     border: none;
     width: 10%;
     height: 90%;
+    margin-top: 5px;
   }
   svg {
     width: 100%;
