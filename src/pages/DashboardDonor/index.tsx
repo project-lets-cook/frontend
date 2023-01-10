@@ -3,7 +3,7 @@ import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
 import { Footer } from "../../Components/footer";
-import { SheradItens } from "../../Components/SheradItens";
+import { SearchItens } from "../../Components/SearchItens";
 import { SetStateAction, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
@@ -18,7 +18,7 @@ export const DashboardDonor = () => {
     <StyledDashboard>
       <Header />
       <section className="container">
-        <SheradItens />
+        <SearchItens />
         <CategoriesMenu />
         <ul>
           {filteredDonations.map((element) => (

@@ -1,11 +1,11 @@
-import { Input } from "./../Forms/Input/index";
+import { Input } from "../Forms/Input/index";
 import styled from "styled-components";
 
 interface Ifocus {
   focus: boolean;
 }
 
-export const StyledSheradItens = styled.form`
+export const StyledSearchItens = styled.form`
   display: flex;
   align-items: center;
   width: 500px;

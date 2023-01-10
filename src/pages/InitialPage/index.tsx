@@ -28,12 +28,12 @@ export const InitialPage = () => {
       {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
         <Modal
-          children={<RegisterFormReceiver />}
-          name={"Registro Doador"}
+          children={ <RegisterFormDonor />}
+          name={"Registro Donatário"}
         />
       )}
       {openRegisterDonor && (
-        <Modal children={<RegisterFormDonor />} name={"Registro Donatário"} />
+        <Modal children={<RegisterFormReceiver />} name={"Registro Doador"} />
       )}
 
       <header>
