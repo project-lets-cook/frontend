@@ -9,7 +9,7 @@ import { DonationContext } from "../../contexts/DonationContext";
 
 export function SheradItens() {
   const [focus, setFocus] = useState(false);
-  const { filteredProducts, setFilteredProducts } = useContext(DonationContext);
+  const { donations, filteredDonations, setFilteredDonations } = useContext(DonationContext);
 
   interface iTarget {
     target: [{ value: string }, { value: string }];
@@ -20,13 +20,11 @@ export function SheradItens() {
     const e = event as unknown as iTarget;
     e.preventDefault();
     const search: string = e?.target[1]?.value;
-    const filterProducts = aliments.filter((p) => {
+    const filterDonations = donations.filter((p) => {
       return p.title.toLowerCase().includes(search.toLowerCase());
     });
 
-    console.log(filteredProducts);
-
-    setFilteredProducts([...filterProducts]);
+    setFilteredDonations(filterDonations);
   };
 
   return (

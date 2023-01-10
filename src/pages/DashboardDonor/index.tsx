@@ -1,7 +1,7 @@
 import { CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { aliments } from "../../services/base";
-import { StyledDashboardDonor } from "./styled";
+import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
 import { Footer } from "../../Components/footer";
 import { SheradItens } from "../../Components/SheradItens";
@@ -21,7 +21,7 @@ export interface IElement {
 }
 
 export const DashboardDonor = () => {
-  const { filteredProducts, setFilteredProducts } = useContext(DonationContext);
+  const { filteredDonations, setFilteredProducts } = useContext(DonationContext);
   const { user, loadingUser } = useContext(UserContext);
 
   if (loadingUser) {
@@ -30,7 +30,7 @@ export const DashboardDonor = () => {
 
   return user ? (
     user?.donor ? (
-      <StyledDashboardDonor>
+      <StyledDashboard>
         <Header />
         <section className="container">
           <SheradItens />
@@ -46,7 +46,7 @@ export const DashboardDonor = () => {
           </ul>
         </section>
         <Footer />
-      </StyledDashboardDonor>
+      </StyledDashboard>
     ) : (
       <Navigate to="/DashboardReceiver" />
     )

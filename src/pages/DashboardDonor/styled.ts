@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledDashboardDonor = styled.main`
+export const StyledDashboard = styled.main`
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,7 +14,7 @@ export const StyledDashboardDonor = styled.main`
     justify-content: space-between;
     position: relative;
     /* background-color: red; */
-    padding: 20px 0;
+  /*   padding: 20px 0; */
     margin-bottom: 20px;
 
     > ul {
