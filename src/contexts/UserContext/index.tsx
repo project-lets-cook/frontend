@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import {
@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
 import { FaLessThan } from "react-icons/fa";
+import { DonationContext } from "../DonationContext";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -24,7 +25,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
-  const [typeUser , setTypeUser] = useState(false)
+  const [isDonor, setIsDonor] = useState(false)
 
   const modalLogin = () => {
     setOpenLogin(true);
@@ -69,36 +70,39 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       try {
         const response = await api.get(`/users/${userID}`, config)
         setUser(response.data)
+        setIsDonor(response.data.donor)
       }
-       catch (error) {
+      catch (error) {
+        console.log(error);
         window.localStorage.clear();
       } finally {
         setLoadingUser(false);
       }
     }
     loadUser();
-    }, []);
+  }, []);
 
   const userLogin = async (data: iFormLogin): Promise<void> => {
     try {
       setLoading(true);
 
       const response = await api.post<iUserResponse>("login", data);
-      const typeOfUser = response.data.user.donor;
+      const isDonorResponse: any = response.data.user.donor;
 
       setUser(response.data.user);
-      setTypeUser(response.data.donor)
+      setIsDonor(isDonorResponse)
 
-      window.localStorage.clear();
       window.localStorage.setItem("TOKEN", response.data.accessToken);
       window.localStorage.setItem("USER", response.data.user.id);
 
       toast.success("Login realizado com sucesso!");
+      setOpenModal(false)
 
-      typeOfUser ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
+      await isDonor ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
 
     } catch (error) {
       toast.error("Ops! Usuário ou Senha inválido!");
+      window.localStorage.clear();
     } finally {
       setLoading(false);
     }
@@ -137,7 +141,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post<iUserResponse>("register", data);
 
       toast.success("Conta criada com sucesso!");
-    
+
       modalClose()
       modalLogin()
 
@@ -155,7 +159,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const userLogout = () => {
     window.localStorage.clear()
-    navigate("/") 
+    navigate("/")
   }
 
   return (
@@ -178,7 +182,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         modalRegisterDonor,
         userRegisterReceiver,
         userLogout,
-        typeUser,
+        isDonor,
         setOpenModal
       }}
     >

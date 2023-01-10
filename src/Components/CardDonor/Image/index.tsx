@@ -18,21 +18,11 @@ export const ImageCards = ({ category }: icategory) => {
       {category === "Cereais" && <img src={Cereals} alt={"Cereais"} />}
       {category === "Hortaliças" && <img src={Vegetables} alt={"Hortaliças"} />}
       {category === "Frutas" && <img src={Fruits} alt={"Frutas"} />}
-      {category === "Carnes & Ovos" && (
-        <img src={MeatAndEggs} alt={"Carnes & Ovos"} />
-      )}
-      {category === "Leite e Derivados" && (
-        <img src={Milk} alt={"Leite e Derivados"} />
-      )}
-      {category === "Óleos & Gorduras" && (
-        <img src={oils} alt={"Óleos & Gorduras"} />
-      )}
-      {category === "Cesta Basica" && (
-        <img src={basicbasket} alt={"Cesta Basica"} />
-      )}
-      {category === "Não Pereciveis" && (
-        <img src={NoPherecives} alt={"Não Pereciveis"} />
-      )}
+      {category === "Carnes & Ovos" && <img src={MeatAndEggs} alt={"Carnes & Ovos"} />}
+      {category === "Leite e Derivados" && <img src={Milk} alt={"Leite e Derivados"} />}
+      {category === "Óleos & Gorduras" && <img src={oils} alt={"Óleos & Gorduras"} />}
+      {category === "Cesta Basica" && <img src={basicbasket} alt={"Cesta Basica"} />}
+      {category === "Não Pereciveis" &&  <img src={NoPherecives} alt={"Não Pereciveis"} />}
     </StyledImageCards>
   );
 };

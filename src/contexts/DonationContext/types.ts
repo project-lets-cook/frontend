@@ -32,7 +32,6 @@ export interface iDonationProviderValue {
   donations: iDonation[];
   donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
-
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
 }

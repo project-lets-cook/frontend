@@ -11,37 +11,31 @@ import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardDonor = () => {
   const { filteredDonations } = useContext(DonationContext);
-  const { user, loadingUser } = useContext(UserContext);
+  const { user, loadingUser ,isDonor } = useContext(UserContext);
 
-  if (loadingUser || !filteredDonations) {
-    return null;
-  }
 
-  return user ? (
-    user?.donor ? (
-      <StyledDashboard>
-        <Header />
-        <section className="container">
-          <SheradItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredDonations.map((element) => (
-              <CardDonor
-                element={element}
-                key={element.id}
-                setModal={function (value: SetStateAction<boolean>): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            ))}
-          </ul>
-        </section>
-        <Footer />
-      </StyledDashboard>
-    ) : (
-      <Navigate to="/DashboardReceiver" />
-    )
+  return (isDonor ? (
+    <StyledDashboard>
+      <Header />
+      <section className="container">
+        <SheradItens />
+        <CategoriesMenu />
+        <ul>
+          {filteredDonations.map((element) => (
+            <CardDonor
+              element={element}
+              key={element.id}
+              setModal={function (value: SetStateAction<boolean>): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
+          ))}
+        </ul>
+      </section>
+      <Footer />
+    </StyledDashboard>
   ) : (
-    <Navigate to="/" />
-  );
+    <Navigate to="/DashboardReceiver" />
+  )
+  )
 };

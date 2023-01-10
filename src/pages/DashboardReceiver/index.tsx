@@ -12,43 +12,32 @@ import { SheradItens } from "../../Components/SheradItens";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardReceiver = () => {
-  const { openModal, user, loadingUser } = useContext(UserContext);
-  const { filteredDonations } = useContext(DonationContext);
 
-  if (loadingUser || !filteredDonations) {
-    return null;
-  }
+  const { openModal, modalOpen, isDonor, loadingUser } = useContext(UserContext)
+  const { filteredDonations } = useContext(DonationContext)
 
-  return user ? (
-    !user?.donor ? (
-      <StyledDashboard>
-        {openModal && (
-          <Modal name={""}>
-            <ProductInfos />
-          </Modal>
-        )}
-        <Header />
-        <section className="container">
-          <SheradItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredDonations.map((element) => (
-              <CardDonor
-                element={element}
-                key={element.id}
-                setModal={function (value: SetStateAction<boolean>): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            ))}
-          </ul>
-        </section>
-        <Footer />
-      </StyledDashboard>
-    ) : (
-      <Navigate to="/DashboardDonor" />
-    )
-  ) : (
-    <Navigate to="/" />
-  );
-};
+
+  return (!isDonor ? (
+    <StyledDashboard>
+      {openModal && <Modal name={""}><ProductInfos /></Modal>}
+      <Header />
+      <section className="container">
+        <SheradItens />
+        <CategoriesMenu />
+        <ul>
+          {filteredDonations.map((element) => (
+            <CardDonor
+              element={element}
+              key={element.id}
+              setModal={function (value: SetStateAction<boolean>): void {
+                throw new Error("Function not implemented.");
+              }} />
+          ))}
+        </ul>
+      </section>
+      <Footer />
+    </StyledDashboard>
+  ) :
+    (<Navigate to="/DashboardDonor" />)
+  )
+}

@@ -22,12 +22,9 @@ interface icard {
 }
 export const CardDonor = ({ element, setModal }: icard) => {
   const { title, category, id } = element;
-  const { typeUser, modalOpen } = useContext(UserContext);
+  const { isDonor, modalOpen } = useContext(UserContext);
   const { getDonationbyId } = useContext(DonationContext);
 
-  const openDonationInfos = (id: number) => {
-    getDonationbyId(id);
-  };
   return (
     <StyledCard>
       <ImageCards category={category} />
@@ -40,7 +37,7 @@ export const CardDonor = ({ element, setModal }: icard) => {
           {category}
         </StyledTypography>
         {/* <hr /> */}
-        {typeUser ? (
+        {isDonor ? (
           <Button
             size={"md"}
             theme={"transparent"}
@@ -54,7 +51,7 @@ export const CardDonor = ({ element, setModal }: icard) => {
             size={"md"}
             theme={"transparent"}
             type={"button"}
-            onclick={() => getDonationbyId(id)}
+              onclick={() => getDonationbyId(id)}
           >
             Detalhes
           </Button>
