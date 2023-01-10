@@ -2,17 +2,31 @@ import { StyledTypography } from '../BaseTypography/style'
 import { Button } from '../Button'
 import { ProductInfosStyled } from './styled'
 import  Cereals  from "../../assets/img/Cereals.jpeg"
+import { DonationContext } from '../../contexts/DonationContext'
+import { useContext } from 'react'
 
 export const ProductInfos = () => {
-  return (
+
+  const { donationInfo } = useContext(DonationContext)
+
+  if (donationInfo) {
+   return (
     <ProductInfosStyled>
-        <img src={Cereals} alt="" />
-        <StyledTypography classText="Heading3" tag="h2">title</StyledTypography>
+        <img src={donationInfo.category} alt="" />
+        <StyledTypography classText="Heading3" tag="h2">{donationInfo.title}</StyledTypography>
         <StyledTypography classText="Caption" tag="h6">Cidade/Estado</StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">Categoria</StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">Qauntidade</StyledTypography>
-        <StyledTypography classText="Caption" tag="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ullam voluptatum nihil dicta iusto eos quas, dolore facere consequatur aut incidunt vel molestiae. Quam et vel maiores consequatur minima eius!</StyledTypography>
+        <StyledTypography classText="Caption" tag="h6">Categoria: {donationInfo.category}</StyledTypography>
+        <StyledTypography classText="Caption" tag="h6">Quantidade: {donationInfo.amounts}</StyledTypography>
+        <StyledTypography classText="Caption" tag="p">{donationInfo.descripition}</StyledTypography>
         <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => console.log('funcionei')}>Solicitar Doação</Button>
     </ProductInfosStyled>
   )
+  } else {
+    return (
+      <>
+      <p></p>
+      </>
+    )
+  }
+  
 }

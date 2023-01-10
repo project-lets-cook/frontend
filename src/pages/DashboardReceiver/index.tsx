@@ -1,13 +1,7 @@
-import { CardInformation } from "../../Components/CardInformation"
 import { CategoriesMenu } from "../../Components/CategoriesMenu"
 import { Header } from "../../Components/Header"
-import { aliments } from "../../services/base"
-import { IElement } from "../DashboardDonor"
-import register from "../../assets/icons/register.png"
-import donate from "../../assets/icons/donate.png"
 import { Footer } from "../../Components/footer"
 import { CardDonor } from "../../Components/CardDonor"
-import { Button } from "../../Components/Button"
 import { useContext } from "react"
 import { Modal } from "../../Components/Modal"
 import { ProductInfos } from "../../Components/ProductInfsos"
@@ -20,7 +14,7 @@ import { DonationContext } from "../../contexts/DonationContext"
 
 export const DashboardReceiver = () => {
 
-  const {openModal, modalOpen, user, loadingUser} = useContext(UserContext)
+  const {openModal, user, loadingUser} = useContext(UserContext)
   const {filteredDonations} = useContext(DonationContext)
 
   if (loadingUser) {
