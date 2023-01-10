@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { StyledSheradItens } from "./style";
+import { StyledSearchItens } from "./style";
 import { BiSearch } from "react-icons/bi";
 import { DonationContext } from "../../contexts/DonationContext";
 import { SelectCity } from "../Forms/Select";
 
-export function SheradItens() {
+export function SearchItens() {
   const [focus, setFocus] = useState(false);
   const { donations, setFilteredDonations } = useContext(DonationContext);
 
@@ -25,7 +25,7 @@ export function SheradItens() {
   };
 
   return (
-    <StyledSheradItens focus={focus} onSubmit={() => searchProducts(event)}>
+    <StyledSearchItens focus={focus} onSubmit={() => searchProducts(event)}>
       <button type="submit">
         <BiSearch />
       </button>
@@ -38,6 +38,6 @@ export function SheradItens() {
         onBlur={() => setFocus(false)}
       />
       <SelectCity />
-    </StyledSheradItens>
+    </StyledSearchItens>
   );
 }

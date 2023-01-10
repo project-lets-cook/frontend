@@ -8,7 +8,7 @@ import { ProductInfos } from "../../Components/ProductInfsos";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { StyledDashboard } from "../DashboardDonor/styled";
-import { SheradItens } from "../../Components/SheradItens";
+import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardReceiver = () => {
@@ -22,7 +22,7 @@ export const DashboardReceiver = () => {
       {openModal && <Modal name={""}><ProductInfos /></Modal>}
       <Header />
       <section className="container">
-        <SheradItens />
+        <SearchItens />
         <CategoriesMenu />
         <ul>
           {filteredDonations.map((element) => (
