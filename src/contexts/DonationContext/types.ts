@@ -16,10 +16,21 @@ export interface iDonation {
   address: string;
   id: string;
 }
+export interface iDonationInfo {
+  userId?: number
+  title?: string
+  category?: string
+  validation?: string
+  descripition?: string
+  amounts?: string
+  id?: number
+}
 
 export interface iDonationProviderValue {
   donations: iDonation[];
+  donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
 
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
+  getDonationbyId: (id: number) => void
 }

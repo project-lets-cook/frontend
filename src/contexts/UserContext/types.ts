@@ -33,6 +33,7 @@ export interface iUserProviderValue {
   modalRegisterReceiver: () => void;
   modalRegisterDonor: () => void;
   userLogout: () => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iUser {
