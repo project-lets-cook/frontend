@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyledCategoriesMenu } from "./styles";
 
-const categories = [
+export const categories = [
   "Todas as Categorias",
   "Cereais",
   "Hortaliças",

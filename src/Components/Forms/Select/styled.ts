@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
 export const SelectCityStyled = styled.form`
-    width: 250px;
+    width: 200px;
     margin-bottom: 20px;
     position: absolute;
     top: -58px;
-    right: 305px;
+    right: 337px;
     display: flex;
     align-items: center;
+    justify-content: center;
     justify-content: flex-start;
+    background-color: var(--color-secondary);
 
     > select {
-    max-width: 250px;
     -webkit-appearance: none;
-    background-color: var(--color-secondary);
     color: var(--color-grey300);
+    background-color: transparent;
     padding: 10px;
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
