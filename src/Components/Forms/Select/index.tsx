@@ -15,7 +15,7 @@ export const SelectCity = () => {
       setFilteredDonations(donations);
     } else {
       setFilteredDonations(
-        donations.filter((donation) => donation.title === city)
+        donations.filter((donation) => donation.address.city === city)
       );
     }
   };
@@ -29,8 +29,8 @@ export const SelectCity = () => {
         <option hidden>Escolher Cidade</option>
         <option value="all">Todas</option>
         {donations.map((donation, i) => (
-          <option key={i} value={donation.title}>
-            {donation.title}
+          <option key={i} value={donation.address.city}>
+            {donation.address.city}
           </option>
         ))}
       </select>
