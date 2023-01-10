@@ -1,6 +1,6 @@
 import { CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
-import { Footer } from "../../Components/footer";
+import { Footer } from "../../Components/Footer";
 import { CardDonor } from "../../Components/CardDonor";
 import { SetStateAction, useContext } from "react";
 import { Modal } from "../../Components/Modal";
@@ -12,14 +12,17 @@ import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardReceiver = () => {
+  const { openModal, modalOpen, isDonor, loadingUser } =
+    useContext(UserContext);
+  const { filteredDonations } = useContext(DonationContext);
 
-  const { openModal, modalOpen, isDonor, loadingUser } = useContext(UserContext)
-  const { filteredDonations } = useContext(DonationContext)
-
-
-  return (!isDonor ? (
+  return !isDonor ? (
     <StyledDashboard>
-      {openModal && <Modal name={""}><ProductInfos /></Modal>}
+      {openModal && (
+        <Modal name={""}>
+          <ProductInfos />
+        </Modal>
+      )}
       <Header />
       <section className="container">
         <SearchItens />
@@ -31,13 +34,14 @@ export const DashboardReceiver = () => {
               key={element.id}
               setModal={function (value: SetStateAction<boolean>): void {
                 throw new Error("Function not implemented.");
-              }} />
+              }}
+            />
           ))}
         </ul>
       </section>
       <Footer />
     </StyledDashboard>
-  ) :
-    (<Navigate to="/DashboardDonor" />)
-  )
-}
+  ) : (
+    <Navigate to="/DashboardDonor" />
+  );
+};

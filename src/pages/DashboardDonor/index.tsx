@@ -2,7 +2,6 @@ import { CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
-import { Footer } from "../../Components/footer";
 import { SearchItens } from "../../Components/SearchItens";
 import { SetStateAction, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -10,13 +9,15 @@ import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
 import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
+import { Footer } from "../../Components/Footer";
 
 export const DashboardDonor = () => {
-  const { filteredDonations } = useContext(DonationContext);
+  const { filteredMyDonations } = useContext(DonationContext);
   const { user, loadingUser, isDonor, openModal } = useContext(UserContext);
 
 
   return (isDonor ? (
+
     <StyledDashboard>
       {openModal && <Modal name={""}><ProductDonor /></Modal>}
       <Header />
@@ -24,7 +25,7 @@ export const DashboardDonor = () => {
         <SearchItens />
         <CategoriesMenu />
         <ul>
-          {filteredDonations.map((element) => (
+          {filteredMyDonations.map((element) => (
             <CardDonor
               element={element}
               key={element.id}
@@ -39,6 +40,5 @@ export const DashboardDonor = () => {
     </StyledDashboard>
   ) : (
     <Navigate to="/DashboardReceiver" />
-  )
-  )
+  ))
 };

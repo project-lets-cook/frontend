@@ -16,7 +16,7 @@ type FormNewAndress = {
 };
 
 export const ModalProfileReceptor = () => {
-  const { user } = useContext(UserContext);
+  const { user, editAdress } = useContext(UserContext);
 
   const {
     register,
@@ -24,8 +24,8 @@ export const ModalProfileReceptor = () => {
     formState: { errors },
   } = useForm<FormNewAndress>();
 
-  const testeModalProfile = (data: IdataNewAndress) => {
-    console.log(data);
+  const editAddressProfile = async (data: IdataNewAndress) => {
+    await editAdress(data);
   };
 
   return (
@@ -37,7 +37,7 @@ export const ModalProfileReceptor = () => {
         <span>{user?.telephone}</span>
       </div>
 
-      <form onSubmit={handleSubmit(testeModalProfile)}>
+      <form onSubmit={handleSubmit(editAddressProfile)}>
         <Input
           label={"Endereço"}
           id={"Endereço"}

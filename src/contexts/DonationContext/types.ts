@@ -20,7 +20,7 @@ export interface iDonation {
   };
 }
 export interface iDonationInfo {
-  userId?: number;
+  userId: number;
   title?: string;
   category?: string;
   validation?: string;
@@ -29,13 +29,18 @@ export interface iDonationInfo {
   id?: number;
   request?: Array<iUser> 
 }
-// interface Irequest extends Array<iUser> 
 
 export interface iDonationProviderValue {
   donations: iDonation[];
   filteredDonations: iDonation[];
+  myDonations: iDonation[];
+  filteredMyDonations: iDonation[];
+  setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
   donation: iDonationInfo
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
+  requestDonation: (user: iUser, id: number) => void;
+  user: iUser 
+
 }

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { DonationContext } from "../../../contexts/DonationContext";
 import { SelectCityStyled } from "./styled";
 
@@ -9,7 +8,8 @@ export interface iLocationForm {
 
 export const SelectCity = () => {
   const { donations, setFilteredDonations } = useContext(DonationContext);
-
+  const cities = [...new Set(donations.map((ele) => ele.address.city))]
+  
   const changeCity = (city: string) => {
     if (city === "all") {
       setFilteredDonations(donations);
@@ -28,9 +28,9 @@ export const SelectCity = () => {
       >
         <option hidden>Escolher Cidade</option>
         <option value="all">Todas</option>
-        {donations.map((donation, i) => (
-          <option key={i} value={donation.address.city}>
-            {donation.address.city}
+        {cities.map((city, i) => (
+          <option key={i} value={city}>
+            {city}
           </option>
         ))}
       </select>
