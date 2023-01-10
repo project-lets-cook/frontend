@@ -13,7 +13,7 @@ export const DashboardDonor = () => {
   const { filteredDonations } = useContext(DonationContext);
   const { user, loadingUser } = useContext(UserContext);
 
-  if (loadingUser) {
+  if (loadingUser || !filteredDonations) {
     return null;
   }
 

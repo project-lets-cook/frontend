@@ -15,7 +15,7 @@ export const DashboardReceiver = () => {
   const { openModal, user, loadingUser } = useContext(UserContext);
   const { filteredDonations } = useContext(DonationContext);
 
-  if (loadingUser) {
+  if (loadingUser || !filteredDonations) {
     return null;
   }
 
