@@ -16,12 +16,13 @@ export interface IElement {
   category: string;
   validation: string;
   description: string;
-  amounts: string;
+  amounts: number;
   id: string;
 }
 
 export const DashboardDonor = () => {
-  const { filteredDonations, setFilteredProducts } = useContext(DonationContext);
+  const { filteredDonations, setFilteredDonations } =
+    useContext(DonationContext);
   const { user, loadingUser } = useContext(UserContext);
 
   if (loadingUser) {
@@ -36,8 +37,8 @@ export const DashboardDonor = () => {
           <SheradItens />
           <CategoriesMenu />
           <ul>
-            {filteredProducts && filteredProducts.length
-              ? filteredProducts.map((element: IElement) => (
+            {filteredDonations && filteredDonations.length
+              ? filteredDonations.map((element: IElement) => (
                   <CardDonor element={element} key={element.id} />
                 ))
               : aliments.map((element: IElement) => (
