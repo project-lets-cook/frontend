@@ -37,7 +37,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           }
       }
       getProducts()
-  }, [reRender])
+  }, [])
   
   return (
     <DonationContext.Provider value={{ 

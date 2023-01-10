@@ -9,7 +9,7 @@ export interface iLocationForm {
 
 export const SelectCity = () => {
 
-    const { donations, setFilteredDonations, reRender, setReRender } = useContext(DonationContext)
+    const { donations, setFilteredDonations } = useContext(DonationContext)
 
     const { register, handleSubmit } = useForm<iLocationForm>({
         mode: 'onChange',
