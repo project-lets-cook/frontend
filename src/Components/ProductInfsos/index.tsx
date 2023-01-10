@@ -1,7 +1,6 @@
 import { StyledTypography } from '../BaseTypography/style'
 import { Button } from '../Button'
 import { ProductInfosStyled } from './styled'
-import  Cereals  from "../../assets/img/Cereals.jpeg"
 import { DonationContext } from '../../contexts/DonationContext'
 import { useContext } from 'react'
 
