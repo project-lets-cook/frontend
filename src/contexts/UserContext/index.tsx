@@ -204,6 +204,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userLogout,
         isDonor,
         setOpenModal,
+        editAdress,
       }}
     >
       {children}
