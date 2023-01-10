@@ -1,28 +1,16 @@
 import { CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
-import { aliments } from "../../services/base";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
 import { Footer } from "../../Components/footer";
 import { SheradItens } from "../../Components/SheradItens";
-import { useContext } from "react";
+import { SetStateAction, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
-import { SelectCity } from "../../Components/Forms/Select";
-
-export interface IElement {
-  userId: string;
-  title: string;
-  category: string;
-  validation: string;
-  description: string;
-  amounts: number;
-  id: string;
-}
 
 export const DashboardDonor = () => {
-  const { filteredDonations, donations } = useContext(DonationContext);
+  const { filteredDonations } = useContext(DonationContext);
   const { user, loadingUser } = useContext(UserContext);
 
   if (loadingUser) {
@@ -35,16 +23,17 @@ export const DashboardDonor = () => {
         <Header />
         <section className="container">
           <SheradItens />
-          <SelectCity />
           <CategoriesMenu />
           <ul>
-            {filteredDonations && filteredDonations.length
-              ? filteredDonations.map((element: IElement) => (
-                  <CardDonor element={element} key={element.id} />
-                ))
-              : donations.map((element: IElement) => (
-                  <CardDonor element={element} key={element.id} />
-                ))}
+            {filteredDonations.map((element) => (
+              <CardDonor
+                element={element}
+                key={element.id}
+                setModal={function (value: SetStateAction<boolean>): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            ))}
           </ul>
         </section>
         <Footer />

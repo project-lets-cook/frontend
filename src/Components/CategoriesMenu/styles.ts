@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCategoriesMenu = styled.aside`
-  padding: 50px;
+  padding: 20px 50px;
 
   /* margin-top: 30px; */
 

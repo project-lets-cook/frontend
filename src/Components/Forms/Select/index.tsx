@@ -1,39 +1,39 @@
-import { useContext } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
-import { DonationContext } from "../../../contexts/DonationContext"
-import { SelectCityStyled } from "./styled"
+import { useContext, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { DonationContext } from "../../../contexts/DonationContext";
+import { SelectCityStyled } from "./styled";
 
 export interface iLocationForm {
-    locations: string
-  }
+  locations: string;
+}
 
 export const SelectCity = () => {
+  const { donations, setFilteredDonations } = useContext(DonationContext);
 
-    const { donations, setFilteredDonations } = useContext(DonationContext)
-
-    const { register, handleSubmit } = useForm<iLocationForm>({
-        mode: 'onChange',
-    })
-
-    const submit: SubmitHandler<iLocationForm> = (data) => {
-        if (data.locations === 'all') {
-            setFilteredDonations(donations)
-        } else {
-        setFilteredDonations(donations.filter((donation) => donation.title === data.locations))
-        }
+  const changeCity = (city: string) => {
+    if (city === "all") {
+      setFilteredDonations(donations);
+    } else {
+      setFilteredDonations(
+        donations.filter((donation) => donation.title === city)
+      );
     }
+  };
 
-
-    return (
-        <SelectCityStyled onChange={handleSubmit(submit)}>
-            <select id="locations" {...register('locations')}>
-                <option hidden>Escolher Cidade</option>
-                <option value="all">Todas</option>
-                {donations.map((donation, i) =>
-                    <option key={i} value={donation.title}>{donation.title}</option>
-                )}
-            </select>
-        </SelectCityStyled>
-    )
-
-}
+  return (
+    <SelectCityStyled>
+      <select
+        id="locations"
+        onChange={(event) => changeCity(event.target.value)}
+      >
+        <option hidden>Escolher Cidade</option>
+        <option value="all">Todas</option>
+        {donations.map((donation, i) => (
+          <option key={i} value={donation.title}>
+            {donation.title}
+          </option>
+        ))}
+      </select>
+    </SelectCityStyled>
+  );
+};
