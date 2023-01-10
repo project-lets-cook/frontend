@@ -6,6 +6,7 @@ import { InputPassword } from "../Forms/InputPassword";
 import { Button } from "../Button";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { Loader } from "../Loader";
 
 export interface iFormLogin {
   email: string;
@@ -18,7 +19,7 @@ type FormLogin = {
 };
 
 export const LoginForm = () => {
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, loading } = useContext(UserContext);
 
   const validate = yup.object().shape({
     email: yup.string().required("O email é obrigatório"),
@@ -50,7 +51,7 @@ export const LoginForm = () => {
           register={register("email")}
           placeholder={"Digite seu email aqui"}
         />
-        {errors.email?.message && <p>{errors.email.message}</p>}
+        {errors.email?.message ? <p>{errors.email.message}</p> : <p></p>}
       </div>
 
       <div>
@@ -60,11 +61,11 @@ export const LoginForm = () => {
           register={register("password")}
           placeholder={"Digite sua senha aqui"}
         />
-        {errors.password?.message && <p>{errors.password.message}</p>}
+        {errors.password?.message ? <p>{errors.password.message}</p> : <p></p>}
       </div>
 
-      <Button size="lg" theme="primary" type="submit">
-        Entrar
+      <Button size="lg" theme="primary" type="submit" disabled={loading}>
+        {!loading ? "Entrar" : <Loader />}
       </Button>
     </form>
   );

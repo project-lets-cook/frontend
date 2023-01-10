@@ -8,7 +8,7 @@ import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
 import { StepsCarousel } from "../../Components/StepsCarousel";
 import { Navigate } from "react-router-dom";
-import { Footer } from "../../Components/footer";
+import { Footer } from "../../Components/Footer";
 
 export const InitialPage = () => {
   const {
@@ -18,19 +18,16 @@ export const InitialPage = () => {
     modalLogin,
     modalRegisterReceiver,
     modalRegisterDonor,
-    user
+    user,
   } = useContext(UserContext);
 
   const token = localStorage.getItem("TOKEN");
 
-  return (token === null ?
+  return token === null ? (
     <StyledInitialPage>
       {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
-        <Modal
-          children={ <RegisterFormDonor />}
-          name={"Registro Donatário"}
-        />
+        <Modal children={<RegisterFormDonor />} name={"Registro Donatário"} />
       )}
       {openRegisterDonor && (
         <Modal children={<RegisterFormReceiver />} name={"Registro Doador"} />
@@ -79,9 +76,9 @@ export const InitialPage = () => {
           </div>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </StyledInitialPage>
-    :
+  ) : (
     <Navigate to="/DashboardReceiver" />
   );
 };
