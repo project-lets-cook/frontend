@@ -6,12 +6,16 @@ interface iButtonStyledProps {
 export const ButtonStyled = styled.button<iButtonStyledProps>`
   font-weight: 600;
   letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${({ size }) => {
     switch (size) {
       case "lg":
         return css`
-          padding: 20px;
+          height: 50px;
+          padding: 15px;
           width: 100%;
           font-size: 16px;
         `;
