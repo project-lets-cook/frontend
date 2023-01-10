@@ -57,6 +57,25 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       console.error(error)
     }
   }
+  const getDonationForDonor = async (id: number) => {
+    
+    const token = localStorage.getItem("TOKEN");
+    
+    if (!token) {
+      return null
+    }
+    try {
+      const { data } = await api.get(`donation/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      setInfoDonation(data)
+      setOpenModal(true)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <DonationContext.Provider value={{
@@ -65,6 +84,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setFilteredDonations,
       getDonationbyId,
       donationInfo,
+      getDonationForDonor,
     }}>
       {children}
     </DonationContext.Provider>
