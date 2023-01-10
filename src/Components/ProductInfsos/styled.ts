@@ -13,7 +13,7 @@ export const ProductInfosStyled = styled.div`
 
         overflow: hidden;
         align-self: center;
-        background-color: purple;
+        background-color: var(--color-grey100);
         border-radius: 5px;
     }
 

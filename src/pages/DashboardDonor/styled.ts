@@ -10,12 +10,12 @@ export const StyledDashboard = styled.main`
 
   section:nth-child(2) {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     position: relative;
     /* background-color: red; */
-  /*   padding: 20px 0; */
-    margin-bottom: 20px;
+    padding: 20px 0;
+    /* margin-bottom: 40px; */
 
     > ul {
       width: 100%;
@@ -23,7 +23,7 @@ export const StyledDashboard = styled.main`
       display: flex;
       flex-direction: row;
       align-items: flex-start;
-      justify-content: center;
+      /* justify-content: center; */
       flex-wrap: wrap;
       gap: 20px;
       max-height: 500px;

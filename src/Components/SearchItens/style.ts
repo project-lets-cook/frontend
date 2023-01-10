@@ -1,11 +1,11 @@
-import { Input } from "./../Forms/Input/index";
+import { Input } from "../Forms/Input/index";
 import styled from "styled-components";
 
 interface Ifocus {
   focus: boolean;
 }
 
-export const StyledSheradItens = styled.form`
+export const StyledSearchItens = styled.form`
   display: flex;
   align-items: center;
   width: 500px;
@@ -15,6 +15,7 @@ export const StyledSheradItens = styled.form`
   position: absolute;
   top: -65px;
   right: 330px;
+
   border: 1px solid
     ${({ focus }: Ifocus) =>
       focus ? "var(--color-primary)" : "var(--color-grey300)"};
@@ -29,6 +30,7 @@ export const StyledSheradItens = styled.form`
     border: none;
     width: 10%;
     height: 90%;
+    margin-top: 5px;
   }
   svg {
     width: 100%;

@@ -34,7 +34,8 @@ export const InputStyled = styled.div`
     left: 0;
   }
 
-  & > input {
+  & > input,
+  textarea {
     width: 100%;
     margin: 0 10px;
     padding: 5px;

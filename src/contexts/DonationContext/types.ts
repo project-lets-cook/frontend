@@ -6,20 +6,32 @@ export interface iDonationProviderProps {
 }
 
 export interface iDonation {
-  userId: string;
-  img: string;
+  userId: number;
   title: string;
   category: string;
   validation: string;
-  description: string;
+  descripition: string;
   amounts: number;
-  address: string;
-  id: string;
+  id: number;
+  address: {
+    city: string;
+    state: string;
+  };
+}
+export interface iDonationInfo {
+  userId?: number;
+  title?: string;
+  category?: string;
+  validation?: string;
+  descripition?: string;
+  amounts?: string;
+  id?: number;
 }
 
 export interface iDonationProviderValue {
   donations: iDonation[];
+  donationInfo: iDonationInfo[];
   filteredDonations: iDonation[];
-
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
+  getDonationbyId: (id: number) => void;
 }

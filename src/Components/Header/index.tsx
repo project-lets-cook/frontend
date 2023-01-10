@@ -2,7 +2,7 @@ import { StyledHeader } from "./styled"
 import { FiLogOut } from "react-icons/fi"
 import logo from "../../assets/icons/logo.png"
 import imgError from "../../assets/img/imgnotfound.jpg"
-import { SheradItens } from "../SheradItens"
+import { SearchItens } from "../SearchItens"
 import { SyntheticEvent, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
 import { SelectCity } from "../Forms/Select"
@@ -10,7 +10,7 @@ import { SelectCity } from "../Forms/Select"
 
 export const Header = () => {
 
-    const { userLogout } = useContext(UserContext)
+    const { userLogout, user } = useContext(UserContext)
 
     const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
         (event.target as HTMLImageElement).src = `${imgError}`;
@@ -22,7 +22,9 @@ export const Header = () => {
                 <div>
                     <img src={logo} alt="" />
                     <div>
-                        <img src="img" alt="name" onError={addDefaultImg} />
+                        {user? <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} />:
+                          <img src={imgError} alt='profilepic' />}
+                        
                         <button type="button" onClick={userLogout}>
                             <FiLogOut />
                         </button>

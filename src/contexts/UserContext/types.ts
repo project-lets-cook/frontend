@@ -17,7 +17,7 @@ export interface iUserProviderProps {
 
 export interface iUserProviderValue {
   user: iUser | null;
-  typeUser: boolean;
+  isDonor: boolean;
   setUser: (user: iUser | null) => void;
 
   loading: boolean;
@@ -38,6 +38,7 @@ export interface iUserProviderValue {
   modalRegisterReceiver: () => void;
   modalRegisterDonor: () => void;
   userLogout: () => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iUser {
@@ -53,5 +54,4 @@ export interface iUserResponse {
   accessToken: string;
 
   user: iUser;
-  donor: boolean;
 }
