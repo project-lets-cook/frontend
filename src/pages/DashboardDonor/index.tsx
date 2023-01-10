@@ -8,42 +8,49 @@ import { SheradItens } from "../../Components/SheradItens";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
+import { DonationContext } from "../../contexts/DonationContext";
 
 export interface IElement {
-  userId: number;
+  userId: string;
   title: string;
   category: string;
   validation: string;
-  descripition: string;
-  amounts: number;
-  id: number;
+  description: string;
+  amounts: string;
+  id: string;
 }
 
 export const DashboardDonor = () => {
-
-  const { user, loadingUser } = useContext(UserContext)
+  const { filteredProducts, setFilteredProducts } = useContext(DonationContext);
+  const { user, loadingUser } = useContext(UserContext);
 
   if (loadingUser) {
-    return null
+    return null;
   }
 
-    return ( user ? 
-       (user?.donor ? 
-        <StyledDashboardDonor>
+  return user ? (
+    user?.donor ? (
+      <StyledDashboardDonor>
         <Header />
         <section className="container">
           <SheradItens />
           <CategoriesMenu />
           <ul>
-            {aliments.map((element: IElement) => (
-              <CardDonor element={element} key={element.id} />
-            ))}
+            {filteredProducts && filteredProducts.length
+              ? filteredProducts.map((element: IElement) => (
+                  <CardDonor element={element} key={element.id} />
+                ))
+              : aliments.map((element: IElement) => (
+                  <CardDonor element={element} key={element.id} />
+                ))}
           </ul>
         </section>
         <Footer />
-      </StyledDashboardDonor> 
-      :
-      <Navigate to="/DashboardReceiver"/>)
-      : <Navigate to= "/"/>
-    );
+      </StyledDashboardDonor>
+    ) : (
+      <Navigate to="/DashboardReceiver" />
+    )
+  ) : (
+    <Navigate to="/" />
+  );
 };

@@ -13,7 +13,6 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations ] = useState<iDonation[]>([]);
-  const [reRender , setReRender ] = useState(false)
   const {user} = useContext(UserContext)
 
   useEffect(() => {
@@ -45,8 +44,6 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
      donations,
      filteredDonations,
      setFilteredDonations,
-     reRender,
-     setReRender
      }}>
       {children}
     </DonationContext.Provider>

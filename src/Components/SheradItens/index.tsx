@@ -1,24 +1,46 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { StyledSheradItens } from "./style";
 import { BiSearch } from "react-icons/bi";
 import { StepsCarousel } from "../StepsCarousel";
+import { aliments } from "../../services/base";
+import { IElement } from "../CardDonor";
+import { DonationContext } from "../../contexts/DonationContext";
 
 export function SheradItens() {
   const [focus, setFocus] = useState(false);
-  // const { register, handleSubmit } = useForm()
+  const { filteredProducts, setFilteredProducts } = useContext(DonationContext);
+
+  interface iTarget {
+    target: [{ value: string }, { value: string }];
+    preventDefault: () => void;
+  }
+
+  const searchProducts = (event: Event | undefined) => {
+    const e = event as unknown as iTarget;
+    e.preventDefault();
+    const search: string = e?.target[1]?.value;
+    const filterProducts = aliments.filter((p) => {
+      return p.title.toLowerCase().includes(search.toLowerCase());
+    });
+
+    console.log(filteredProducts);
+
+    setFilteredProducts([...filterProducts]);
+  };
 
   return (
     <>
-      <StyledSheradItens focus={focus}>
+      <StyledSheradItens focus={focus} onSubmit={() => searchProducts(event)}>
         {/* <div> */}
         {/* <StepsCarousel /> */}
         {/* </div> */}
-        <button>
+        <button type="submit">
           <BiSearch />
         </button>
         <input
-          required
+          type="text"
+          // required
           placeholder="Digitar Pesquisa"
           // {...register("sherad")}
           onFocus={() => setFocus(!focus)}
