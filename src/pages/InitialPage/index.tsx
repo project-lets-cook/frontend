@@ -8,6 +8,7 @@ import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
 import { StepsCarousel } from "../../Components/StepsCarousel";
 import { Navigate } from "react-router-dom";
+import { Footer } from "../../Components/footer";
 
 export const InitialPage = () => {
   const {
@@ -27,12 +28,12 @@ export const InitialPage = () => {
       {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
       {openRegisterReceiver && (
         <Modal
-          children={<RegisterFormDonor />}
+          children={<RegisterFormReceiver />}
           name={"Registro Doador"}
         />
       )}
       {openRegisterDonor && (
-        <Modal children={<RegisterFormReceiver />} name={"Registro Donatário"} />
+        <Modal children={<RegisterFormDonor />} name={"Registro Donatário"} />
       )}
 
       <header>
@@ -78,6 +79,7 @@ export const InitialPage = () => {
           </div>
         </div>
       </main>
+      <Footer/>
     </StyledInitialPage>
     :
     <Navigate to="/DashboardReceiver" />
