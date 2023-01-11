@@ -13,32 +13,36 @@ import { Footer } from "../../Components/Footer";
 
 export const DashboardDonor = () => {
   const { filteredMyDonations } = useContext(DonationContext);
-  const { user, loadingUser, isDonor, openModal } = useContext(UserContext);
+  const { isDonor, openModal } = useContext(UserContext);
 
-
-  return (isDonor ? (
-
-    <StyledDashboard>
-      {openModal && <Modal name={""}><ProductDonor /></Modal>}
-      <Header />
-      <section className="container">
-        <SearchItens />
-        <CategoriesMenu />
-        <ul>
-          {filteredMyDonations.map((element) => (
-            <CardDonor
-              element={element}
-              key={element.id}
-              setModal={function (value: SetStateAction<boolean>): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
-          ))}
-        </ul>
-      </section>
-      <Footer />
-    </StyledDashboard>
+  return isDonor ? (
+    <>
+      {openModal && (
+        <Modal name={""}>
+          <ProductDonor />
+        </Modal>
+      )}
+      <StyledDashboard>
+        <Header />
+        <section className="container">
+          <SearchItens />
+          <CategoriesMenu />
+          <ul>
+            {filteredMyDonations.map((element) => (
+              <CardDonor
+                element={element}
+                key={element.id}
+                setModal={function (value: SetStateAction<boolean>): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            ))}
+          </ul>
+        </section>
+        <Footer />
+      </StyledDashboard>
+    </>
   ) : (
     <Navigate to="/DashboardReceiver" />
-  ))
+  );
 };
