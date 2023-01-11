@@ -25,4 +25,8 @@ export const StyledCategoriesMenu = styled.aside`
       background-color: var(--color-grey50);
     }
   }
+
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
 `;
