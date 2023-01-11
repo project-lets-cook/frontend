@@ -5,6 +5,7 @@ export const StyledAbout = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-image: url("../../src/assets/img/banner.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,7 +17,7 @@ export const StyledAbout = styled.div`
     justify-content: space-between;
     flex-direction: column;
     position: relative;
-    padding: 40px 0 70px 0;
+    padding: 50px 0;
 
     & > a {
       font-size: 15px;
@@ -32,9 +33,19 @@ export const StyledAbout = styled.div`
     }
   }
 
-  > div {
-    max-width: 1200px;
-    margin: 0 auto;
+  main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: red; */
+    > div {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 
   @media screen and (max-width: 520px) {
@@ -44,6 +55,7 @@ export const StyledAbout = styled.div`
     background-size: contain;
 
     > header {
+      padding-bottom: 40px;
       > a {
         position: fixed;
         top: unset;
