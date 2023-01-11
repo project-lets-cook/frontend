@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
-import { UserContext, UserProvider } from "../UserContext";
+import { UserContext } from "../UserContext";
 import { iUser } from "../UserContext/types";
 import {
   iDonation,
@@ -113,6 +113,38 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     getMyDonations();
   }, [user]);
 
+  const createDonation = async (data: iDonation) => {
+    const token = localStorage.getItem("TOKEN");
+    const userId = localStorage.getItem("USER");
+    const body = {
+      userId: userId,
+      title: data.title,
+      category: data.category,
+      validation: data.validation,
+      description: data.descripition,
+      amounts: data.amounts,
+      address: {
+        city: data.address.city,
+        state: data.address.state,
+      },
+    }
+    if (!token) {
+      return null;
+    } 
+
+    try {
+      await api.post('donation/', JSON.stringify(body), {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Doação adicionada com sucesso!");
+    } catch (error) {
+      console.error(error)
+      toast.error("algo deu errado tente novamente!");
+    }
+  }
+ 
   return (
     <DonationContext.Provider value={{
       donations,
@@ -126,7 +158,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       filteredMyDonations,
       setFilteredMyDonations,
       requests,
-      modalLoading
+      modalLoading,
+      createDonation
     }}>
       {children}
     </DonationContext.Provider>
