@@ -1,4 +1,4 @@
-import { CategoriesMenu } from "../../Components/CategoriesMenu";
+import { categories, CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
@@ -62,18 +62,23 @@ export const DashboardDonor = () => {
                 ))
               )}
             </ul>
+            <select name="" id="">
+              {categories.map((elem) => (
+                <option value={elem}>{elem}</option>
+              ))}
+            </select>
+            <Button
+              size={"md"}
+              theme={"primary"}
+              type={"button"}
+              onclick={() => {
+                setAddDonarionForm(true);
+              }}
+            >
+              +
+            </Button>
           </section>
-          <Button
-            size={"md"}
-            theme={"primary"}
-            type={"button"}
-            onclick={() => { setAddDonarionForm(true)}}
-          >
-            Adicionar Doação
-          </Button>
         </main>
-        <Footer />
-
       </StyledDashboard>
     </>
   ) : (

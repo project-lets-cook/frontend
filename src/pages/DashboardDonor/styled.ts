@@ -16,6 +16,36 @@ export const StyledDashboard = styled.div`
       position: relative;
       padding: 30px 0;
 
+      > select {
+        display: none;
+        color: var(--color-grey300);
+        font-size: 15px;
+        border: 1px solid var(--color-grey300);
+        width: 220px;
+        height: 35px;
+        position: absolute;
+        left: 15px;
+        top: 42px;
+        padding: 0 20px;
+        border-radius: 5px;
+
+        :focus {
+          border: 1px solid var(--color-primary);
+        }
+      }
+
+      > button {
+        font-size: 35px;
+        padding-top: 100px;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        right: 30px;
+        top: 40px;
+        padding: 20px 20px;
+        border-radius: 5px;
+      }
+
       > ul {
         width: 100%;
         padding: 5px 0;
@@ -64,9 +94,21 @@ export const StyledDashboard = styled.div`
     gap: 0;
     > main {
       > section {
-        padding-top: 50px;
+        padding-top: 110px;
+
+        > select {
+          display: block;
+        }
+
+        > button {
+          right: 15px;
+          width: 40px;
+          height: 40px;
+          top: 40px;
+        }
+
         ul {
-          padding: 0 10px;
+          padding: 0 15px;
           flex-wrap: nowrap;
           overflow-x: scroll;
           li {

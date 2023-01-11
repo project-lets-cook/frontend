@@ -24,6 +24,12 @@ export const StyledHeader = styled.header`
         width: 45px;
         height: 45px;
         border-radius: 50%;
+        border: 3px solid var(--color-grey50);
+
+        :hover {
+          cursor: pointer;
+          border: 3px solid var(--color-primary);
+        }
       }
 
       > button {
@@ -31,12 +37,13 @@ export const StyledHeader = styled.header`
         height: 30px;
         background-color: transparent;
         border-style: none;
+
         color: var(--color-grey300);
       }
     }
-
   }
-  button, svg {
+  button,
+  svg {
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -50,7 +57,7 @@ export const StyledHeader = styled.header`
       padding-left: 10px;
 
       > img {
-        width: 120px;
+        width: 140px;
       }
 
       > div {
@@ -60,7 +67,6 @@ export const StyledHeader = styled.header`
         padding-right: 15px;
         gap: 5px;
         > img {
-          border: 1px solid green;
           transform: scale(0.7);
         }
       }

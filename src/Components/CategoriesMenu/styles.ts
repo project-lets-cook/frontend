@@ -12,6 +12,7 @@ export const StyledCategoriesMenu = styled.aside`
     flex-direction: column;
     gap: 5px;
     background-color: var(--color-grey50);
+    border-radius: 1px;
 
     box-shadow: -2px 2px 2px 3px var(--color-secondary);
     position: relative;
