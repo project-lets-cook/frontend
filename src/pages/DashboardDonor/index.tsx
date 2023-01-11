@@ -13,34 +13,45 @@ import { Footer } from "../../Components/Footer";
 import { Loader } from "../../Components/Loader";
 
 export const DashboardDonor = () => {
+
   const { filteredMyDonations, modalLoading } = useContext(DonationContext);
-  const { user, loadingUser, isDonor, openModal } = useContext(UserContext);
+  const { isDonor, openModal } = useContext(UserContext);
 
-
-  return (isDonor ? (
-
-    <StyledDashboard>
+  return isDonor ? (
+    <>
       {modalLoading && <div className="modal-loading-box"> <Loader/> </div>}
-      {openModal && <Modal name={""}><ProductDonor /></Modal>}
-      <Header />
-      <section className="container">
-        <SearchItens />
-        <CategoriesMenu />
-        <ul>
-          {filteredMyDonations.map((element) => (
-            <CardDonor
-              element={element}
-              key={element.id}
-              setModal={function (value: SetStateAction<boolean>): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
-          ))}
-        </ul>
-      </section>
-      <Footer />
-    </StyledDashboard>
+      {openModal && (
+        <Modal name={""}>
+          <ProductDonor />
+        </Modal>
+      )}
+      <StyledDashboard>
+        <Header />
+        <section className="container">
+          <SearchItens />
+          <CategoriesMenu />
+          <ul>
+            {filteredMyDonations.length === 0 ? (
+              <div className="waring-my-donations">
+                <p>Você ainda não fez doações</p>
+              </div>
+            ) : (
+              filteredMyDonations.map((element) => (
+                <CardDonor
+                  element={element}
+                  key={element.id}
+                  setModal={function (value: SetStateAction<boolean>): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                />
+              ))
+            )}
+          </ul>
+        </section>
+        <Footer />
+      </StyledDashboard>
+    </>
   ) : (
     <Navigate to="/DashboardReceiver" />
-  ))
+  );
 };

@@ -28,7 +28,6 @@ export const StyledModal = styled.div`
   }
 
   .default-modal-header {
-    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     width: 95%;
@@ -55,7 +54,6 @@ export const StyledModal = styled.div`
   }
 
   .form-input-box > form {
-    /* background-color: red; */
     width: 95%;
     display: flex;
     flex-direction: column;
