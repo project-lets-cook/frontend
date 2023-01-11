@@ -13,7 +13,11 @@ export const StyledSearchItens = styled.form`
   border-radius: 4px;
   position: absolute;
   top: -60px;
-  right: 330px;
+  /* right: 330px; */
+
+  width: 250px;
+  margin: 0 auto;
+  width: 60%;
 
   border: 1px solid
     ${({ focus }: Ifocus) =>
@@ -51,8 +55,16 @@ export const StyledSearchItens = styled.form`
 
   @media screen and (max-width: 520px) {
     width: 250px;
-    height: 35px;
-    top: -41px;
-    left: 15px;
+    width: 95vw;
+    height: 30px;
+    top: -35px;
+    padding: 0 5px;
+
+    > div {
+      > select {
+        padding: 0 10px;
+        height: 22px;
+      }
+    }
   }
 `;
