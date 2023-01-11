@@ -28,6 +28,7 @@ export const StyledDashboard = styled.div`
         overflow-y: auto;
       }
     }
+  }
 
   .modal-loading-box {
     display: flex;
@@ -75,5 +76,4 @@ export const StyledDashboard = styled.div`
       }
     }
   }
-
 `;
