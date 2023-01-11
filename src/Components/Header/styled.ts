@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
+
     > div {
       display: flex;
       align-items: center;
@@ -24,6 +24,12 @@ export const StyledHeader = styled.header`
         width: 45px;
         height: 45px;
         border-radius: 50%;
+        border: 3px solid var(--color-grey50);
+
+        :hover {
+          cursor: pointer;
+          border: 3px solid var(--color-primary);
+        }
       }
 
       > button {
@@ -31,12 +37,13 @@ export const StyledHeader = styled.header`
         height: 30px;
         background-color: transparent;
         border-style: none;
+
         color: var(--color-grey300);
       }
     }
-
   }
-  button, svg {
+  button,
+  svg {
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -50,26 +57,22 @@ export const StyledHeader = styled.header`
   }
 
   @media screen and (max-width: 520px) {
-    /* display: flex;
-    flex-direction: column; */
-    display: inline;
-    background: none;
-    box-shadow: none;
-
     > div {
-      display: inline;
-      flex-direction: column;
+      margin-top: 15px;
+      align-items: flex-start;
+      padding-left: 10px;
+
+      > img {
+        width: 140px;
+      }
 
       > div {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        border: 1px solid blue;
         padding-right: 15px;
-        gap: 10px;
-
+        gap: 5px;
         > img {
-          border: 1px solid green;
           transform: scale(0.7);
         }
       }

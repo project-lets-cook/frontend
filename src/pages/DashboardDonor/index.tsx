@@ -1,4 +1,4 @@
-import { CategoriesMenu } from "../../Components/CategoriesMenu";
+import { categories, CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
@@ -16,11 +16,23 @@ import { Button } from "../../Components/Button";
 import { ModalProfile } from "../../Components/Modal/modalProfile";
 
 export const DashboardDonor = () => {
-  const [modalProductDonor, setModalProductDonor] = useState(false)
-  const [modalAddDonarionForm, setAddDonarionForm] = useState(false)
-  const { filteredMyDonations } = useContext(DonationContext);
+
+  const [modalProductDonor, setModalProductDonor] = useState(false);
+  const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
+  const { myDonations, filteredMyDonations, setFilteredMyDonations } = useContext(DonationContext);
   const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
-  
+
+
+  const changeCategory = (cat: string) => {
+    if (cat === "Todas as Categorias") {
+      setFilteredMyDonations(myDonations);
+    } else {
+      setFilteredMyDonations(
+        myDonations.filter((donation) => donation.category === cat)
+      );
+    }
+  };
+
   return isDonor ? (
     <>
       {modalProfile && 
@@ -33,45 +45,56 @@ export const DashboardDonor = () => {
       {modalProductDonor &&
         <Modal name={""}
           state={modalProductDonor}
-          setState={setModalProductDonor} >
+          setState={setModalProductDonor}
+        >
           <ProductDonor />
         </Modal>
-      }
-      {modalAddDonarionForm &&
-        <Modal name={"Adicionar Doação"}
+      )}
+      {modalAddDonarionForm && (
+        <Modal
+          name={"Adicionar Doação"}
           state={modalAddDonarionForm}
-          setState={setAddDonarionForm}>
+          setState={setAddDonarionForm}
+        >
           <AddDonarionForm />
-        </Modal>}
+        </Modal>
+      )}
       <StyledDashboard>
         <Header />
-
-        <section className="container">
-          <SearchItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredMyDonations.length === 0 ? (
-              <div className="waring-my-donations">
-                <p>Você ainda não fez doações</p>
-              </div>
-            ) : (
-              filteredMyDonations.map((element) => (
-                <CardDonor
-                  element={element}
-                  key={element.id}
-                  setModal={setModalProductDonor} />
-              ))
-            )}
-          </ul>
-          <Button
-            size={"md"}
-            theme={"primary"}
-            type={"button"}
-            onclick={() => { setAddDonarionForm(true)}}
-          >
-            Novas Doaçoes
-          </Button>
-        </section>
+        <main>
+          <section className="container">
+            <SearchItens />
+            <CategoriesMenu />
+            <ul>
+              {filteredMyDonations.length === 0 ? (
+                <div className="waring-my-donations">
+                  <p>Você ainda não fez doações</p>
+                </div>
+              ) : (
+                filteredMyDonations.map((element) => (
+                  <CardDonor
+                    element={element}
+                    key={element.id}
+                    setModal={setModalProductDonor}
+                  />
+                ))
+              )}
+            </ul>
+            <select id="categorys" onChange={(event) => changeCategory(event.target.value)}>
+              {categories.map((ele, i) => <option key={i} value={ele}>{ele}</option>)}
+            </select>
+            <Button
+              size={"md"}
+              theme={"primary"}
+              type={"button"}
+              onclick={() => {
+                setAddDonarionForm(true);
+              }}
+            >
+              +
+            </Button>
+          </section>
+        </main>
         <Footer />
       </StyledDashboard>
     </>

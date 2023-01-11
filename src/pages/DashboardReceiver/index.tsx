@@ -1,4 +1,4 @@
-import { CategoriesMenu } from "../../Components/CategoriesMenu";
+import { categories, CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
 import { Footer } from "../../Components/Footer";
 import { CardDonor } from "../../Components/CardDonor";
@@ -12,11 +12,27 @@ import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 import { ModalProfile } from "../../Components/Modal/modalProfile";
 
+
 export const DashboardReceiver = () => {
   const [modalProductInfos, setModalProductInfos] = useState(false)
 
-  const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
-  const { filteredDonations } = useContext(DonationContext);
+  const { isDonor,  modalProfile, setModalProfile } = useContext(UserContext);
+  const { filteredDonations, setFilteredDonations, donations } = useContext(DonationContext);
+
+  const changeCategory = (cat: string) => {
+    if (cat === "Todas as Categorias") {
+      setFilteredDonations(donations);
+    } else {
+      setFilteredDonations(
+        donations.filter((donation) => donation.category === cat)
+      );
+    }
+  };
+
+
+  function setAddDonarionForm(arg0: boolean) {
+    throw new Error("Function not implemented.");
+  }
 
   return !isDonor ? (
     <>
@@ -35,6 +51,7 @@ export const DashboardReceiver = () => {
       )}
       <StyledDashboard>
         <Header />
+        <main>
         <section className="container">
           <SearchItens />
           <CategoriesMenu />
@@ -47,7 +64,11 @@ export const DashboardReceiver = () => {
               />
             ))}
           </ul>
+          <select id="categorys" onChange={(event) => changeCategory(event.target.value)}>
+              {categories.map((ele, i) => <option key={i} value={ele}>{ele}</option>)}
+            </select>
         </section>
+        </main>
         <Footer />
       </StyledDashboard>
     </>
