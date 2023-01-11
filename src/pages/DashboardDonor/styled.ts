@@ -32,4 +32,16 @@ export const StyledDashboard = styled.main`
     /* display: flex;
     justify-content: space-around; */
   }
+
+  .waring-my-donations {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .waring-my-donations > p {
+    font-size: 25px;
+  }
 `;
