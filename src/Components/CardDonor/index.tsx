@@ -27,6 +27,7 @@ interface icard {
 }
 export const CardDonor = ({ element, setModal }: icard) => {
   const { title, category, id, address } = element;
+  console.log(element)
   const { getDonationbyId } = useContext(DonationContext);
 
   const openModal = async () => {
