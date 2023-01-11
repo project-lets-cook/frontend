@@ -24,6 +24,21 @@ export const StyledModal = styled.div`
     align-items: center;
     overflow-y: auto;
     height: 100%;
+  }
+
+  .modal-box > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+  }
+
+  .content-modal-box {
     padding: 0 30px;
   }
 
