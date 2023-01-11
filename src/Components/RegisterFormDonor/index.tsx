@@ -41,8 +41,8 @@ export const RegisterFormDonor = () => {
     cpf: yup
       .string()
       .required("O campo é obrigatório")
-      .min(11, "O campo precisa ter 11 caracteres")
-      .max(11, "O campo precisa ter 11 caracteres"),
+      .min(11, "O campo precisa ter no mínimo 11 caracteres")
+      .max(14, "O campo precisa ter  no máximo 14 caracteres"),
 
     profileImgUrl: yup.string().required("O campo é obrigatório"),
 
@@ -138,7 +138,7 @@ export const RegisterFormDonor = () => {
 
       <div>
         <Input
-          label={"CPF"}
+          label={"CPF / CNPJ"}
           id={"document"}
           type={"text"}
           register={register("cpf")}
