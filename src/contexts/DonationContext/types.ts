@@ -36,6 +36,10 @@ export interface iDonationInfo {
   request?: iUser[]
 }
 
+export interface iPropsState{
+  setState: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 export interface iDonationProviderValue {
   donations: iDonation[];
   filteredDonations: iDonation[];
@@ -47,6 +51,7 @@ export interface iDonationProviderValue {
   donation: iDonationInfo
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
   requestDonation: (id: number) => void;
-  requests: iUser[]
+  requests: iUser[];
+  sendDonation: () => void
 
 }

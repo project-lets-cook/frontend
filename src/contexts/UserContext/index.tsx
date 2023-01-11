@@ -12,6 +12,7 @@ import {
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
+import { BsDashLg } from "react-icons/bs";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -28,29 +29,29 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [isDonor, setIsDonor] = useState(false);
 
   const modalLogin = () => {
-    setOpenLogin(true);
-    modalOpen();
+    // setOpenLogin(true);
+    // modalOpen();
   };
 
   const modalRegisterReceiver = () => {
-    setOpenRegisterReceiver(true);
-    modalOpen();
+    // setOpenRegisterReceiver(true);
+    // modalOpen();
   };
 
   const modalRegisterDonor = () => {
-    setOpenRegisterDonor(true);
-    modalOpen();
+    // setOpenRegisterDonor(true);
+    // modalOpen();
   };
 
   const modalOpen = () => {
-    setOpenModal(true);
+    // setOpenModal(true);
   };
 
   const modalClose = () => {
-    setOpenModal(false);
-    setOpenLogin(false);
-    setOpenRegisterReceiver(false);
-    setOpenRegisterDonor(false);
+    // setOpenModal(false);
+    // setOpenLogin(false);
+    // setOpenRegisterReceiver(false);
+    // setOpenRegisterDonor(false);
   };
 
   useEffect(() => {
@@ -95,7 +96,6 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       window.localStorage.setItem("USER", response.data.user.id);
 
       toast.success("Login realizado com sucesso!");
-      setOpenModal(false);
 
       (await isDonor)
         ? navigate("/DashboardDonor")
@@ -108,7 +108,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const userRegisterDonor = async (data: iFormRegisterDonor): Promise<void> => {
+  const userRegisterDonor = async (data: iFormRegisterDonor): Promise<boolean> => {
     try {
       setLoading(true);
 
@@ -116,9 +116,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Conta criada com sucesso!");
 
-      modalClose();
-      modalLogin();
-
+      return false
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
       // window.localStorage.setItem("USER", response.data.user.id);
@@ -127,14 +125,13 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     } catch (error) {
       console.log(error);
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
       setLoading(false);
     }
   };
 
-  const userRegisterReceiver = async (
-    data: iFormRegisterReceiver
-  ): Promise<void> => {
+  const userRegisterReceiver = async (data: iFormRegisterReceiver): Promise<boolean> => {
     try {
       setLoading(true);
 
@@ -142,8 +139,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Conta criada com sucesso!");
 
-      modalClose();
-      modalLogin();
+      return false
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -152,6 +148,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       // typeOfUser ? navigate("/DashboardDonor"): navigate("/DashboardReceiver")
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
       setLoading(false);
     }
@@ -180,6 +177,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     window.localStorage.clear();
     navigate("/");
   };
+
+
 
   return (
     <UserContext.Provider

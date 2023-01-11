@@ -15,32 +15,6 @@ export interface iUserProviderProps {
   children: React.ReactNode;
 }
 
-export interface iUserProviderValue {
-  user: iUser | null;
-  isDonor: boolean;
-  setUser: (user: iUser | null) => void;
-
-  loading: boolean;
-  loadingUser: boolean;
-
-  userLogin: (data: iFormLogin) => Promise<void>;
-  userRegisterDonor: (data: iFormRegisterDonor) => Promise<void>;
-  userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<void>;
-  editAdress: (data: iEditAdrress) => Promise<void>;
-
-  openModal: boolean;
-  modalOpen: () => void;
-  modalClose: () => void;
-  openLogin: boolean;
-  openRegisterReceiver: boolean;
-  openRegisterDonor: boolean;
-  modalLogin: () => void;
-  modalRegisterReceiver: () => void;
-  modalRegisterDonor: () => void;
-  userLogout: () => void;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
-}
-
 export interface iUser {
   id: string;
   name?: string;
@@ -55,3 +29,30 @@ export interface iUserResponse {
 
   user: iUser;
 }
+export interface iUserProviderValue {
+  user: iUser | null;
+  isDonor: boolean;
+  setUser: (user: iUser | null) => void;
+
+  loading: boolean;
+  loadingUser: boolean;
+
+  userLogin: (data: iFormLogin) => Promise<void>;
+  userRegisterDonor: (data: iFormRegisterDonor) => Promise<boolean>;
+  userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<boolean>;
+  editAdress: (data: iEditAdrress) => Promise<void>;
+  openModal: boolean;
+  modalOpen: () => void;
+  modalClose: () => void;
+  openLogin: boolean;
+  openRegisterReceiver: boolean;
+  openRegisterDonor: boolean;
+  modalLogin: () => void;
+  modalRegisterReceiver: () => void;
+  modalRegisterDonor: () => void;
+  userLogout: () => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  
+}
+
+

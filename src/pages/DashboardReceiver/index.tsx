@@ -12,7 +12,7 @@ import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardReceiver = () => {
-  const { openModal, modalOpen, isDonor, loadingUser } =
+  const { openModal, isDonor } =
     useContext(UserContext);
   const { filteredDonations } = useContext(DonationContext);
 

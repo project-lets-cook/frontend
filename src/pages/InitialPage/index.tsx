@@ -1,7 +1,7 @@
 import { StyledInitialPage } from "./styled";
 import logo from "../../assets/icons/logo.png";
 import { Modal } from "../../Components/Modal";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { LoginForm } from "../../Components/LoginForm";
 import { RegisterFormReceiver } from "../../Components/RegisterFormReceiver";
@@ -12,27 +12,31 @@ import { Navigate } from "react-router-dom";
 import { Footer } from "../../Components/Footer";
 
 export const InitialPage = () => {
-  const {
-    openLogin,
-    openRegisterReceiver,
-    openRegisterDonor,
-    modalLogin,
-    modalRegisterReceiver,
-    modalRegisterDonor,
-    user,
-  } = useContext(UserContext);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
+  const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
 
   const token = localStorage.getItem("TOKEN");
 
   return token === null ? (
     <>
-      {openLogin && <Modal children={<LoginForm />} name={"Login"} />}
-      {openRegisterReceiver && (
-        <Modal children={<RegisterFormDonor />} name={"Registro Donatário"} />
-      )}
-      {openRegisterDonor && (
-        <Modal children={<RegisterFormReceiver />} name={"Registro Doador"} />
-      )}
+      {openLogin && <Modal
+        children={<LoginForm />}
+        name={"Login"}
+        state={openLogin}
+        setState={setOpenLogin} />}
+      {openRegisterDonor && <Modal
+        children={<RegisterFormDonor setState={setOpenRegisterDonor}/>}
+        name={"Registro Donatário"}
+        state={openRegisterDonor}
+        setState={setOpenRegisterDonor} />
+      }
+      {openRegisterReceiver && <Modal
+        children={<RegisterFormReceiver setState={setOpenRegisterReceiver} />}
+        name={"Registro Doador"}
+        state={openRegisterReceiver}
+        setState={setOpenRegisterReceiver} />
+      }
 
       <StyledInitialPage>
         <header>
@@ -42,7 +46,7 @@ export const InitialPage = () => {
               size="md"
               theme="primary"
               type="button"
-              onclick={modalLogin}
+              onclick={() => setOpenLogin(true)}
             >
               Login
             </Button>
@@ -60,7 +64,7 @@ export const InitialPage = () => {
                 size="md"
                 theme="white"
                 type="button"
-                onclick={modalRegisterDonor}
+                onclick={() => setOpenRegisterDonor(true)}
               >
                 Cadastre-se e doe
               </Button>
@@ -75,7 +79,7 @@ export const InitialPage = () => {
                 size="md"
                 theme="white"
                 type="button"
-                onclick={modalRegisterReceiver}
+                onclick={() => setOpenRegisterReceiver(true)}
               >
                 Receba doações
               </Button>

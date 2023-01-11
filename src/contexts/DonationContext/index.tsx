@@ -23,7 +23,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
     []
   );
-  const { user, setOpenModal } = useContext(UserContext);
+  const { user, setOpenModal, modalClose } = useContext(UserContext);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -45,6 +45,27 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       }
     };
     getProducts();
+    const getMyDonations = async () => {
+      const token = localStorage.getItem("TOKEN");
+      const userId = localStorage.getItem("USER");
+      if (!token) {
+        return null;
+      }
+
+      try {
+        const { data } = await api.get(`donation?userId=${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setMyDonations(data);
+        setFilteredMyDonations(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMyDonations();
   }, [user]);
   const getDonationbyId = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
@@ -83,35 +104,29 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
         ],
       });
       toast.success("Sua Solicitação foi enviada!");
+      modalClose()
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    const getMyDonations = async () => {
-      const token = localStorage.getItem("TOKEN");
-      const userId = localStorage.getItem("USER");
-      if (!token) {
-        return null;
-      }
 
-      try {
-        const { data } = await api.get(`donation?userId=${userId}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+  const sendDonation = async () => {
+    const token = window.localStorage.getItem("TOKEN");
+    const id = donation.id
+    try {
+      await api.delete(`donation/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        }
+      })
+      toast.success("Sua Doaçao foi doada ");
+    } catch (error) {
+      console.log(error);
+      toast.error("Algo errado por aqui")
+    }
 
-        setMyDonations(data);
-        setFilteredMyDonations(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getMyDonations();
-  }, [user]);
-
+  }
   return (
     <DonationContext.Provider value={{
       donations,
@@ -124,7 +139,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       myDonations,
       filteredMyDonations,
       setFilteredMyDonations,
-      requests
+      requests,
+      sendDonation
     }}>
       {children}
     </DonationContext.Provider>
