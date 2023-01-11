@@ -68,6 +68,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     getMyDonations();
   }, [user]);
   const getDonationbyId = async (id: number) => {
+    setOpenModal(true)
+    setModalLoading(true)
     const token = localStorage.getItem("TOKEN");
 
     if (!token) {
@@ -82,6 +84,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setRequests(data.request)
       setDonation(data)
       setOpenModal(true)
+      setModalLoading(false)
     } catch (error) {
       console.error(error);
     }
@@ -89,19 +92,16 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
+    const body = [...requests, user];
     if (!token) {
       return null;
     }
     try {
-      await api.patch(`donation/${id}`, {
+      await api.patch(`donation/${id}`, body, {
         headers: {
           authorization: `Bearer ${token}`,
         },
-        data: [
-          {
-            requests: user,
-          },
-        ],
+
       });
       toast.success("Sua Solicitação foi enviada!");
       modalClose()

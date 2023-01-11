@@ -24,11 +24,25 @@ export const StyledModal = styled.div`
     align-items: center;
     overflow-y: auto;
     height: 100%;
+  }
+
+  .modal-box > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+  }
+
+  .content-modal-box {
     padding: 0 30px;
   }
 
   .default-modal-header {
-    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     width: 95%;
@@ -55,7 +69,6 @@ export const StyledModal = styled.div`
   }
 
   .form-input-box > form {
-    /* background-color: red; */
     width: 95%;
     display: flex;
     flex-direction: column;

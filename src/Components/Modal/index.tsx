@@ -2,6 +2,9 @@ import { StyledModal } from "./styles";
 import { BsArrowRight } from "react-icons/bs";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useOutClick } from "../Hooks/useOutClick";
+import { DonationContext } from "../../contexts/DonationContext";
+import { Loader } from "../Loader";
 
 interface iModalProps {
   children: JSX.Element;
