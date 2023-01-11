@@ -14,8 +14,8 @@ export const Header = () => {
                 <img src={logo} alt="" />
                 <div>
                     <button type="button" onClick={() => {setModalProfile(true)}}>
-                        {user ? <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
-                            <img src={imgError} alt='profilepic' />}
+                        {user ? <img className="user-img" src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
+                            <img className="user-img" src={imgError} alt='profilepic' />}
                     </button>
 
                     <button type="button" onClick={userLogout}>
