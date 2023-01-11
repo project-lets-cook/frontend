@@ -26,8 +26,8 @@ export interface iDonationInfo {
   validation?: string;
   descripition?: string;
   amounts?: string;
-  id?: number;
-  request?: iUser[]
+  id: number;
+  request?: iUser[];
 }
 
 export interface iDonationProviderValue {
@@ -35,13 +35,11 @@ export interface iDonationProviderValue {
   filteredDonations: iDonation[];
   myDonations: iDonation[];
   filteredMyDonations: iDonation[];
-  setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>
+  setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => void;
-  donation: iDonationInfo
-  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
-  requestDonation: (user: iUser, id: number) => void;
-  user: iUser;
-  request: iUser[]
-
+  donation: iDonationInfo;
+  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>;
+  requestDonation: (id: number) => void;
+  request: iUser[];
 }
