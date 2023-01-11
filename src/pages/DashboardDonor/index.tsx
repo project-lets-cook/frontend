@@ -16,50 +16,54 @@ import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 import { Button } from "../../Components/Button";
 
 export const DashboardDonor = () => {
-  const [modalProductDonor, setModalProductDonor] = useState(false)
-  const [modalAddDonarionForm, setAddDonarionForm] = useState(false)
+  const [modalProductDonor, setModalProductDonor] = useState(false);
+  const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
   const { filteredMyDonations } = useContext(DonationContext);
   const { isDonor } = useContext(UserContext);
 
   return isDonor ? (
     <>
-      {modalProductDonor &&
-        <Modal name={""}
+      {modalProductDonor && (
+        <Modal
+          name={""}
           state={modalProductDonor}
-          setState={setModalProductDonor} >
+          setState={setModalProductDonor}
+        >
           <ProductDonor />
         </Modal>
-      }
-      {modalAddDonarionForm &&
-        <Modal name={"Adicionar Doação"}
+      )}
+      {modalAddDonarionForm && (
+        <Modal
+          name={"Adicionar Doação"}
           state={modalAddDonarionForm}
-          setState={setAddDonarionForm}>
+          setState={setAddDonarionForm}
+        >
           <AddDonarionForm />
-        </Modal>}
+        </Modal>
+      )}
       <StyledDashboard>
         <Header />
-
-        <section className="container">
-          <SearchItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredMyDonations.length === 0 ? (
-              <div className="waring-my-donations">
-                <p>Você ainda não fez doações</p>
-              </div>
-            ) : (
-              filteredMyDonations.map((element) => (
-                <CardDonor
-                  element={element}
-                  key={element.id}
-                  setModal={setModalProductDonor} />
-              ))
-            )}
-          </ul>
-          
-        </section>
-        <Footer />
-        <Button
+        <main>
+          <section className="container">
+            <SearchItens />
+            <CategoriesMenu />
+            <ul>
+              {filteredMyDonations.length === 0 ? (
+                <div className="waring-my-donations">
+                  <p>Você ainda não fez doações</p>
+                </div>
+              ) : (
+                filteredMyDonations.map((element) => (
+                  <CardDonor
+                    element={element}
+                    key={element.id}
+                    setModal={setModalProductDonor}
+                  />
+                ))
+              )}
+            </ul>
+          </section>
+          <Button
             size={"md"}
             theme={"primary"}
             type={"button"}
@@ -67,6 +71,9 @@ export const DashboardDonor = () => {
           >
             Adicionar Doação
           </Button>
+        </main>
+        <Footer />
+
       </StyledDashboard>
     </>
   ) : (
