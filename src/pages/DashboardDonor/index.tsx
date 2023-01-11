@@ -10,21 +10,24 @@ import { DonationContext } from "../../contexts/DonationContext";
 import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
+import { Loader } from "../../Components/Loader";
+import { Button } from "../../Components/Button";
+import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 
 export const DashboardDonor = () => {
 
-  const { filteredMyDonations } = useContext(DonationContext);
-  const { isDonor, openModal } = useContext(UserContext);
+  const { filteredMyDonations, modalLoading } = useContext(DonationContext);
+  const { isDonor, openModal, openLogin, modalLogin } = useContext(UserContext);
 
   return isDonor ? (
     <>
-      {openModal && (
-        <Modal name={""}>
-          <ProductDonor />
-        </Modal>
-      )}
+      {modalLoading && <div className="modal-loading-box"> <Loader/> </div>}
+      {openModal && (<Modal name={""}><ProductDonor /></Modal>)}
+      {openLogin && (<Modal name={"Adicionar Doação"}><AddDonarionForm /></Modal>)}
+
       <StyledDashboard>
         <Header />
+        
         <section className="container">
           <SearchItens />
           <CategoriesMenu />
