@@ -1,5 +1,5 @@
 import { StyledModal } from "./styles";
-import { BsArrowRight } from "react-icons/Bs";
+import { BsArrowRight } from "react-icons/bs";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 

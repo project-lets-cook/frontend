@@ -1,4 +1,5 @@
 import { StyledInitialPage } from "./styled";
+import logo from "../../assets/icons/logo.png";
 import { Modal } from "../../Components/Modal";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -36,7 +37,7 @@ export const InitialPage = () => {
       <StyledInitialPage>
         <header>
           <div className="container">
-            <img src="../../src/assets/icons/logo.png" alt="logo" />
+            <img src={logo} alt="logo" />
             <Button
               size="md"
               theme="primary"
