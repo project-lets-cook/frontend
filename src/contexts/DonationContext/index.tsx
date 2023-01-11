@@ -68,19 +68,16 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
+    const body = [...requests, user];
     if (!token) {
       return null;
     }
     try {
-      await api.patch(`donation/${id}`, {
+      await api.patch(`donation/${id}`, body, {
         headers: {
           authorization: `Bearer ${token}`,
         },
-        data: [
-          {
-            requests: user,
-          },
-        ],
+
       });
       toast.success("Sua Solicitação foi enviada!");
     } catch (error) {
