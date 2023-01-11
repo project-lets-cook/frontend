@@ -12,8 +12,6 @@ import {
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
-import { FaLessThan } from "react-icons/fa";
-import { DonationContext } from "../DonationContext";
 
 export const UserContext = createContext({} as iUserProviderValue);
 

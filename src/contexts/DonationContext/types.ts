@@ -27,7 +27,7 @@ export interface iDonationInfo {
   descripition?: string;
   amounts?: string;
   id?: number;
-  request?: Array<iUser> 
+  request?: iUser[]
 }
 
 export interface iDonationProviderValue {
@@ -41,6 +41,7 @@ export interface iDonationProviderValue {
   donation: iDonationInfo
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
   requestDonation: (user: iUser, id: number) => void;
-  user: iUser 
+  user: iUser;
+  request: iUser[]
 
 }
