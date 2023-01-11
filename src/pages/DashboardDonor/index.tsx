@@ -25,15 +25,18 @@ export const DashboardDonor = () => {
         <SearchItens />
         <CategoriesMenu />
         <ul>
-          {filteredMyDonations.map((element) => (
+          {filteredMyDonations.length === 0 ? 
+          <div className="waring-my-donations">
+            <p>Você ainda não fez doações</p>
+          </div> 
+          : filteredMyDonations.map((element) => (
             <CardDonor
               element={element}
               key={element.id}
               setModal={function (value: SetStateAction<boolean>): void {
                 throw new Error("Function not implemented.");
               }}
-            />
-          ))}
+            />))}
         </ul>
       </section>
       <Footer />
