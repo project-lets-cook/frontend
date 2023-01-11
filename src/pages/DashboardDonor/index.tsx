@@ -49,7 +49,7 @@ export const DashboardDonor = () => {
         >
           <ProductDonor />
         </Modal>
-      )}
+      }
       {modalAddDonarionForm && (
         <Modal
           name={"Adicionar Doação"}
