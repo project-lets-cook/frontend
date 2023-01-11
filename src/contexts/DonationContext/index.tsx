@@ -21,7 +21,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [requests, setRequests] = useState([] as iUser[])
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>([]);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -115,20 +115,24 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
   };
 
-
   const sendDonation = async () => {
+    setModalLoading(true)
     const token = window.localStorage.getItem("TOKEN");
     const id = donation.id
+    const user =window.localStorage.getItem("USER")
     try {
       await api.delete(`donation/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         }
       })
-      toast.success("Sua Doaçao foi doada ");
+      toast.success("Sua Doaçao foi Concluida");
+      // setUser(user)
     } catch (error) {
       console.log(error);
       toast.error("Algo errado por aqui")
+    }finally{
+      setModalLoading(false)
     }
 
   }

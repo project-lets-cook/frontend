@@ -12,13 +12,11 @@ interface Irequest {
 
 export const CardDonation = ({ request }: Irequest) => {
 
-
   const { sendDonation } = useContext(DonationContext)
 
   const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     (event.target as HTMLImageElement).src = `${imgError}`;
   }
-
 
   return (
     <StyledCardDonation>

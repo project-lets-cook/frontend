@@ -16,5 +16,14 @@ export const ProductInfosStyled = styled.div`
         border-radius: 5px;
     }
 
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            text-align: center;
+
+        }
+    }
 
 `
