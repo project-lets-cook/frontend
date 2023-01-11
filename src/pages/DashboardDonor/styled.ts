@@ -7,9 +7,12 @@ export const StyledDashboard = styled.div`
   height: 100%;
   gap: 40px;
   position: relative;
-   /* button{
+ 
+  & > button{
     position: absolute;
-  } */
+    right: 50px;
+    bottom: 20px;
+  }
   section:nth-child(2) {
     display: flex;
     justify-content: space-between;
