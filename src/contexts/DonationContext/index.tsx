@@ -45,7 +45,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       }
     };
     getProducts();
-  }, []);
+  }, [user]);
   const getDonationbyId = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
 
@@ -109,7 +109,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       }
     };
     getMyDonations();
-  }, []);
+  }, [user]);
 
   return (
     <DonationContext.Provider
