@@ -24,6 +24,7 @@ export const DashboardDonor = () => {
       {modalLoading && <div className="modal-loading-box"> <Loader/> </div>}
       {openModal && (<Modal name={""}><ProductDonor /></Modal>)}
       {openLogin && (<Modal name={"Adicionar Doação"}><AddDonarionForm /></Modal>)}
+
       <StyledDashboard>
         <Header />
         
