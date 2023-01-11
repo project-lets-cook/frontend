@@ -11,10 +11,12 @@ import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
 import { Loader } from "../../Components/Loader";
+import { Button } from "../../Components/Button";
+import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 
 export const DashboardDonor = () => {
   const { filteredMyDonations, modalLoading } = useContext(DonationContext);
-  const { isDonor, openModal } = useContext(UserContext);
+  const { isDonor, openModal, openLogin, modalLogin } = useContext(UserContext);
 
   return isDonor ? (
     <>

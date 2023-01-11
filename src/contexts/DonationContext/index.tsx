@@ -48,7 +48,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     getProducts();
   }, [user]);
   const getDonationbyId = async (id: number) => {
-
+    setOpenModal(true)
     setModalLoading(true)
     const token = localStorage.getItem("TOKEN");
 
@@ -64,11 +64,9 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setRequests(data.request)
       setDonation(data)
       setOpenModal(true)
+      setModalLoading(false)
     } catch (error) {
       console.error(error);
-    }
-    finally {
-      setModalLoading(false)
     }
   };
 
