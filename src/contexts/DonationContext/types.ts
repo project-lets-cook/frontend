@@ -32,7 +32,7 @@ export interface iDonationInfo {
   validation?: string;
   descripition?: string;
   amounts?: string;
-  id?: number ;
+  id: number;
   request?: iUser[]
 }
 
