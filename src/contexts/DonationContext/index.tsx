@@ -69,7 +69,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   }, [user]);
   const getDonationbyId = async (id: number) => {
     setOpenModal(true)
-    setModalLoading(true)
+    // setModalLoading(true)
     const token = localStorage.getItem("TOKEN");
 
     if (!token) {
@@ -84,9 +84,12 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       setRequests(data.request)
       setDonation(data)
       setOpenModal(true)
-      setModalLoading(false)
+      // setModalLoading(false)
+      return true
     } catch (error) {
       console.error(error);
+      toast.error("algo errado aqui")
+      return false
     }
   };
 
@@ -104,9 +107,10 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
       });
       toast.success("Sua Solicitação foi enviada!");
-      modalClose()
+      return false
     } catch (error) {
       console.error(error);
+      return true
     }
   };
 

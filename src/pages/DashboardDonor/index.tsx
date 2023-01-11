@@ -10,16 +10,19 @@ import { DonationContext } from "../../contexts/DonationContext";
 import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
+import { useState } from "react";
 
 export const DashboardDonor = () => {
-
+  const [modalProductDonor, setModalProductDonor] = useState(false)
   const { filteredMyDonations } = useContext(DonationContext);
   const { isDonor, openModal } = useContext(UserContext);
 
   return isDonor ? (
     <>
-      {openModal && (
-        <Modal name={""}>
+      {modalProductDonor && (
+        <Modal name={""}
+          state={modalProductDonor}
+          setState={setModalProductDonor} >
           <ProductDonor />
         </Modal>
       )}
@@ -38,10 +41,7 @@ export const DashboardDonor = () => {
                 <CardDonor
                   element={element}
                   key={element.id}
-                  setModal={function (value: SetStateAction<boolean>): void {
-                    throw new Error("Function not implemented.");
-                  }}
-                />
+                  setModal={setModalProductDonor} />
               ))
             )}
           </ul>

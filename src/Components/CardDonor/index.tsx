@@ -26,8 +26,8 @@ export const CardDonor = ({ element, setModal }: icard) => {
   const { isDonor } = useContext(UserContext);
   const { getDonationbyId } = useContext(DonationContext);
 
-  const openModal = () => {
-    const state = getDonationbyId(id)
+  const openModal = async () => {
+    const state = await getDonationbyId(id)
     setModal(state)
   }
   return (

@@ -36,9 +36,7 @@ export function SearchItens() {
         </button>
         <input
           type="text"
-          // required
           placeholder="Digitar Pesquisa"
-          // {...register("sherad")}
           onFocus={() => setFocus(!focus)}
           onBlur={() => setFocus(false)}
         />
@@ -64,9 +62,7 @@ export function SearchItens() {
       </button>
       <input
         type="text"
-        // required
         placeholder="Digitar Pesquisa"
-        // {...register("sherad")}
         onFocus={() => setFocus(!focus)}
         onBlur={() => setFocus(false)}
       />

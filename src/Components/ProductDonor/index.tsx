@@ -10,7 +10,6 @@ import { iUser } from '../../contexts/UserContext/types'
 
 export const ProductDonor = () => {
   const { donation, requests } = useContext(DonationContext)
-  console.log(requests);
 
   return (
     <ProductInfosStyled>

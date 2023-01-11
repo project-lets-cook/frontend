@@ -47,11 +47,11 @@ export interface iDonationProviderValue {
   filteredMyDonations: iDonation[];
   setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
-  getDonationbyId: (id: number) => void;
+  getDonationbyId: (id: number) => Promise<boolean>;
   donation: iDonationInfo
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
-  requestDonation: (id: number) => void;
+  requestDonation: (id: number) => Promise<boolean>;
   requests: iUser[];
   sendDonation: () => void
-  modalLoading: boolean;
+  // modalLoading: boolean;
 }
