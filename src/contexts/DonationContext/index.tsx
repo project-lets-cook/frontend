@@ -1,12 +1,15 @@
-import React, { Children, useEffect } from "react";
+import { useEffect } from "react";
 import { createContext, useState, useContext } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../services/api";
-import { UserContext } from "../UserContext";
+import { UserContext, UserProvider } from "../UserContext";
+import { iUser } from "../UserContext/types";
 import {
   iDonation,
   iDonationInfo,
   iDonationProviderProps,
   iDonationProviderValue,
+  iReciver,
 } from "./types";
 
 export const DonationContext = createContext({} as iDonationProviderValue);
@@ -14,36 +17,43 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
-  const [donationInfo, setInfoDonation] = useState<iDonationInfo[]>([])
-  const { user, setOpenModal } = useContext(UserContext)
+  const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo)
+  const [requests, setRequests] = useState([] as iUser[])
+  const [myDonations, setMyDonations] = useState<iDonation[]>([]);
+  const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
+    []
+  );
+  const [modalLoading, setModalLoading] = useState(false)
+  const { user, setOpenModal } = useContext(UserContext);
 
   useEffect(() => {
     const getProducts = async () => {
       const token = localStorage.getItem("TOKEN");
 
       if (!token) {
-        return null
+        return null;
       }
       try {
-        const { data } = await api.get('donation/', {
+        const { data } = await api.get("donation/", {
           headers: {
             authorization: `Bearer ${token}`
           }
         })
-
         setDonations(data)
         setFilteredDonations(data)
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    }
-    getProducts()
-  }, [])
+    };
+    getProducts();
+  }, [user]);
   const getDonationbyId = async (id: number) => {
+    setOpenModal(true)
+    setModalLoading(true)
     const token = localStorage.getItem("TOKEN");
 
     if (!token) {
-      return null
+      return null;
     }
     try {
       const { data } = await api.get(`donation/${id}`, {
@@ -51,12 +61,57 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`
         }
       })
-      setInfoDonation(data)
+      setRequests(data.request)
+      setDonation(data)
       setOpenModal(true)
+      setModalLoading(false)
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
+
+  const requestDonation = async (id: number) => {
+    const token = localStorage.getItem("TOKEN");
+    const body = [...requests, user];
+    if (!token) {
+      return null;
+    }
+    try {
+      await api.patch(`donation/${id}`, body, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+
+      });
+      toast.success("Sua Solicitação foi enviada!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const getMyDonations = async () => {
+      const token = localStorage.getItem("TOKEN");
+      const userId = localStorage.getItem("USER");
+      if (!token) {
+        return null;
+      }
+
+      try {
+        const { data } = await api.get(`donation?userId=${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setMyDonations(data);
+        setFilteredMyDonations(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMyDonations();
+  }, [user]);
 
   return (
     <DonationContext.Provider value={{
@@ -64,7 +119,14 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       filteredDonations,
       setFilteredDonations,
       getDonationbyId,
-      donationInfo,
+      donation,
+      setDonation,
+      requestDonation,
+      myDonations,
+      filteredMyDonations,
+      setFilteredMyDonations,
+      requests,
+      modalLoading
     }}>
       {children}
     </DonationContext.Provider>

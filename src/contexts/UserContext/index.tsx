@@ -7,12 +7,11 @@ import {
   iUser,
   iFormLogin,
   iUserResponse,
+  iEditAdrress,
 } from "./types";
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
-import { FaLessThan } from "react-icons/fa";
-import { DonationContext } from "../DonationContext";
 
 export const UserContext = createContext({} as iUserProviderValue);
 
@@ -22,10 +21,11 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalPoducts, setModalPoducts] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegisterReceiver, setOpenRegisterReceiver] = useState(false);
   const [openRegisterDonor, setOpenRegisterDonor] = useState(false);
-  const [isDonor, setIsDonor] = useState(false)
+  const [isDonor, setIsDonor] = useState(false);
 
   const modalLogin = () => {
     setOpenLogin(true);
@@ -68,11 +68,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       };
 
       try {
-        const response = await api.get(`/users/${userID}`, config)
-        setUser(response.data)
-        setIsDonor(response.data.donor)
-      }
-      catch (error) {
+        const response = await api.get(`/users/${userID}`, config);
+        setUser(response.data);
+        setIsDonor(response.data.donor);
+      } catch (error) {
         console.log(error);
         window.localStorage.clear();
       } finally {
@@ -90,16 +89,17 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const isDonorResponse: any = response.data.user.donor;
 
       setUser(response.data.user);
-      setIsDonor(isDonorResponse)
+      setIsDonor(isDonorResponse);
 
       window.localStorage.setItem("TOKEN", response.data.accessToken);
       window.localStorage.setItem("USER", response.data.user.id);
 
       toast.success("Login realizado com sucesso!");
-      setOpenModal(false)
+      setOpenModal(false);
 
-      await isDonor ? navigate("/DashboardDonor") : navigate("/DashboardReceiver");
-
+      (await isDonor)
+        ? navigate("/DashboardDonor")
+        : navigate("/DashboardReceiver");
     } catch (error) {
       toast.error("Ops! Usuário ou Senha inválido!");
       window.localStorage.clear();
@@ -116,8 +116,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Conta criada com sucesso!");
 
-      modalClose()
-      modalLogin()
+      modalClose();
+      modalLogin();
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -142,8 +142,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       toast.success("Conta criada com sucesso!");
 
-      modalClose()
-      modalLogin()
+      modalClose();
+      modalLogin();
 
       // setUser(response.data.user);
       // window.localStorage.setItem("TOKEN", response.data.accessToken);
@@ -156,11 +156,30 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(false);
     }
   };
+  const editAdress = async (data: iEditAdrress): Promise<void> => {
+    try {
+      setLoading(true);
+      const userId = window.localStorage.getItem("USER");
+      const token = localStorage.getItem("TOKEN");
+
+      await api.patch(`/users/${userId}`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+
+      toast.success("Endereço alterado com sucesso!");
+    } catch (error) {
+      toast.error("Ops! Algo deu errado");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const userLogout = () => {
-    window.localStorage.clear()
-    navigate("/")
-  }
+    window.localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <UserContext.Provider
@@ -183,7 +202,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userRegisterReceiver,
         userLogout,
         isDonor,
-        setOpenModal
+        setOpenModal,
+        editAdress,
       }}
     >
       {children}

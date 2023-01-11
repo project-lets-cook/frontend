@@ -1,4 +1,3 @@
-import { Input } from "../Forms/Input/index";
 import styled from "styled-components";
 
 interface Ifocus {
@@ -13,7 +12,7 @@ export const StyledSearchItens = styled.form`
   background: var(--color-grey50);
   border-radius: 4px;
   position: absolute;
-  top: -65px;
+  top: -60px;
   right: 330px;
 
   border: 1px solid
@@ -48,5 +47,12 @@ export const StyledSearchItens = styled.form`
       color: var(--color-grey300);
       font-size: 14px;
     }
+  }
+
+  @media screen and (max-width: 520px) {
+    width: 250px;
+    height: 35px;
+    top: -41px;
+    left: 15px;
   }
 `;

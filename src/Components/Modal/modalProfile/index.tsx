@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { BaseTypography } from "../../BaseTypography";
 import { Modal } from "../index";
 
-interface IdataNewAndress {
+interface IdataProductUpdate {
   name: string;
   address: {
     city: string;
@@ -25,7 +25,7 @@ type FormNewAndress = {
 };
 
 export const ModalProfile = () => {
-  const { user, setOpenModal } = useContext(UserContext);
+  const { user, setOpenModal, editAdress } = useContext(UserContext);
 
   const {
     register,
@@ -33,7 +33,7 @@ export const ModalProfile = () => {
     formState: { errors },
   } = useForm<FormNewAndress>();
 
-  const testeModalProfile = (data: IdataNewAndress) => {
+  const testeModalProfile = (data: IdataProductUpdate) => {
     console.log(data);
   };
 
