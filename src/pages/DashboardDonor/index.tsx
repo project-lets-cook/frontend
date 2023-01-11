@@ -18,8 +18,19 @@ import { Button } from "../../Components/Button";
 export const DashboardDonor = () => {
   const [modalProductDonor, setModalProductDonor] = useState(false);
   const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
-  const { filteredMyDonations } = useContext(DonationContext);
+  const { myDonations, filteredMyDonations, setFilteredMyDonations } = useContext(DonationContext);
   const { isDonor } = useContext(UserContext);
+
+
+  const changeCategory = (cat: string) => {
+    if (cat === "Todas as Categorias") {
+      setFilteredMyDonations(myDonations);
+    } else {
+      setFilteredMyDonations(
+        myDonations.filter((donation) => donation.category === cat)
+      );
+    }
+  };
 
   return isDonor ? (
     <>
@@ -62,10 +73,8 @@ export const DashboardDonor = () => {
                 ))
               )}
             </ul>
-            <select name="" id="">
-              {categories.map((elem) => (
-                <option value={elem}>{elem}</option>
-              ))}
+            <select id="categorys" onChange={(event) => changeCategory(event.target.value)}>
+              {categories.map((ele) => <option value={ele}>{ele}</option>)}
             </select>
             <Button
               size={"md"}
