@@ -1,13 +1,12 @@
-import { StyledTypography } from '../BaseTypography/style'
-import { Button } from '../Button'
-import { ProductInfosStyled } from './styled'
-import { DonationContext } from '../../contexts/DonationContext'
-import { useContext } from 'react'
-import { ImageCategories } from '../ImageCategories'
+import { StyledTypography } from "../BaseTypography/style";
+import { Button } from "../Button";
+import { ProductInfosStyled } from "./styled";
+import { DonationContext } from "../../contexts/DonationContext";
+import { useContext } from "react";
+import { ImageCategories } from "../ImageCategories";
 
 export const ProductInfos = () => {
-
-  const { donation ,requestDonation } = useContext(DonationContext)
+  const { donation, requestDonation } = useContext(DonationContext);
   {
     return (
       <ProductInfosStyled>
@@ -19,7 +18,6 @@ export const ProductInfos = () => {
         <StyledTypography classText="Caption" tag="p">{donation.descripition}</StyledTypography>
         <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => requestDonation( donation.id)}>Solicitar Doação</Button>
       </ProductInfosStyled>
-    )
-
+    );
   }
-}
+};
