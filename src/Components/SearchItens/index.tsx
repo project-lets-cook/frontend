@@ -16,8 +16,6 @@ export function SearchItens() {
   }
 
   if (isDonor) {
-    console.log(isDonor);
-    console.log(filteredMyDonations);
     
     const searchProducts = (event: Event | undefined) => {
       const e = event as unknown as iTarget;

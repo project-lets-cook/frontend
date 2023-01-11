@@ -53,5 +53,6 @@ export interface iDonationProviderValue {
   requestDonation: (id: number) => Promise<boolean>;
   requests: iUser[];
   sendDonation: () => void
-  // modalLoading: boolean;
+  modalLoading: boolean;
+  setModalLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

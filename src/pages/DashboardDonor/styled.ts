@@ -6,7 +6,10 @@ export const StyledDashboard = styled.main`
   width: 100%;
   height: 100%;
   gap: 40px;
-
+  position: relative;
+   button{
+    position: absolute;
+  }
   section:nth-child(2) {
     display: flex;
     justify-content: space-between;
@@ -29,8 +32,6 @@ export const StyledDashboard = styled.main`
   .container {
     margin: 0 auto;
     width: 1200px;
-    /* display: flex;
-    justify-content: space-around; */
   }
 
   .modal-loading-box {
@@ -62,4 +63,5 @@ export const StyledDashboard = styled.main`
   .waring-my-donations > p {
     font-size: 25px;
   }
+
 `;

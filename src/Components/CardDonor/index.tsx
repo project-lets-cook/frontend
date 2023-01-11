@@ -23,10 +23,10 @@ interface icard {
 }
 export const CardDonor = ({ element, setModal }: icard) => {
   const { title, category, id } = element;
-  const { isDonor } = useContext(UserContext);
   const { getDonationbyId } = useContext(DonationContext);
 
   const openModal = async () => {
+    setModal(true)
     const state = await getDonationbyId(id)
     setModal(state)
   }

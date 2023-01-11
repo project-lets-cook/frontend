@@ -3,7 +3,7 @@ import { Header } from "../../Components/Header";
 import { StyledDashboard } from "./styled";
 import { CardDonor } from "../../Components/CardDonor";
 import { SearchItens } from "../../Components/SearchItens";
-import { SetStateAction, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
@@ -12,14 +12,14 @@ import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
 import { useState } from "react";
 import { Loader } from "../../Components/Loader";
-import { Button } from "../../Components/Button";
 import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
+import { Button } from "../../Components/Button";
 
 export const DashboardDonor = () => {
   const [modalProductDonor, setModalProductDonor] = useState(false)
-  const [modalProductDonor, setModalProductDonor] = useState(false)
+  const [modalAddDonarionForm, setAddDonarionForm] = useState(false)
   const { filteredMyDonations } = useContext(DonationContext);
-  const { isDonor, openModal } = useContext(UserContext);
+  const { isDonor } = useContext(UserContext);
 
   return isDonor ? (
     <>
@@ -30,11 +30,12 @@ export const DashboardDonor = () => {
           <ProductDonor />
         </Modal>
       }
-
-      {modalLoading && <div className="modal-loading-box"> <Loader /> </div>}
-      {openModal && (<Modal name={""}><ProductDonor /></Modal>)}
-      {openLogin && (<Modal name={"Adicionar Doação"}><AddDonarionForm /></Modal>)}
-
+      {modalAddDonarionForm &&
+        <Modal name={"Adicionar Doação"}
+          state={modalAddDonarionForm}
+          setState={setAddDonarionForm}>
+          <AddDonarionForm />
+        </Modal>}
       <StyledDashboard>
         <Header />
 
@@ -55,6 +56,14 @@ export const DashboardDonor = () => {
               ))
             )}
           </ul>
+          <Button
+            size={"md"}
+            theme={"primary"}
+            type={"button"}
+            onclick={() => { setAddDonarionForm(true)}}
+          >
+            Novas Doaçoes
+          </Button>
         </section>
         <Footer />
       </StyledDashboard>

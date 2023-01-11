@@ -7,7 +7,6 @@ export const StyledModal = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
-
   > div {
     position: fixed;
     top: 0;
@@ -17,7 +16,6 @@ export const StyledModal = styled.div`
     height: 100vh;
     background-color: var(--color-grey50);
   }
-
   .modal-box {
     display: flex;
     flex-direction: column;
@@ -25,23 +23,21 @@ export const StyledModal = styled.div`
     overflow-y: auto;
     height: 100%;
   }
-
   .modal-box > div {
     width: 100%;
     height: 100%;
   }
-
   .loader-box {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--color-primary);
+    position: absolute;
+    z-index: 10;
   }
-
   .content-modal-box {
     padding: 0 30px;
   }
-
   .default-modal-header {
     display: flex;
     justify-content: space-between;
@@ -50,24 +46,20 @@ export const StyledModal = styled.div`
     padding: 0;
     margin: 45px 0;
   }
-
   .default-modal-header > p {
     font-size: 20px;
     font-weight: 600;
     color: var(--color-grey900);
   }
-
   .default-modal-header > button {
     background-color: transparent;
     border: none;
   }
-
   .form-input-box {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-
   .form-input-box > form {
     width: 95%;
     display: flex;
@@ -75,12 +67,10 @@ export const StyledModal = styled.div`
     gap: 20px;
     margin-bottom: 25px;
   }
-
   .form-input-box > form .input-warning {
     margin-top: 5px;
     color: var(--color-primary);
   }
-
   form p {
     height: 15px;
     text-align: right;
@@ -88,7 +78,6 @@ export const StyledModal = styled.div`
     font-size: 11px;
     color: var(--color-error);
   }
-
   @media screen and (max-width: 520px) {
     .modal-box {
       padding: 0 15px;

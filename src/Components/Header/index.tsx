@@ -8,13 +8,12 @@ import { UserContext } from "../../contexts/UserContext"
 
 
 export const Header = () => {
-
-    const { userLogout, user } = useContext(UserContext)
+  const { userLogout, user } = useContext(UserContext)
 
     const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
         (event.target as HTMLImageElement).src = `${imgError}`;
     }
-
+   
     return (
         <StyledHeader>
             <div className="background">
