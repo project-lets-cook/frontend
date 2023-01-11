@@ -14,6 +14,7 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     > div {
       display: flex;
       align-items: center;
@@ -33,10 +34,9 @@ export const StyledHeader = styled.header`
         color: var(--color-grey300);
       }
     }
-  }
 
-  button,
-  svg {
+  }
+  button, svg {
     width: 30px;
     height: 30px;
     background-color: transparent;

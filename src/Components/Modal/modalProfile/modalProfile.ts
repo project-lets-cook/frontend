@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const ModalProfileStyled = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  width: 100%;
+  max-width: 90%;
+  /* padding: 2rem; */
 
   div {
     display: flex;
@@ -26,6 +28,7 @@ export const ModalProfileStyled = styled.div`
     align-self: center;
     width: 15rem;
     height: 15rem;
+    max-width: 90%;
   }
   form {
     margin: 1.5rem 0;
@@ -35,5 +38,19 @@ export const ModalProfileStyled = styled.div`
   }
   button:first-child {
     margin-top: 1.5rem;
+  }
+
+  @media (max-width: 700px) {
+    img {
+      width: 12rem;
+      height: 12rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    img {
+      width: 9rem;
+      height: 9rem;
+    }
   }
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCardReceiver = styled.li`
+export const StyledCardDonation = styled.li`
   width: 130px;
   height: 200px;
   position: relative;

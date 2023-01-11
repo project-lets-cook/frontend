@@ -16,8 +16,6 @@ export function SearchItens() {
   }
 
   if (isDonor) {
-    console.log(isDonor);
-    console.log(filteredMyDonations);
     
     const searchProducts = (event: Event | undefined) => {
       const e = event as unknown as iTarget;
@@ -36,9 +34,7 @@ export function SearchItens() {
         </button>
         <input
           type="text"
-          // required
           placeholder="Digitar Pesquisa"
-          // {...register("sherad")}
           onFocus={() => setFocus(!focus)}
           onBlur={() => setFocus(false)}
         />
@@ -64,9 +60,7 @@ export function SearchItens() {
       </button>
       <input
         type="text"
-        // required
         placeholder="Digitar Pesquisa"
-        // {...register("sherad")}
         onFocus={() => setFocus(!focus)}
         onBlur={() => setFocus(false)}
       />
