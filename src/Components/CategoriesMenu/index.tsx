@@ -25,7 +25,7 @@ export const CategoriesMenu = () => {
     const filterCategory = (category: string) => {
       setSelected(category);
       if (category === "Todas as Categorias") {
-        setFilteredMyDonations(donations);
+        setFilteredMyDonations(myDonations);
       } else {
         setFilteredMyDonations(
           myDonations.filter((donation) => donation.category === category)
