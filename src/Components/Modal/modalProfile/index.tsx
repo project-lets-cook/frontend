@@ -6,17 +6,26 @@ import { Input } from "../../Forms/Input";
 import { Button } from "../../Button";
 import { useForm } from "react-hook-form";
 import { BaseTypography } from "../../BaseTypography";
+import { Modal } from "../index";
 
 interface IdataNewAndress {
-  address: string;
+  name: string;
+  address: {
+    city: string;
+  };
+  profileImgUrl: string;
 }
 
 type FormNewAndress = {
-  address: string;
+  name: string;
+  address: {
+    city: string;
+  };
+  profileImgUrl: string;
 };
 
-export const ModalProfileReceptor = () => {
-  const { user } = useContext(UserContext);
+export const ModalProfile = () => {
+  const { user, setOpenModal } = useContext(UserContext);
 
   const {
     register,
@@ -29,29 +38,50 @@ export const ModalProfileReceptor = () => {
   };
 
   return (
-    <ModalProfileStyled>
-      <img src={user?.profileImgUrl} alt={user?.name} />
-      <div id="text">
-        <span id="nome">{user?.name}</span>
-        <span>{user?.email}</span>
-        <span>{user?.telephone}</span>
-      </div>
+    <Modal name="Perfil">
+      <ModalProfileStyled>
+        <img src={user?.profileImgUrl} alt={user?.name} />
+        <div id="text">
+          <span id="nome">{user?.name}</span>
+          <span>{user?.email}</span>
+          <span>{user?.telephone}</span>
+        </div>
 
-      <form onSubmit={handleSubmit(testeModalProfile)}>
-        <Input
-          label={"Endereço"}
-          id={"Endereço"}
-          type={"text"}
-          register={register("address")}
-          placeholder={"Digite seu novo endereço"}
-        />
-        <Button size="lg" theme="primary" type="submit">
-          Alterar endereço
+        <form onSubmit={handleSubmit(testeModalProfile)}>
+          <Input
+            label={"Nome"}
+            id={"Nome"}
+            type={"text"}
+            register={register("name")}
+            placeholder={"Digite seu novo endereço"}
+          />
+          <Input
+            label={"Cidade"}
+            id={"Cidade"}
+            type={"text"}
+            register={register("address.city")}
+            placeholder={"Digite sua cidade"}
+          />
+          <Input
+            label={"Sua imagem"}
+            id={"avatar"}
+            type={"text"}
+            register={register("profileImgUrl")}
+            placeholder={"Cole aqui o link do seu avatar"}
+          />
+          <Button size="lg" theme="primary" type="submit">
+            Editar perfil
+          </Button>
+        </form>
+        <Button
+          size="lg"
+          theme="white"
+          type="button"
+          onclick={() => setOpenModal(false)}
+        >
+          Cancelar
         </Button>
-      </form>
-      <Button size="lg" theme="white" type="button">
-        Cancelar
-      </Button>
-    </ModalProfileStyled>
+      </ModalProfileStyled>
+    </Modal>
   );
 };
