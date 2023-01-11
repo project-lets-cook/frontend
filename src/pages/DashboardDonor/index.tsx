@@ -56,16 +56,17 @@ export const DashboardDonor = () => {
               ))
             )}
           </ul>
-          <Button
+          
+        </section>
+        <Footer />
+        <Button
             size={"md"}
             theme={"primary"}
             type={"button"}
             onclick={() => { setAddDonarionForm(true)}}
           >
-            Novas Doaçoes
+            Adicionar Doação
           </Button>
-        </section>
-        <Footer />
       </StyledDashboard>
     </>
   ) : (

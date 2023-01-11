@@ -132,7 +132,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
 
   }
-  const createDonation = async (data: iDonation) => {
+  const createDonation = async (data: any) => {
     const token = localStorage.getItem("TOKEN");
     const userId = localStorage.getItem("USER");
     const body = {
@@ -143,8 +143,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       description: data.descripition,
       amounts: data.amounts,
       address: {
-        city: data.address.city,
-        state: data.address.state,
+        city: data.city,
+        state: data.state,
       },
     }
     if (!token) {
@@ -152,11 +152,13 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     } 
 
     try {
-      await api.post('donation/', JSON.stringify(body), {
+      const {data}= await api.post('donation/', body, {
         headers: {
           authorization: `Bearer ${token}`,
         },
       });
+      console.log(data);
+      
       toast.success("Doação adicionada com sucesso!");
     } catch (error) {
       console.error(error)
