@@ -6,9 +6,8 @@ import { useContext } from 'react'
 import { ImageCategories } from '../ImageCategories'
 
 export const ProductDonor = () => {
-  const { donation } = useContext(DonationContext)
+  const { donation, request } = useContext(DonationContext)
   console.log(donation);
-  const request = donation.request
   return (
     <ProductInfosStyled>
       <ImageCategories category={donation.category} />
