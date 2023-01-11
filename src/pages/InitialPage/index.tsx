@@ -20,23 +20,30 @@ export const InitialPage = () => {
 
   return token === null ? (
     <>
-      {openLogin && <Modal
-        children={<LoginForm />}
-        name={"Login"}
-        state={openLogin}
-        setState={setOpenLogin} />}
-      {openRegisterDonor && <Modal
-        children={<RegisterFormDonor setState={setOpenRegisterDonor}/>}
-        name={"Registro Donatário"}
-        state={openRegisterDonor}
-        setState={setOpenRegisterDonor} />
-      }
-      {openRegisterReceiver && <Modal
-        children={<RegisterFormReceiver setState={setOpenRegisterReceiver} />}
-        name={"Registro Doador"}
-        state={openRegisterReceiver}
-        setState={setOpenRegisterReceiver} />
-      }
+      {openLogin && (
+        <Modal
+          children={<LoginForm />}
+          name={"Login"}
+          state={openLogin}
+          setState={setOpenLogin}
+        />
+      )}
+      {openRegisterDonor && (
+        <Modal
+          children={<RegisterFormDonor setState={setOpenRegisterDonor} />}
+          name={"Registro Donatário"}
+          state={openRegisterDonor}
+          setState={setOpenRegisterDonor}
+        />
+      )}
+      {openRegisterReceiver && (
+        <Modal
+          children={<RegisterFormReceiver setState={setOpenRegisterReceiver} />}
+          name={"Registro Doador"}
+          state={openRegisterReceiver}
+          setState={setOpenRegisterReceiver}
+        />
+      )}
 
       <StyledInitialPage>
         <header>

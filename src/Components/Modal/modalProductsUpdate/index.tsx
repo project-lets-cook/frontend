@@ -30,42 +30,40 @@ export const ModalProductUpdate = ({ id }: { id?: number }) => {
   };
 
   return (
-    <Modal name="Atualizar doação">
-      <DonationUpdateStyled>
+    <DonationUpdateStyled>
+      <div>
         <div>
-          <div>
-            <span id="titleDescription">Alimento:</span>
-            <span>{product?.title}</span>
-          </div>
-          <div>
-            <span id="titleDescription">Categoria:</span>
-            <span>{product?.category}</span>
-          </div>
-          <div>
-            <span id="titleDescription">Vencimento:</span>
-            <span>{product?.validation}</span>
-          </div>
-          <div>
-            <span id="titleDescription">Descrição:</span>
-            <span>{product?.descripition}</span>
-          </div>
+          <span id="titleDescription">Alimento:</span>
+          <span>{product?.title}</span>
         </div>
-        <form onSubmit={handleSubmit(testeModalProductUpdate)}>
-          <Input
-            label={"Quantidade"}
-            id={"amounts"}
-            type={"number"}
-            placeholder={"Digite aqui a quantidade"}
-            register={register("amounts")}
-          ></Input>
-          <Button size={"lg"} theme={"primary"} type={"submit"}>
-            Atualizar Doação
-          </Button>
-          <Button size={"lg"} theme={"white"} type={"submit"}>
-            Deletar
-          </Button>
-        </form>
-      </DonationUpdateStyled>
-    </Modal>
+        <div>
+          <span id="titleDescription">Categoria:</span>
+          <span>{product?.category}</span>
+        </div>
+        <div>
+          <span id="titleDescription">Vencimento:</span>
+          <span>{product?.validation}</span>
+        </div>
+        <div>
+          <span id="titleDescription">Descrição:</span>
+          <span>{product?.descripition}</span>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit(testeModalProductUpdate)}>
+        <Input
+          label={"Quantidade"}
+          id={"amounts"}
+          type={"number"}
+          placeholder={"Digite aqui a quantidade"}
+          register={register("amounts")}
+        ></Input>
+        <Button size={"lg"} theme={"primary"} type={"submit"}>
+          Atualizar Doação
+        </Button>
+        <Button size={"lg"} theme={"white"} type={"submit"}>
+          Deletar
+        </Button>
+      </form>
+    </DonationUpdateStyled>
   );
 };

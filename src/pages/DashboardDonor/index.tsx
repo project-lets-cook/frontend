@@ -14,13 +14,15 @@ import { useState } from "react";
 import { Loader } from "../../Components/Loader";
 import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 import { Button } from "../../Components/Button";
+import { ModalProductUpdate } from "../../Components/Modal/modalProductsUpdate";
 
 export const DashboardDonor = () => {
   const [modalProductDonor, setModalProductDonor] = useState(false);
+  const [modalEditDonor, setModalEditDonor] = useState(false);
   const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
-  const { myDonations, filteredMyDonations, setFilteredMyDonations } = useContext(DonationContext);
+  const { myDonations, filteredMyDonations, setFilteredMyDonations } =
+    useContext(DonationContext);
   const { isDonor } = useContext(UserContext);
-
 
   const changeCategory = (cat: string) => {
     if (cat === "Todas as Categorias") {
@@ -52,6 +54,15 @@ export const DashboardDonor = () => {
           <AddDonarionForm />
         </Modal>
       )}
+      {modalEditDonor && (
+        <Modal
+          name="Perfil"
+          state={modalEditDonor}
+          setState={setModalEditDonor}
+        >
+          <ModalProductUpdate />
+        </Modal>
+      )}
       <StyledDashboard>
         <Header />
         <main>
@@ -69,12 +80,18 @@ export const DashboardDonor = () => {
                     element={element}
                     key={element.id}
                     setModal={setModalProductDonor}
+                    setEditDonor={setModalEditDonor}
                   />
                 ))
               )}
             </ul>
-            <select id="categorys" onChange={(event) => changeCategory(event.target.value)}>
-              {categories.map((ele) => <option value={ele}>{ele}</option>)}
+            <select
+              id="categorys"
+              onChange={(event) => changeCategory(event.target.value)}
+            >
+              {categories.map((ele) => (
+                <option value={ele}>{ele}</option>
+              ))}
             </select>
             <Button
               size={"md"}
