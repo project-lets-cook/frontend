@@ -63,20 +63,12 @@ export const DashboardReceiver = () => {
               id="categorys"
               onChange={(event) => changeCategory(event.target.value)}
             >
-              {categories.map((ele) => (
-                <option value={ele}>{ele}</option>
+              {categories.map((ele, i) => (
+                <option key={i} value={ele}>
+                  {ele}
+                </option>
               ))}
             </select>
-            <Button
-              size={"md"}
-              theme={"primary"}
-              type={"button"}
-              onclick={() => {
-                setAddDonarionForm(true);
-              }}
-            >
-              +
-            </Button>
           </section>
         </main>
         <Footer />

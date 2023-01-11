@@ -89,8 +89,10 @@ export const DashboardDonor = () => {
               id="categorys"
               onChange={(event) => changeCategory(event.target.value)}
             >
-              {categories.map((ele) => (
-                <option value={ele}>{ele}</option>
+              {categories.map((ele, i) => (
+                <option key={i} value={ele}>
+                  {ele}
+                </option>
               ))}
             </select>
             <Button
@@ -105,6 +107,7 @@ export const DashboardDonor = () => {
             </Button>
           </section>
         </main>
+        <Footer />
       </StyledDashboard>
     </>
   ) : (
