@@ -9,6 +9,7 @@ import {
   iDonationInfo,
   iDonationProviderProps,
   iDonationProviderValue,
+  iReciver,
 } from "./types";
 
 export const DonationContext = createContext({} as iDonationProviderValue);
@@ -17,7 +18,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo)
-  const [request, setRequest] = useState([] as iUser[])
+  const [requests, setRequests] = useState([] as iUser[])
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>([]);
   const { user, setOpenModal } = useContext(UserContext)
@@ -35,7 +36,6 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
             authorization: `Bearer ${token}`
           }
         })
-        setRequest(data.request)
         setDonations(data)
         setFilteredDonations(data)
       } catch (error) {
@@ -56,6 +56,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`
         }
       })
+      setRequests(data.request)
       setDonation(data)
       setOpenModal(true)
     } catch (error) {
@@ -63,7 +64,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
   }
 
-  const requestDonation = async (user: iUser , id: number) => {
+  const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
     if (!token) {
       return null
@@ -122,8 +123,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       myDonations,
       filteredMyDonations,
       setFilteredMyDonations,
-      user,
-      request
+      requests
     }}>
       {children}
     </DonationContext.Provider>
