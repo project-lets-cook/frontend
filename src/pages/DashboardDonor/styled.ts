@@ -6,13 +6,15 @@ export const StyledDashboard = styled.div`
   width: 100%;
   height: 100%;
   gap: 40px;
-
-  main {
-    section:nth-child(1) {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      padding: 30px 0;
+  position: relative;
+   /* button{
+    position: absolute;
+  } */
+  section:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 0;
 
       > ul {
         width: 100%;
@@ -26,13 +28,10 @@ export const StyledDashboard = styled.div`
         overflow-y: auto;
       }
     }
-  }
 
   .container {
     margin: 0 auto;
     width: 1200px;
-    /* display: flex;
-    justify-content: space-around; */
   }
 
   .modal-loading-box {
@@ -64,4 +63,5 @@ export const StyledDashboard = styled.div`
   .waring-my-donations > p {
     font-size: 25px;
   }
+
 `;

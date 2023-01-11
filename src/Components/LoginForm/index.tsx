@@ -7,6 +7,8 @@ import { Button } from "../Button";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Loader } from "../Loader";
+import { iPropsState } from "../../contexts/DonationContext/types";
+import { schemaLogin } from "./schemaLogin";
 
 export interface iFormLogin {
   email: string;
@@ -21,11 +23,6 @@ type FormLogin = {
 export const LoginForm = () => {
   const { userLogin, loading } = useContext(UserContext);
 
-  const validate = yup.object().shape({
-    email: yup.string().required("O email é obrigatório"),
-
-    password: yup.string().required("A senha é obrigatória"),
-  });
 
   const {
     register,
@@ -33,12 +30,11 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<FormLogin>({
     mode: "onBlur",
-    resolver: yupResolver(validate),
+    resolver: yupResolver(schemaLogin),
   });
 
   const login = (data: iFormLogin) => {
     userLogin(data);
-    console.log(data);
   };
 
   return (

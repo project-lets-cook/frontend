@@ -4,13 +4,12 @@ import { ProductInfosStyled } from './styled'
 import { DonationContext } from '../../contexts/DonationContext'
 import { useContext } from 'react'
 import { ImageCategories } from '../ImageCategories'
-import { CardReceiver } from '../CardReceiver'
+import { CardDonation } from '../CardDonation'
 import { iReciver } from '../../contexts/DonationContext/types'
 import { iUser } from '../../contexts/UserContext/types'
 
 export const ProductDonor = () => {
   const { donation, requests } = useContext(DonationContext)
-  console.log(requests);
 
   return (
     <ProductInfosStyled>
@@ -18,7 +17,7 @@ export const ProductDonor = () => {
       <StyledTypography classText="Heading3" tag="h2">{donation.title}</StyledTypography>
       <ul>
         {requests.map((request: iReciver, index) =>
-          <CardReceiver request={request} key={index} />)
+          <CardDonation request={request} key={index} />)
         }
       </ul>
     </ProductInfosStyled>
