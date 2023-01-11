@@ -1,6 +1,6 @@
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
-import { BsLinkedin } from "react-icons/Bs";
+import { BsLinkedin } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { ImgWrap, StyledAboutCarousel } from "./styles";
 import { ReactElement } from "react";
