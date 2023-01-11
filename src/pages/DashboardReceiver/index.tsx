@@ -10,15 +10,24 @@ import { Navigate } from "react-router-dom";
 import { StyledDashboard } from "../DashboardDonor/styled";
 import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
+import { ModalProfile } from "../../Components/Modal/modalProfile";
 
 export const DashboardReceiver = () => {
   const [modalProductInfos, setModalProductInfos] = useState(false)
 
-  const { isDonor } = useContext(UserContext);
+  const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
   const { filteredDonations } = useContext(DonationContext);
 
   return !isDonor ? (
     <>
+    {modalProfile && 
+      <Modal name={"Editar Perfil"}
+        state={modalProfile}
+        setState={setModalProfile}>
+        <ModalProfile/>
+      </Modal>
+      }
+
       {modalProductInfos && (
         <Modal name={""} state={modalProductInfos} setState={setModalProductInfos}>
           <ProductInfos setState={setModalProductInfos} />

@@ -1,4 +1,5 @@
 import React from "react";
+import { SyntheticEvent } from "react";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
 
@@ -8,7 +9,11 @@ export interface iFormLogin {
 }
 
 export interface iEditAdrress {
-  address: string;
+  name: string;
+  profileImgUrl: string;
+  street: string;
+  city: string;
+  state: string;
 }
 
 export interface iUserProviderProps {
@@ -40,6 +45,9 @@ export interface iUserProviderValue {
   userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<boolean>;
   editAdress: (data: iEditAdrress) => Promise<void>;
   userLogout: () => void;
+  modalProfile: boolean;
+  setModalProfile: (modalProfile: boolean) => void;
+  addDefaultImg: (event: SyntheticEvent<HTMLImageElement, Event>) => void;
 }
 
 
