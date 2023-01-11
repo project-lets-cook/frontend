@@ -25,7 +25,7 @@ type FormNewAndress = {
 };
 
 export const ModalProfile = () => {
-  const { user, setOpenModal, editAdress } = useContext(UserContext);
+  const { user, setOpenModal } = useContext(UserContext);
 
   const {
     register,
