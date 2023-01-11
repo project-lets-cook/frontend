@@ -12,10 +12,12 @@ export const About = () => {
           <Link to="/">Voltar para Home</Link>
           <img src={logo} alt="" />
         </header>
-        <StyledTypography classText="Heading2" tag="h3">
-          Integrantes da Equipe:
-        </StyledTypography>
-        <AboutCarousel />
+        <main>
+          <StyledTypography classText="Heading2" tag="h3">
+            Integrantes da Equipe:
+          </StyledTypography>
+          <AboutCarousel />
+        </main>
       </StyledAbout>
     </>
   );

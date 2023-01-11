@@ -66,8 +66,8 @@ export const StyledInitialPage = styled.div`
     background: none;
 
     header {
-      height: auto;
-      margin: 20px 0 30px 0;
+      /* height: auto; */
+      margin-top: 20px;
 
       > div {
         > img {
@@ -80,7 +80,7 @@ export const StyledInitialPage = styled.div`
     }
     main {
       width: 100%;
-      height: 100%;
+      height: auto;
       gap: 30px;
       padding-bottom: 30px;
 
@@ -95,7 +95,7 @@ export const StyledInitialPage = styled.div`
         padding: 15px 15px;
         border-radius: 5px;
         > p {
-          font-size: 18px;
+          font-size: 16px;
         }
 
         > div {
