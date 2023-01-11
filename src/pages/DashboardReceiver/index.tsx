@@ -12,7 +12,8 @@ import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 
 export const DashboardReceiver = () => {
-  const { openModal, modalOpen, isDonor, loadingUser } = useContext(UserContext);
+  const { openModal, modalOpen, isDonor, loadingUser } =
+    useContext(UserContext);
   const { filteredDonations } = useContext(DonationContext);
 
   return !isDonor ? (
@@ -24,21 +25,23 @@ export const DashboardReceiver = () => {
       )}
       <StyledDashboard>
         <Header />
-        <section className="container">
-          <SearchItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredDonations.map((element) => (
-              <CardDonor
-                element={element}
-                key={element.id}
-                setModal={function (value: SetStateAction<boolean>): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            ))}
-          </ul>
-        </section>
+        <main>
+          <section className="container">
+            <SearchItens />
+            <CategoriesMenu />
+            <ul>
+              {filteredDonations.map((element) => (
+                <CardDonor
+                  element={element}
+                  key={element.id}
+                  setModal={function (value: SetStateAction<boolean>): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                />
+              ))}
+            </ul>
+          </section>
+        </main>
         <Footer />
       </StyledDashboard>
     </>
