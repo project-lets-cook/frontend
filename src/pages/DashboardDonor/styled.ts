@@ -38,4 +38,22 @@ export const StyledDashboard = styled.main`
     /* display: flex;
     justify-content: space-around; */
   }
+
+  .modal-loading-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-opacity);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  .modal-loading-box > div, span{
+    width: 1.5em;
+    height: 1.5em;
+  }
 `;

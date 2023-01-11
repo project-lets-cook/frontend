@@ -10,14 +10,15 @@ import { Navigate } from "react-router-dom";
 import { StyledDashboard } from "../DashboardDonor/styled";
 import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
+import { Loader } from "../../Components/Loader";
 
 export const DashboardReceiver = () => {
-  const { openModal, modalOpen, isDonor, loadingUser } =
-    useContext(UserContext);
-  const { filteredDonations } = useContext(DonationContext);
+  const { openModal, modalOpen, isDonor, loadingUser } = useContext(UserContext);
+  const { filteredDonations, modalLoading } = useContext(DonationContext);
 
   return !isDonor ? (
     <StyledDashboard>
+      {modalLoading && <div className="modal-loading-box"> <Loader/> </div>}
       {openModal && (
         <Modal name={""}>
           <ProductInfos />

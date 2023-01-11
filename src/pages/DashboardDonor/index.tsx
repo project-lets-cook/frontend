@@ -10,15 +10,17 @@ import { DonationContext } from "../../contexts/DonationContext";
 import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
+import { Loader } from "../../Components/Loader";
 
 export const DashboardDonor = () => {
-  const { filteredMyDonations } = useContext(DonationContext);
+  const { filteredMyDonations, modalLoading } = useContext(DonationContext);
   const { user, loadingUser, isDonor, openModal } = useContext(UserContext);
 
 
   return (isDonor ? (
 
     <StyledDashboard>
+      {modalLoading && <div className="modal-loading-box"> <Loader/> </div>}
       {openModal && <Modal name={""}><ProductDonor /></Modal>}
       <Header />
       <section className="container">

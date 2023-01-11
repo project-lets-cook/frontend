@@ -48,5 +48,5 @@ export interface iDonationProviderValue {
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
   requestDonation: (id: number) => void;
   requests: iUser[]
-
+  modalLoading: boolean;
 }
