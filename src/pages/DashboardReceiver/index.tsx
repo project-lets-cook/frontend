@@ -17,30 +17,32 @@ export const DashboardReceiver = () => {
   const { filteredDonations } = useContext(DonationContext);
 
   return !isDonor ? (
-    <StyledDashboard>
+    <>
       {openModal && (
         <Modal name={""}>
           <ProductInfos />
         </Modal>
       )}
-      <Header />
-      <section className="container">
-        <SearchItens />
-        <CategoriesMenu />
-        <ul>
-          {filteredDonations.map((element) => (
-            <CardDonor
-              element={element}
-              key={element.id}
-              setModal={function (value: SetStateAction<boolean>): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
-          ))}
-        </ul>
-      </section>
-      <Footer />
-    </StyledDashboard>
+      <StyledDashboard>
+        <Header />
+        <section className="container">
+          <SearchItens />
+          <CategoriesMenu />
+          <ul>
+            {filteredDonations.map((element) => (
+              <CardDonor
+                element={element}
+                key={element.id}
+                setModal={function (value: SetStateAction<boolean>): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            ))}
+          </ul>
+        </section>
+        <Footer />
+      </StyledDashboard>
+    </>
   ) : (
     <Navigate to="/DashboardDonor" />
   );
