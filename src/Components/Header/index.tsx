@@ -2,23 +2,21 @@ import { StyledHeader } from "./styled";
 import { FiLogOut } from "react-icons/fi";
 import logo from "../../assets/icons/logo.png";
 import imgError from "../../assets/img/imgnotfound.jpg";
-import { SyntheticEvent, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export const Header = () => {
-    const { userLogout, user } = useContext(UserContext)
-
-    const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
-        (event.target as HTMLImageElement).src = `${imgError}`;
-    }
+    const { userLogout, user, setModalProfile, addDefaultImg } = useContext(UserContext)
 
     return (
         <StyledHeader>
             <div>
                 <img src={logo} alt="" />
                 <div>
-                    {user ? <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
-                        <img src={imgError} alt='profilepic' />}
+                    <button type="button" onClick={() => {setModalProfile(true)}}>
+                        {user ? <img className="user-img" src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
+                            <img className="user-img" src={imgError} alt='profilepic' />}
+                    </button>
 
                     <button type="button" onClick={userLogout}>
                         <FiLogOut />

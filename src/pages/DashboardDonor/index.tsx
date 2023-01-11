@@ -11,15 +11,16 @@ import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
 import { Footer } from "../../Components/Footer";
 import { useState } from "react";
-import { Loader } from "../../Components/Loader";
 import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 import { Button } from "../../Components/Button";
+import { ModalProfile } from "../../Components/Modal/modalProfile";
 
 export const DashboardDonor = () => {
+
   const [modalProductDonor, setModalProductDonor] = useState(false);
   const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
   const { myDonations, filteredMyDonations, setFilteredMyDonations } = useContext(DonationContext);
-  const { isDonor } = useContext(UserContext);
+  const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
 
 
   const changeCategory = (cat: string) => {
@@ -34,9 +35,15 @@ export const DashboardDonor = () => {
 
   return isDonor ? (
     <>
-      {modalProductDonor && (
-        <Modal
-          name={""}
+      {modalProfile && 
+      <Modal name={"Editar Perfil"}
+        state={modalProfile}
+        setState={setModalProfile}>
+        <ModalProfile/>
+      </Modal>
+      }
+      {modalProductDonor &&
+        <Modal name={""}
           state={modalProductDonor}
           setState={setModalProductDonor}
         >

@@ -9,7 +9,7 @@ interface iModalProps {
   children: JSX.Element;
   name: string;
   state: boolean
-  setState: React.Dispatch<React.SetStateAction<boolean>>
+  setState:  (state: boolean) => void;
 }
 
 export const Modal = ({ children, name, state, setState }: iModalProps) => {

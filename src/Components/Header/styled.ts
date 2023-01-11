@@ -50,6 +50,12 @@ export const StyledHeader = styled.header`
     border: none;
   }
 
+  .user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
   @media screen and (max-width: 520px) {
     > div {
       margin-top: 15px;
