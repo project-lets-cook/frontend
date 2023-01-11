@@ -1,44 +1,41 @@
 import styled from "styled-components";
 
-export const StyledCard = styled.li`
-  width: 170px;
-  height: 230px;
+export const StyledCardReceiver = styled.li`
+  width: 130px;
+  height: 200px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   border-radius: 3px;
   margin-top: 5%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.45);
   border: 4px solid var(--color-secondary);
   
-  figure {
+  
+  .containerli{
+    width: 90%;
+    height: 80%;
+  }
+  img {
       background-color: var(--color-secondary);
-      width: 110px;
-      height: 110px;
-      position: absolute;
+      width: 90px;
+      height: 90px;
       top: -50px;
       left: 25px;
-      border-radius: 50%;
       border: 4px solid var(--color-secondary);
-
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-
-  img {
-    transition: 0.3s ease-in;
-    max-height: 100%;
+      transition: 0.3s ease-in;
   }
-  }
+  
   :hover img {
     max-height: 130%;
   }
 
-  p {
-    color: var(--color-grey300);
-  }
+  
   div {
     display: flex;
     flex-direction: column;

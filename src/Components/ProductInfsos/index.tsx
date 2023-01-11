@@ -11,29 +11,12 @@ export const ProductInfos = () => {
     return (
       <ProductInfosStyled>
         <ImageCategories category={donation.category} />
-        <StyledTypography classText="Heading3" tag="h2">
-          {donation.title}
-        </StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">
-          Cidade/Estado
-        </StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">
-          Categoria: {donation.category}
-        </StyledTypography>
-        <StyledTypography classText="Caption" tag="h6">
-          Quantidade: {donation.amounts}
-        </StyledTypography>
-        <StyledTypography classText="Caption" tag="p">
-          {donation.descripition}
-        </StyledTypography>
-        <Button
-          size={"lg"}
-          theme={"primary"}
-          type={"button"}
-          onclick={() => requestDonation(donation.id)}
-        >
-          Solicitar Doação
-        </Button>
+        <StyledTypography classText="Heading3" tag="h2">{donation.title}</StyledTypography>
+        <StyledTypography classText="Caption" tag="h6">Cidade/Estado</StyledTypography>
+        <StyledTypography classText="Caption" tag="h6">Categoria: {donation.category}</StyledTypography>
+        <StyledTypography classText="Caption" tag="h6">Quantidade: {donation.amounts}</StyledTypography>
+        <StyledTypography classText="Caption" tag="p">{donation.descripition}</StyledTypography>
+        <Button size={'lg'} theme={'primary'} type={'button'} onclick={() => requestDonation( donation.id)}>Solicitar Doação</Button>
       </ProductInfosStyled>
     );
   }

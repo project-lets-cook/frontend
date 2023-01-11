@@ -9,6 +9,7 @@ import {
   iDonationInfo,
   iDonationProviderProps,
   iDonationProviderValue,
+  iReciver,
 } from "./types";
 
 export const DonationContext = createContext({} as iDonationProviderValue);
@@ -16,8 +17,8 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
-  const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo);
-  const [request, setRequest] = useState([] as iUser[]);
+  const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo)
+  const [requests, setRequests] = useState([] as iUser[])
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
     []
@@ -34,12 +35,11 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       try {
         const { data } = await api.get("donation/", {
           headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-        setRequest(data.request);
-        setDonations(data);
-        setFilteredDonations(data);
+            authorization: `Bearer ${token}`
+          }
+        })
+        setDonations(data)
+        setFilteredDonations(data)
       } catch (error) {
         console.error(error);
       }
@@ -55,11 +55,12 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     try {
       const { data } = await api.get(`donation/${id}`, {
         headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      setDonation(data);
-      setOpenModal(true);
+          authorization: `Bearer ${token}`
+        }
+      })
+      setRequests(data.request)
+      setDonation(data)
+      setOpenModal(true)
     } catch (error) {
       console.error(error);
     }
@@ -112,21 +113,19 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   }, [user]);
 
   return (
-    <DonationContext.Provider
-      value={{
-        donations,
-        filteredDonations,
-        setFilteredDonations,
-        getDonationbyId,
-        donation,
-        setDonation,
-        requestDonation,
-        myDonations,
-        filteredMyDonations,
-        setFilteredMyDonations,
-        request,
-      }}
-    >
+    <DonationContext.Provider value={{
+      donations,
+      filteredDonations,
+      setFilteredDonations,
+      getDonationbyId,
+      donation,
+      setDonation,
+      requestDonation,
+      myDonations,
+      filteredMyDonations,
+      setFilteredMyDonations,
+      requests
+    }}>
       {children}
     </DonationContext.Provider>
   );
