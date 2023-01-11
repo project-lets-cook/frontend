@@ -1,3 +1,4 @@
+import banner from "../../assets/img/banner.png";
 import styled from "styled-components";
 
 export const StyledAbout = styled.div`
@@ -6,7 +7,7 @@ export const StyledAbout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../src/assets/img/banner.png");
+  background-image: url(${banner});
   background-repeat: no-repeat;
   background-size: cover;
 
