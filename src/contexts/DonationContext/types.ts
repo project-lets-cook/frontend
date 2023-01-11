@@ -49,4 +49,5 @@ export interface iDonationProviderValue {
   requestDonation: (id: number) => void;
   requests: iUser[]
   modalLoading: boolean;
+  createDonation: (data: iDonation) => void;
 }
