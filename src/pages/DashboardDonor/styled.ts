@@ -3,21 +3,18 @@ import styled from "styled-components";
 export const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+
   width: 100%;
   height: 100%;
   gap: 40px;
-  position: relative;
- 
-  & > button{
-    position: absolute;
-    right: 50px;
-    bottom: 20px;
-  }
-  section:nth-child(2) {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding: 20px 0;
+
+  main {
+    section {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding: 30px 0;
 
       > ul {
         width: 100%;
@@ -31,11 +28,6 @@ export const StyledDashboard = styled.div`
         overflow-y: auto;
       }
     }
-
-  .container {
-    margin: 0 auto;
-    width: 1200px;
-  }
 
   .modal-loading-box {
     display: flex;
@@ -65,6 +57,23 @@ export const StyledDashboard = styled.div`
 
   .waring-my-donations > p {
     font-size: 25px;
+  }
+
+  @media screen and (max-width: 520px) {
+    gap: 0;
+    > main {
+      > section {
+        padding-top: 50px;
+        ul {
+          padding: 0 10px;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          li {
+            margin: 50px 0 25px 0;
+          }
+        }
+      }
+    }
   }
 
 `;

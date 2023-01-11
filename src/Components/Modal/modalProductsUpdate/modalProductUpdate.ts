@@ -28,4 +28,17 @@ export const DonationUpdateStyled = styled.div`
     display: flex;
     flex-direction: column;
   }
+  @media (max-width: 700px) {
+    img {
+      width: 12rem;
+      height: 12rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    img {
+      width: 9rem;
+      height: 9rem;
+    }
+  }
 `;

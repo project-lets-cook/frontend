@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
+
     > div {
       display: flex;
       align-items: center;
@@ -44,24 +44,21 @@ export const StyledHeader = styled.header`
   }
 
   @media screen and (max-width: 520px) {
-    /* display: flex;
-    flex-direction: column; */
-    display: inline;
-    background: none;
-    box-shadow: none;
-
     > div {
-      display: inline;
-      flex-direction: column;
+      margin-top: 15px;
+      align-items: flex-start;
+      padding-left: 10px;
+
+      > img {
+        width: 120px;
+      }
 
       > div {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        border: 1px solid blue;
         padding-right: 15px;
-        gap: 10px;
-
+        gap: 5px;
         > img {
           border: 1px solid green;
           transform: scale(0.7);
