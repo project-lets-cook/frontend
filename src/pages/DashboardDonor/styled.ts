@@ -7,22 +7,14 @@ export const StyledDashboard = styled.div`
   height: 100%;
   gap: 40px;
   position: relative;
-   button{
+   /* button{
     position: absolute;
-  }
+  } */
   section:nth-child(2) {
     display: flex;
     justify-content: space-between;
     position: relative;
     padding: 20px 0;
-
-    > ul {
-      width: 100%;
-      padding: 5px 0;
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      padding: 30px 0;
 
       > ul {
         width: 100%;
@@ -36,7 +28,6 @@ export const StyledDashboard = styled.div`
         overflow-y: auto;
       }
     }
-  }
 
   .container {
     margin: 0 auto;
