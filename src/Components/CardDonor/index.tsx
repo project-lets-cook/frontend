@@ -15,6 +15,10 @@ export interface IElement {
   descripition: string;
   amounts: number;
   id: number;
+  address: {
+    city: string;
+    state: string;
+  }
 }
 
 interface icard {
@@ -22,7 +26,7 @@ interface icard {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const CardDonor = ({ element, setModal }: icard) => {
-  const { title, category, id } = element;
+  const { title, category, id, address } = element;
   const { getDonationbyId } = useContext(DonationContext);
 
   const openModal = async () => {
@@ -39,6 +43,9 @@ export const CardDonor = ({ element, setModal }: icard) => {
         </StyledTypography>
         <StyledTypography classText="Body" tag="p">
           {category}
+        </StyledTypography>
+        <StyledTypography classText="Body" tag="p">
+          {address.city} | {address.state}
         </StyledTypography>
         <Button
           size={"md"}
