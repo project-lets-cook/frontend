@@ -2,10 +2,9 @@ import { StyledHeader } from "./styled"
 import { FiLogOut } from "react-icons/fi"
 import logo from "../../assets/icons/logo.png"
 import imgError from "../../assets/img/imgnotfound.jpg"
-import { SearchItens } from "../SearchItens"
 import { SyntheticEvent, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
-import { SelectCity } from "../Forms/Select"
+
 
 
 export const Header = () => {
