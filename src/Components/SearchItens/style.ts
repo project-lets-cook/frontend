@@ -56,14 +56,14 @@ export const StyledSearchItens = styled.form`
   @media screen and (max-width: 520px) {
     width: 250px;
     width: 95vw;
-    height: 30px;
-    top: -35px;
-    padding: 0 5px;
-
+    height: 35px;
+    top: -40px;
+    padding: 5px;
+    gap: 1px;
     > div {
       > select {
         padding: 0 10px;
-        height: 22px;
+        height: 25px;
       }
     }
   }
