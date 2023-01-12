@@ -4,6 +4,8 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { iFormRegisterDonor } from "../../Components/RegisterFormDonor";
 import { iFormRegisterReceiver } from "../../Components/RegisterFormReceiver";
+import { SyntheticEvent } from "react";
+import imgError from "../../assets/img/imgnotfound.jpg";
 import {
   iUserProviderProps,
   iUserProviderValue,
@@ -21,6 +23,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [loadingUser, setLoadingUser] = useState(true);
   const [isDonor, setIsDonor] = useState(false);
+  const [modalProfile, setModalProfile] = useState(false);
 
   useEffect(() => {
     async function loadUser() {
@@ -120,7 +123,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         },
       });
 
-      toast.success("Endereço alterado com sucesso!");
+      toast.success("Dados alterados com sucesso!");
     } catch (error) {
       toast.error("Ops! Algo deu errado");
     } finally {
@@ -133,8 +136,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     navigate("/");
   };
 
-
-
+  const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
+    (event.target as HTMLImageElement).src = `${imgError}`;
+}
+  
   return (
     <UserContext.Provider
       value={{
@@ -148,6 +153,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         userRegisterReceiver,
         editAdress,
         userLogout,
+        modalProfile,
+        setModalProfile,
+        addDefaultImg
       }}
     >
       {children}
