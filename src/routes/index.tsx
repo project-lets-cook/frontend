@@ -4,7 +4,6 @@ import { About } from "../pages/About";
 import { DashboardDonor } from "../pages/DashboardDonor";
 import { DashboardReceiver } from "../pages/DashboardReceiver";
 import { InitialPage } from "../pages/InitialPage";
-import { ProfilePage } from "../pages/ProfilePage";
 
 export const MainRoutes = () => {
   return (
@@ -15,7 +14,6 @@ export const MainRoutes = () => {
       <Route element={<ProtectedRoutes />}>
         <Route path="/DashboardDonor" element={<DashboardDonor />} />
         <Route path="/DashboardReceiver" element={<DashboardReceiver />} />
-        <Route path="/ProfilePage" element={<ProfilePage />} />
       </Route>
     </Routes>
   );

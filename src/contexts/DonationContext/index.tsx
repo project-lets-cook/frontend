@@ -3,8 +3,8 @@ import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { UserContext } from "../UserContext";
-import { iUser } from "../UserContext/types";
 import {
+  Ibody,
   iDonation,
   iDonationInfo,
   iDonationProviderProps,
@@ -19,7 +19,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [reloadPage, setReloadPage] = useState(false);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo);
-  const [request, setRequest] = useState([] as iUser[]);
+  const [request, setRequest] = useState<Ibody>();
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
     []
@@ -140,23 +140,25 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
-    
+    console.log(request);
     const body = {
-    userId: request.userId,
-    title: request.title,
-    category: request.category,
-    validation: request.validation,
-    description: request.descripition,
-    amounts: request.amounts,
-    address: {
-      city: request.city,
-      state: request.state,
-    },
-    request: [...request.request, user]
-  };
+      userId: request?.userId,
+      title: request?.title,
+      category: request?.category,
+      validation: request?.validation,
+      descripition: request?.descripition,
+      amounts: request?.amounts,
+      address: {
+        city: request?.city,
+        state: request?.state,
+      },
+      request: [...request?.request, user]
+    };
+    console.log(body);
     if (!token) {
       return false;
     }
+
     try {
       await api.patch(`donation/${id}`, body, {
         headers: {
@@ -221,7 +223,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`,
         },
       });
-      
+
       toast.success("Doação adicionada com sucesso!");
       setReloadPage(!reloadPage)
     } catch (error) {
@@ -233,7 +235,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const editQuantity = async (data: {
     amounts: number;
     id: number;
-  }): Promise<void> => {
+  }): Promise<boolean> => {
+    setModalLoading(true)
     try {
       const token = localStorage.getItem("TOKEN");
 
@@ -244,12 +247,16 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       });
 
       toast.success("Quantidade alterada com sucesso!");
+      return false
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
+      setModalLoading(false)
     }
   };
-  const deleteDonation = async (id: number): Promise<void> => {
+  const deleteDonation = async (id: number): Promise<boolean> => {
+    setModalLoading(true)
     try {
       const token = localStorage.getItem("TOKEN");
 
@@ -260,9 +267,13 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       });
 
       toast.success("Doação deletada com sucesso!");
+      return false
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
+      setModalLoading(false)
+      setReloadPage(!reloadPage)
     }
   };
 
