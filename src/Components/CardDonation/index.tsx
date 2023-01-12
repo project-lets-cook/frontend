@@ -11,7 +11,8 @@ interface Irequest {
 }
 
 export const CardDonation = ({ request, setState }: Irequest) => {
-
+  console.log(request);
+  
   const { sendDonation } = useContext(DonationContext)
 
   const addDefaultImg = (event: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -26,10 +27,10 @@ export const CardDonation = ({ request, setState }: Irequest) => {
   return (
     <StyledCardDonation>
       <div className="containerli">
-        {request ? <img src={request.img} alt="profilepic" onError={addDefaultImg} /> :
+        {request ? <img src={request.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
           <img src={imgError} alt='profilepic' />}
-        <StyledTypography classText="Body" tag="p">
-          {request.name?.substring(0, 20)}
+        <StyledTypography classText="Caption" tag="p">
+          {request.name?.substring(0, 10)}
         </StyledTypography>
         <Button
           size={"sm"}
