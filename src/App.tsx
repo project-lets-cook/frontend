@@ -1,7 +1,12 @@
+import { ToastContainer } from "react-toastify";
+import { MainRoutes } from "./routes";
+import "react-toastify/dist/ReactToastify.css";
+
 export const App = () => {
   return (
     <div>
-      <h1>Start Lets Cook!!!</h1>
+      <MainRoutes />
+      <ToastContainer />
     </div>
   );
 };
