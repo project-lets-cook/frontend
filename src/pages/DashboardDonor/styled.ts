@@ -112,6 +112,7 @@ export const StyledDashboard = styled.div`
           flex-wrap: nowrap;
           overflow-x: scroll;
           li {
+            min-width: 165px;
             margin: 50px 0 25px 0;
           }
         }
