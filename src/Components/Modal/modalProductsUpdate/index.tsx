@@ -16,9 +16,10 @@ type FormProductUpdate = {
 
 interface IPropsModalProductUpdate {
   id: number;
+  setState: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
+export const ModalProductUpdate = ({ id, setState }: IPropsModalProductUpdate) => {
   const { donations, editQuantity, deleteDonation } =
     useContext(DonationContext);
 
@@ -30,7 +31,17 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
     formState: { errors },
   } = useForm<FormProductUpdate>();
 
-  const testeModalProductUpdate = (data: IdataProductUpdate) => {};
+  const submit = handleSubmit((data: { amounts: number }) => autocloseModal(data))
+
+  const autocloseModal = async (data: { amounts: number }) => {
+
+    const state = await editQuantity({ amounts: data.amounts, id: id })
+    setState(state)
+  }
+  const autocloseModalDelete = async () => {
+    const state = await deleteDonation(id)
+    setState(state)
+  }
 
   return (
     <DonationUpdateStyled>
@@ -57,9 +68,7 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
         </div>
       </div>
       <form
-        onSubmit={handleSubmit((data: { amounts: number }) => {
-          editQuantity({ amounts: data.amounts, id: id });
-        })}
+        onSubmit={submit}
       >
         <Input
           label={"Quantidade"}
@@ -75,13 +84,11 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
           size={"lg"}
           type="button"
           theme={"white"}
-          onclick={() => {
-            deleteDonation(id);
-          }}
+          onclick={autocloseModalDelete}
         >
           Deletar
         </Button>
       </form>
-    </DonationUpdateStyled>
+    </DonationUpdateStyled >
   );
 };

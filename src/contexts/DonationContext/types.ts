@@ -56,6 +56,6 @@ export interface iDonationProviderValue {
   modalLoading: boolean;
   setModalLoading: React.Dispatch<React.SetStateAction<boolean>>;
   createDonation: (data: iDonation) => void;
-  editQuantity: (data: { amounts: number; id: number }) => Promise<void>;
+  editQuantity: (data: { amounts: number; id: number }) => Promise<boolean>;
   deleteDonation: (id: number) => Promise<void>;
 }

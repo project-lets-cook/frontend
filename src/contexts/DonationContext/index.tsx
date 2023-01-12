@@ -139,12 +139,18 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
-    const body = [...requests, user];
     if (!token) {
       return false;
     }
+    if (!requests) {
+      setRequests(user)
+    }
+    console.log(requests);
+
     try {
-      await api.patch(`donation/${id}`, body, {
+      await api.patch(`donation/${id}`, {
+        request: [ requests ]
+      }, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -218,7 +224,8 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const editQuantity = async (data: {
     amounts: number;
     id: number;
-  }): Promise<void> => {
+  }): Promise<boolean> => {
+    setModalLoading(true)
     try {
       const token = localStorage.getItem("TOKEN");
 
@@ -229,12 +236,16 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       });
 
       toast.success("Quantidade alterada com sucesso!");
+      return false
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
+      setModalLoading(false)
     }
   };
-  const deleteDonation = async (id: number): Promise<void> => {
+  const deleteDonation = async (id: number): Promise<boolean> => {
+    setModalLoading(true)
     try {
       const token = localStorage.getItem("TOKEN");
 
@@ -245,9 +256,13 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       });
 
       toast.success("Doação deletada com sucesso!");
+       return false
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+        return true
     } finally {
+      setModalLoading(false)
+      setReloadPage(!reloadPage)
     }
   };
 
