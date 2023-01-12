@@ -6,23 +6,37 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 export const Header = () => {
-    const { userLogout, user, setModalProfile, addDefaultImg } = useContext(UserContext)
+  const { userLogout, user, setModalProfile, addDefaultImg } =
+    useContext(UserContext);
 
-    return (
-        <StyledHeader>
-            <div>
-                <img src={logo} alt="" />
-                <div>
-                    <button type="button" onClick={() => {setModalProfile(true)}}>
-                        {user ? <img className="user-img" src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
-                            <img className="user-img" src={imgError} alt='profilepic' />}
-                    </button>
+  return (
+    <StyledHeader>
+      <div>
+        <img src={logo} alt="" />
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setModalProfile(true);
+            }}
+          >
+            {user ? (
+              <img
+                className="user-img"
+                src={user.profileImgUrl}
+                alt="profilepic"
+                onError={addDefaultImg}
+              />
+            ) : (
+              <img className="user-img" src={imgError} alt="profilepic" />
+            )}
+          </button>
 
-                    <button type="button" onClick={userLogout}>
-                        <FiLogOut />
-                    </button>
-                </div>
-            </div>
-        </StyledHeader>
-    )
-}
+          <button type="button" onClick={userLogout}>
+            <FiLogOut />
+          </button>
+        </div>
+      </div>
+    </StyledHeader>
+  );
+};
