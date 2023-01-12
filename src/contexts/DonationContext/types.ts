@@ -36,6 +36,34 @@ export interface iDonationInfo {
   request?: iUser[];
 }
 
+export interface Ibody {
+  userId: string,
+  title: string,
+  category: string,
+  validation: string,
+  descripition: string,
+  amounts: number,
+  address: {
+    city?: string,
+    state?: string,
+  },
+  request?: request[]
+};
+
+interface request {
+  address: {
+    street: string,
+    city: string,
+    state: string
+  }
+  cpf: string,
+  donor: true,
+  email: string,
+  id: number,
+  name: string,
+  profileImgUrl: string,
+  telephone: string,
+}
 export interface iPropsState {
   setState: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -57,5 +85,5 @@ export interface iDonationProviderValue {
   setModalLoading: React.Dispatch<React.SetStateAction<boolean>>;
   createDonation: (data: iDonation) => void;
   editQuantity: (data: { amounts: number; id: number }) => Promise<boolean>;
-  deleteDonation: (id: number) => Promise<void>;
+  deleteDonation: (id: number) => Promise<boolean>;
 }
