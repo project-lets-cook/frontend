@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { DonationContext } from "../../../contexts/DonationContext";
+import { iPropsState } from "../../../contexts/DonationContext/types";
 import { acronymStates } from "../../../data/stateList";
 import { Button } from "../../Button"
 import { categories } from "../../CategoriesMenu";
@@ -21,7 +22,7 @@ type iFormAddDonation = {
   state: string
 }
 
-export const AddDonarionForm = () => {
+export const AddDonarionForm = ({setState}: iPropsState) => {
   const { createDonation } = useContext(DonationContext)
 
   const {
@@ -35,7 +36,7 @@ export const AddDonarionForm = () => {
 
   const submit = (data: any) => {
     createDonation(data)
-
+    setState(!true)
   }
   return (
     <DivAddDonation>
@@ -55,7 +56,7 @@ export const AddDonarionForm = () => {
       </InputStyled>
       <Input label={"Quantidade"} id={"amounts"} type={"text"} placeholder={"Digite aqui a quantidade"} register={register('amounts')}></Input>
       <InputLocations>
-        <Input label={"Endereço"} id={"city"} placeholder={"Sua Cidade"} register={register('city')}></Input>
+        <Input label={"Cidade"} id={"city"} placeholder={"Sua Cidade"} register={register('city')}></Input>
         <select id="state" {...register('state')}>
           {acronymStates.map((ele, i) => {
             return <option key={i} value={ele}>{ele}</option>
