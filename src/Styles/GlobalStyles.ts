@@ -22,7 +22,6 @@ export const Global = createGlobalStyle`
   --color-grey300: #878787;
   --color-grey100: #F3F3F3;
   --color-grey50: #FFFFFF;
-  /* --color-grey40: rgb(227,227,227,0.7); */
   --color-grey40: rgb(255,255,255,0.7);
   --color-grey60: #E1AF9D;
   --color-shadow: #00000015;
@@ -39,12 +38,12 @@ body,html{
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     overflow-x: hidden;
 }
 
 button {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     cursor: pointer;
 }
 
@@ -53,7 +52,6 @@ ul, ol, li{
 }
 
 nav button:hover{
-  /* background-color: var(--color-secondary); */
   color: var(--color-primary)
 }
 

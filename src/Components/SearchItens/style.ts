@@ -13,7 +13,6 @@ export const StyledSearchItens = styled.form`
   border-radius: 4px;
   position: absolute;
   top: -60px;
-  /* right: 330px; */
 
   width: 250px;
   margin: 0 auto;
@@ -25,7 +24,6 @@ export const StyledSearchItens = styled.form`
 
   > div {
     width: 200px;
-    /* background-color: red; */
   }
 
   button {

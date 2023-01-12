@@ -5,7 +5,6 @@ export const ModalProfileStyled = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 90%;
-  /* padding: 2rem; */
 
   div {
     display: flex;

@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const StyledCategoriesMenu = styled.aside`
   padding: 20px 50px;
 
-  /* margin-top: 30px; */
-
   nav {
     width: 250px;
     padding: 20px 0;
@@ -18,7 +16,6 @@ export const StyledCategoriesMenu = styled.aside`
     position: relative;
 
     > button {
-      /* padding-left: 15px; */
       border: none;
       font-size: 15px;
       width: 250px;

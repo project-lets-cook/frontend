@@ -42,7 +42,6 @@ export const StyledAbout = styled.div`
     align-items: center;
     justify-content: center;
 
-    /* background-color: red; */
     > div {
       max-width: 1200px;
       margin: 0 auto;

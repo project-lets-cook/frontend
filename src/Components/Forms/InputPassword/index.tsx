@@ -23,8 +23,6 @@ export const InputPassword = ({
   return (
     <>
       <PasswordBox>
-        {/* <div> */}
-        {/* <div> */}
         <input
           id={id}
           type={visible ? "text" : "password"}
@@ -34,11 +32,9 @@ export const InputPassword = ({
           required={true}
         ></input>
         <label htmlFor={id}>{label}</label>
-        {/* </div> */}
         <button type="button" onClick={() => setVisible(!visible)}>
           {visible ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
         </button>
-        {/* </div> */}
       </PasswordBox>
     </>
   );

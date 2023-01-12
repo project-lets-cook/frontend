@@ -50,13 +50,11 @@ export const StepsCarousel = ({ mode }: iStepsCarousel) => (
       touchTracking
       items={mode == "donor" ? donor : receiver}
       responsive={responsive}
-      // controlsStrategy="alternate"
       disableButtonsControls
       disableDotsControls
       animationDuration={2000}
       autoPlay
       autoPlayInterval={6000}
-      // paddingRight={10}
       autoPlayDirection={mode == "donor" ? "ltr" : "rtl"}
       swipeDelta={1000}
       autoPlayStrategy="default"

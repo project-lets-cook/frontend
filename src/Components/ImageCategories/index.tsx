@@ -1,4 +1,3 @@
-// import { StyledImageCards } from "./styles";
 import Cereals from "../../assets/img/Cereals.jpeg";
 import Fruits from "../../assets/img/Fruits.jpg";
 import Vegetables from "../../assets/img/Vegetables.jpg";
