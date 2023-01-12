@@ -19,7 +19,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [reloadPage, setReloadPage] = useState(false);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo);
-  const [request, setRequest] = useState<Ibody>();
+  const [request, setRequest] = useState<Ibody | null>(null);
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
     []
@@ -141,20 +141,21 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
     console.log(request);
-    const body = {
-      userId: request?.userId,
-      title: request?.title,
-      category: request?.category,
-      validation: request?.validation,
-      descripition: request?.descripition,
-      amounts: request?.amounts,
+
+    const body = request && {
+      userId: request.userId,
+      title: request.title,
+      category: request.category,
+      validation: request.validation,
+      descripition: request.descripition,
+      amounts: request.amounts,
       address: {
-        city: request?.city,
-        state: request?.state,
+        city: request.address.city,
+        state: request.address.state,
       },
       request: [...request?.request, user]
-    };
-    console.log(body);
+    }
+      
     if (!token) {
       return false;
     }

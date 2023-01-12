@@ -11,7 +11,6 @@ interface Irequest {
 }
 
 export const CardDonation = ({ request, setState }: Irequest) => {
-  console.log(request);
   
   const { sendDonation } = useContext(DonationContext)
 
