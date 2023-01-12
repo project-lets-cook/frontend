@@ -9,7 +9,7 @@ import { RegisterFormDonor } from "../../Components/RegisterFormDonor";
 import { Button } from "../../Components/Button";
 import { StepsCarousel } from "../../Components/StepsCarousel";
 import { Navigate } from "react-router-dom";
-import { Footer } from "../../Components/Footer";
+import { Footer } from "../../Components/Foote";
 
 export const InitialPage = () => {
   const [openLogin, setOpenLogin] = useState(false);
