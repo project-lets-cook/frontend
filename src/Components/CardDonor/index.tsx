@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { DonationContext } from "../../contexts/DonationContext";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledTypography } from "../BaseTypography/style";
-import { Button } from "../Button";
-import { Modal } from "../Modal";
 import { ImageCategories } from "../ImageCategories";
 import { StyledCard } from "./styles";
 import { MdOutlineEdit } from "react-icons/md";
@@ -43,7 +41,7 @@ export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
       <ImageCategories category={category} />
       <div>
         <StyledTypography classText="Heading4" tag="h3">
-          {title}
+          {title.substring(0, 12)}
         </StyledTypography>
         <StyledTypography classText="Body" tag="p">
           {category}
