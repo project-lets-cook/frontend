@@ -47,7 +47,7 @@ export const CardDonor = ({ element, setModal, setEditDonor, setIdModal }: icard
       <ImageCategories category={category} />
       <div>
         <StyledTypography classText="Heading4" tag="h3">
-          {title.substring(0, 16)}
+          {title.substring(0, 12)}
         </StyledTypography>
         <StyledTypography classText="Body" tag="p">
           {category}

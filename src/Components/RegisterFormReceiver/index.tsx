@@ -15,13 +15,13 @@ export interface iFormRegisterReceiver {
   cnpj: string;
   telephone: string;
   place: string;
-  sponsor: string;
-  picture: string;
+  name: string;
+  profileImgUrl: string;
   email: string;
   password: string;
   confirm: string;
   city: string;
-  country: string;
+  state: string;
   donor: boolean;
 }
 
@@ -110,13 +110,13 @@ export const RegisterFormReceiver = ({ setState }: iPropsState) => {
       <div>
         <Input
           label={"Pessoa Responsável"}
-          id={"sponsor"}
+          id={"name"}
           type={"text"}
-          register={register("sponsor")}
+          register={register("name")}
           placeholder={"Digite o nome do responsável aqui"}
         />
-        {errors.sponsor?.message ? (
-          <p className="input-waring">{errors.sponsor.message}</p>
+        {errors.name?.message ? (
+          <p className="input-waring">{errors.name.message}</p>
         ) : (
           <p></p>
         )}
@@ -125,13 +125,13 @@ export const RegisterFormReceiver = ({ setState }: iPropsState) => {
       <div>
         <Input
           label={"Foto do perfil"}
-          id={"picture"}
+          id={"profileImgUrl"}
           type={"text"}
-          register={register("picture")}
+          register={register("profileImgUrl")}
           placeholder={"Digite o link de sua foto"}
         />
-        {errors.picture?.message ? (
-          <p className="input-waring">{errors.picture.message}</p>
+        {errors.profileImgUrl?.message ? (
+          <p className="input-waring">{errors.profileImgUrl.message}</p>
         ) : (
           <p></p>
         )}
@@ -198,13 +198,13 @@ export const RegisterFormReceiver = ({ setState }: iPropsState) => {
       <div>
         <Input
           label={"Estado"}
-          id={"country"}
+          id={"state"}
           type={"text"}
-          register={register("country")}
+          register={register("state")}
           placeholder={"Digite seu estado aqui"}
         />
-        {errors.country?.message ? (
-          <p className="input-waring">{errors.country.message}</p>
+        {errors.state?.message ? (
+          <p className="input-waring">{errors.state.message}</p>
         ) : (
           <p></p>
         )}

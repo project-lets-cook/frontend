@@ -13,9 +13,9 @@ export const registerFormReciver = yup.object().shape({
 
     place: yup.string().required("O endereço é obrigatório"),
 
-    sponsor: yup.string().required("O campo é obrigatório"),
+    name: yup.string().required("O campo é obrigatório"),
 
-    picture: yup.string().required("O campo é obrigatório"),
+    profileImgUrl: yup.string().required("O campo é obrigatório"),
 
     email: yup
         .string()
@@ -41,5 +41,5 @@ export const registerFormReciver = yup.object().shape({
 
     city: yup.string().required("A cidade é obrigatório"),
 
-    country: yup.string().required("O estado é obrigatório"),
+    state: yup.string().required("O estado é obrigatório"),
 });
