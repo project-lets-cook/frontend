@@ -1,6 +1,6 @@
 import { categories, CategoriesMenu } from "../../Components/CategoriesMenu";
 import { Header } from "../../Components/Header";
-import { Footer } from "../../Components/Foote";
+import { Footer } from "../../Components/Footer";
 import { CardDonor } from "../../Components/CardDonor";
 import { SetStateAction, useContext, useState } from "react";
 import { Modal } from "../../Components/Modal";

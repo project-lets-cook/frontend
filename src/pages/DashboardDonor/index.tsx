@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 import { DonationContext } from "../../contexts/DonationContext";
 import { ProductDonor } from "../../Components/ProductDonor";
 import { Modal } from "../../Components/Modal";
-import { Footer } from "../../Components/Foote";
+import { Footer } from "../../Components/Footer";
 import { useState } from "react";
 import { AddDonarionForm } from "../../Components/Forms/FormAddDonation";
 import { Button } from "../../Components/Button";
