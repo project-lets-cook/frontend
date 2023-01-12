@@ -111,7 +111,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setLoading(false);
     }
   };
-  const editAdress = async (data: iEditAdrress): Promise<void> => {
+  const editAdress = async (data: iEditAdrress): Promise<boolean> => {
     try {
       setLoading(true);
       const userId = window.localStorage.getItem("USER");
@@ -124,8 +124,11 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       });
 
       toast.success("Dados alterados com sucesso!");
+      setModalProfile(false)
+      return false
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+      return true
     } finally {
       setLoading(false);
     }
