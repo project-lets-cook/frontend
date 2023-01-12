@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const DivAddDonation = styled.div`
+    width: 100%;
+`
+
+export const FomrAddDonation = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+`
+
 export const InputLocations = styled.div`
     display: flex;
     justify-content: space-between;
@@ -29,6 +40,7 @@ export const SelectCategory = styled.select`
         padding: 0px 0px 5px 0px;
         font-size: 14px;
         font-weight: 500;
+        width: 100%;
 
         :hover , :focus {
             color: var(--color-primary);

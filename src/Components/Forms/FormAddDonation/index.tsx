@@ -8,7 +8,7 @@ import { categories } from "../../CategoriesMenu";
 import { Input } from "../Input"
 import { InputStyled } from "../Input/styles";
 import { AddDonationSchema } from "./AddDonarionSchema";
-import { InputLocations, SelectCategory } from "./styled";
+import { DivAddDonation, FomrAddDonation, InputLocations, SelectCategory } from "./styled";
 
 
 type iFormAddDonation = {
@@ -38,7 +38,8 @@ export const AddDonarionForm = () => {
 
   }
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <DivAddDonation>
+      <FomrAddDonation onSubmit={handleSubmit(submit)}>
       <Input label={"Titulo"} id={"title"} type={"text"} placeholder={"Digite aqui o titulo"} register={register('title')}></Input>
       <SelectCategory id="category" {...register('category')}> 
         {categories.map((cat, i) =>
@@ -51,7 +52,6 @@ export const AddDonarionForm = () => {
           id='descripition'
           placeholder='Digite aqui a descriçãodo produto'
         ></textarea>
-        <label htmlFor='descripiton'>Descrição</label>
       </InputStyled>
       <Input label={"Quantidade"} id={"amounts"} type={"text"} placeholder={"Digite aqui a quantidade"} register={register('amounts')}></Input>
       <InputLocations>
@@ -64,6 +64,7 @@ export const AddDonarionForm = () => {
       </InputLocations>
 
       <Button size={'lg'} theme={'primary'} type={'submit'}>Adicionar Doação</Button>
-    </form>
+    </FomrAddDonation>
+    </DivAddDonation>
   )
 }
