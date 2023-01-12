@@ -13,8 +13,10 @@ interface IdataProductUpdate {
 type FormProductUpdate = {
   amounts: number;
 };
-
-export const ModalProductUpdate = ({ id }: { id?: number }) => {
+interface IPropsModalProductUpdate {
+  id?: number 
+}
+export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate ) => {
   const { donations } = useContext(DonationContext);
 
   const product = donations.find((donation) => id === donation.id);

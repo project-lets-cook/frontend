@@ -34,10 +34,6 @@ export const ModalProfile = () => {
     formState: { errors },
   } = useForm<FormNewAndress>();
 
-  const testeModalProfile = (data: IdataProductUpdate) => {
-    console.log(data);
-  };
-
   return (
       <ModalProfileStyled>
         {user ? 
