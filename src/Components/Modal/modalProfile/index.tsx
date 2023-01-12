@@ -7,25 +7,26 @@ import { Button } from "../../Button";
 import { useForm } from "react-hook-form";
 import { BaseTypography } from "../../BaseTypography";
 import { Modal } from "../index";
+import imgError from "../../../assets/img/imgnotfound.jpg";
 
 interface IdataProductUpdate {
   name: string;
-  address: {
-    city: string;
-  };
+  street: string;
+  city: string;
+  state: string;
   profileImgUrl: string;
 }
 
 type FormNewAndress = {
   name: string;
-  address: {
-    city: string;
-  };
+  street: string;
+  city: string;
+  state: string;
   profileImgUrl: string;
 };
 
 export const ModalProfile = () => {
-  const { user } = useContext(UserContext);
+  const { user, setModalProfile, addDefaultImg, editAdress } = useContext(UserContext);
 
   const {
     register,
@@ -38,16 +39,18 @@ export const ModalProfile = () => {
   };
 
   return (
-    <Modal name="Perfil">
       <ModalProfileStyled>
-        <img src={user?.profileImgUrl} alt={user?.name} />
+        {user ? 
+        <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> 
+        :
+        <img src={imgError} alt='profilepic' />}
         <div id="text">
           <span id="nome">{user?.name}</span>
           <span>{user?.email}</span>
           <span>{user?.telephone}</span>
         </div>
 
-        <form onSubmit={handleSubmit(testeModalProfile)}>
+        <form onSubmit={handleSubmit(editAdress)}>
           <Input
             label={"Nome"}
             id={"Nome"}
@@ -56,18 +59,32 @@ export const ModalProfile = () => {
             placeholder={"Digite seu novo endereço"}
           />
           <Input
-            label={"Cidade"}
-            id={"Cidade"}
-            type={"text"}
-            register={register("address.city")}
-            placeholder={"Digite sua cidade"}
-          />
-          <Input
             label={"Sua imagem"}
             id={"avatar"}
             type={"text"}
             register={register("profileImgUrl")}
             placeholder={"Cole aqui o link do seu avatar"}
+          />
+          <Input
+          label={"Endereço"}
+          id={"place"}
+          type={"text"}
+          register={register("street")}
+          placeholder={"Digite seu endereço aqui"}
+          />
+          <Input
+            label={"Cidade"}
+            id={"Cidade"}
+            type={"text"}
+            register={register("city")}
+            placeholder={"Digite sua cidade"}
+          />
+          <Input
+          label={"Estado"}
+          id={"country"}
+          type={"text"}
+          register={register("state")}
+          placeholder={"Digite seu estado aqui"}
           />
           <Button size="lg" theme="primary" type="submit">
             Editar perfil
@@ -77,12 +94,11 @@ export const ModalProfile = () => {
           size="lg"
           theme="white"
           type="button"
-          onclick={() => setOpenModal(false)}
+          onclick={() => {setModalProfile(false)}}
         >
           Cancelar
         </Button>
       </ModalProfileStyled>
-    </Modal>
   );
 };
 function setOpenModal(arg0: boolean): void {

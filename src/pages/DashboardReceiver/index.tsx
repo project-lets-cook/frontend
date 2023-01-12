@@ -10,14 +10,15 @@ import { Navigate } from "react-router-dom";
 import { StyledDashboard } from "../DashboardDonor/styled";
 import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
-import { Button } from "../../Components/Button";
+import { ModalProfile } from "../../Components/Modal/modalProfile";
+import { ModalProductUpdate } from "../../Components/Modal/modalProductsUpdate";
+
 
 export const DashboardReceiver = () => {
   const [modalProductInfos, setModalProductInfos] = useState(false);
-
-  const { isDonor } = useContext(UserContext);
-  const { filteredDonations, setFilteredDonations, donations } =
-    useContext(DonationContext);
+  const [modalProductUpdate, setModalProductUpdate] = useState(false);
+  const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
+  const { filteredDonations, setFilteredDonations, donations } = useContext(DonationContext);
 
   const changeCategory = (cat: string) => {
     if (cat === "Todas as Categorias") {
@@ -29,12 +30,16 @@ export const DashboardReceiver = () => {
     }
   };
 
-  function setAddDonarionForm(arg0: boolean) {
-    throw new Error("Function not implemented.");
-  }
-
   return !isDonor ? (
     <>
+      {modalProfile &&
+        <Modal name={"Editar Perfil"}
+          state={modalProfile}
+          setState={setModalProfile}>
+          <ModalProfile />
+        </Modal>
+      }
+
       {modalProductInfos && (
         <Modal
           name={""}
@@ -42,6 +47,15 @@ export const DashboardReceiver = () => {
           setState={setModalProductInfos}
         >
           <ProductInfos setState={setModalProductInfos} />
+        </Modal>
+      )}
+      {modalProductUpdate && (
+        <Modal
+          name={""}
+          state={modalProductUpdate}
+          setState={setModalProductUpdate}
+        >
+          <ModalProductUpdate />
         </Modal>
       )}
       <StyledDashboard>
@@ -56,6 +70,7 @@ export const DashboardReceiver = () => {
                   element={element}
                   key={element.id}
                   setModal={setModalProductInfos}
+                  setEditDonor={setModalProductUpdate}
                 />
               ))}
             </ul>
