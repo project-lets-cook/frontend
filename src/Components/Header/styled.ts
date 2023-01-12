@@ -1,3 +1,4 @@
+import { Button } from "./../Button/index";
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
@@ -20,28 +21,28 @@ export const StyledHeader = styled.header`
       align-items: center;
       gap: 40px;
 
-      > img {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: 3px solid var(--color-grey50);
-
-        :hover {
-          cursor: pointer;
-          border: 3px solid var(--color-primary);
-        }
-      }
-
       > button {
         width: 30px;
         height: 30px;
         background-color: transparent;
         border-style: none;
-
         color: var(--color-grey300);
+        /* border: 1px solid red; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > img {
+          border: 3px solid var(--color-grey50);
+
+          :hover {
+            border: 3px solid var(--color-primary);
+          }
+        }
       }
     }
   }
+
   button,
   svg {
     width: 30px;
@@ -58,7 +59,7 @@ export const StyledHeader = styled.header`
 
   @media screen and (max-width: 520px) {
     > div {
-      margin-top: 15px;
+      margin-top: 20px;
       align-items: flex-start;
       padding-left: 10px;
 
@@ -68,12 +69,13 @@ export const StyledHeader = styled.header`
 
       > div {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: 15px;
-        gap: 5px;
-        > img {
-          transform: scale(0.7);
+        padding: 5px 15px 0 0;
+        gap: 30px;
+
+        > button {
+          > img {
+            transform: scale(0.7);
+          }
         }
       }
     }

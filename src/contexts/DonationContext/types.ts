@@ -33,11 +33,11 @@ export interface iDonationInfo {
   descripition?: string;
   amounts?: string;
   id: number;
-  request?: iUser[]
+  request?: iUser[];
 }
 
-export interface iPropsState{
-  setState: React.Dispatch<React.SetStateAction<boolean>>
+export interface iPropsState {
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface iDonationProviderValue {
@@ -48,12 +48,14 @@ export interface iDonationProviderValue {
   setFilteredMyDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   setFilteredDonations: React.Dispatch<React.SetStateAction<iDonation[]>>;
   getDonationbyId: (id: number) => Promise<boolean>;
-  donation: iDonationInfo
-  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
+  donation: iDonationInfo;
+  setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>;
   requestDonation: (id: number) => Promise<boolean>;
   requests: iUser[];
-  sendDonation: () => Promise<boolean>
+  sendDonation: () => Promise<boolean>;
   modalLoading: boolean;
-  setModalLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setModalLoading: React.Dispatch<React.SetStateAction<boolean>>;
   createDonation: (data: iDonation) => void;
+  editQuantity: (data: { amounts: number; id: number }) => Promise<void>;
+  deleteDonation: (id: number) => Promise<void>;
 }

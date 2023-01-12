@@ -17,11 +17,11 @@ import { ModalProfile } from "../../Components/Modal/modalProfile";
 import { ModalProductUpdate } from "../../Components/Modal/modalProductsUpdate";
 
 export const DashboardDonor = () => {
-
   const [modalProductDonor, setModalProductDonor] = useState(false);
-  const [modalEditDonor, setModalEditDonor] = useState(false);
+  const [modalEditDonor, setModalEditDonor] = useState(null);
   const [modalAddDonarionForm, setAddDonarionForm] = useState(false);
-  const { myDonations, filteredMyDonations, setFilteredMyDonations } = useContext(DonationContext);
+  const { myDonations, filteredMyDonations, setFilteredMyDonations } =
+    useContext(DonationContext);
   const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
 
   const changeCategory = (cat: string) => {
@@ -36,21 +36,24 @@ export const DashboardDonor = () => {
 
   return isDonor ? (
     <>
-      {modalProfile && 
-      <Modal name={"Editar Perfil"}
-        state={modalProfile}
-        setState={setModalProfile}>
-        <ModalProfile/>
-      </Modal>
-      }
-      {modalProductDonor &&
-        <Modal name={""}
+      {modalProfile && (
+        <Modal
+          name={"Editar Perfil"}
+          state={modalProfile}
+          setState={setModalProfile}
+        >
+          <ModalProfile />
+        </Modal>
+      )}
+      {modalProductDonor && (
+        <Modal
+          name={""}
           state={modalProductDonor}
           setState={setModalProductDonor}
         >
           <ProductDonor setState={setModalProductDonor} />
         </Modal>
-      }
+      )}
       {modalAddDonarionForm && (
         <Modal
           name={"Adicionar Doação"}
@@ -66,7 +69,7 @@ export const DashboardDonor = () => {
           state={modalEditDonor}
           setState={setModalEditDonor}
         >
-          <ModalProductUpdate />
+          <ModalProductUpdate id={modalEditDonor} />
         </Modal>
       )}
       <StyledDashboard>
