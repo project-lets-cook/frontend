@@ -60,7 +60,7 @@ export const DashboardDonor = () => {
           state={modalAddDonarionForm}
           setState={setAddDonarionForm}
         >
-          <AddDonarionForm />
+          <AddDonarionForm setState={setAddDonarionForm}/>
         </Modal>
       )}
       {modalEditDonor && (

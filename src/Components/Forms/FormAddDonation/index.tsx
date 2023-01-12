@@ -2,13 +2,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { DonationContext } from "../../../contexts/DonationContext";
+import { iPropsState } from "../../../contexts/DonationContext/types";
 import { acronymStates } from "../../../data/stateList";
 import { Button } from "../../Button"
 import { categories } from "../../CategoriesMenu";
 import { Input } from "../Input"
 import { InputStyled } from "../Input/styles";
 import { AddDonationSchema } from "./AddDonarionSchema";
-import { InputLocations, SelectCategory } from "./styled";
+import { DivAddDonation, FomrAddDonation, InputLocations, SelectCategory } from "./styled";
 
 
 type iFormAddDonation = {
@@ -21,7 +22,7 @@ type iFormAddDonation = {
   state: string
 }
 
-export const AddDonarionForm = () => {
+export const AddDonarionForm = ({setState}: iPropsState) => {
   const { createDonation } = useContext(DonationContext)
 
   const {
@@ -35,10 +36,11 @@ export const AddDonarionForm = () => {
 
   const submit = (data: any) => {
     createDonation(data)
-
+    setState(!true)
   }
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <DivAddDonation>
+      <FomrAddDonation onSubmit={handleSubmit(submit)}>
       <Input label={"Titulo"} id={"title"} type={"text"} placeholder={"Digite aqui o titulo"} register={register('title')}></Input>
       <SelectCategory id="category" {...register('category')}> 
         {categories.map((cat, i) =>
@@ -51,11 +53,10 @@ export const AddDonarionForm = () => {
           id='descripition'
           placeholder='Digite aqui a descriçãodo produto'
         ></textarea>
-        <label htmlFor='descripiton'>Descrição</label>
       </InputStyled>
       <Input label={"Quantidade"} id={"amounts"} type={"text"} placeholder={"Digite aqui a quantidade"} register={register('amounts')}></Input>
       <InputLocations>
-        <Input label={"Endereço"} id={"city"} placeholder={"Sua Cidade"} register={register('city')}></Input>
+        <Input label={"Cidade"} id={"city"} placeholder={"Sua Cidade"} register={register('city')}></Input>
         <select id="state" {...register('state')}>
           {acronymStates.map((ele, i) => {
             return <option key={i} value={ele}>{ele}</option>
@@ -64,6 +65,7 @@ export const AddDonarionForm = () => {
       </InputLocations>
 
       <Button size={'lg'} theme={'primary'} type={'submit'}>Adicionar Doação</Button>
-    </form>
+    </FomrAddDonation>
+    </DivAddDonation>
   )
 }

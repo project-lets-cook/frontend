@@ -16,7 +16,7 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [modalLoading, setModalLoading] = useState(false);
-  const [reloadPage, setRealoadPage] = useState(false);
+  const [reloadPage, setReloadPage] = useState(false);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo);
   const [requests, setRequests] = useState([] as iUser[]);
@@ -158,8 +158,9 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   };
 
   const sendDonation = async () => {
-    setModalLoading(true);
-    setRealoadPage(true);
+
+    setModalLoading(true)
+    setReloadPage(!reloadPage)
     const token = window.localStorage.getItem("TOKEN");
     const id = donation.id;
     try {
@@ -173,9 +174,11 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       console.log(error);
       toast.error("Algo errado por aqui");
     } finally {
-      setModalLoading(false);
-      setRealoadPage(true);
-      return false;
+
+      setModalLoading(false)
+      setReloadPage(!reloadPage)
+      return false
+
     }
   };
   const createDonation = async (data: any) => {
@@ -203,9 +206,9 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
-
+      
       toast.success("Doação adicionada com sucesso!");
+      setReloadPage(!reloadPage)
     } catch (error) {
       console.error(error);
       toast.error("algo deu errado tente novamente!");

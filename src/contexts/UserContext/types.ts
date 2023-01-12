@@ -43,7 +43,7 @@ export interface iUserProviderValue {
   userLogin: (data: iFormLogin) => Promise<void>;
   userRegisterDonor: (data: iFormRegisterDonor) => Promise<boolean>;
   userRegisterReceiver: (data: iFormRegisterReceiver) => Promise<boolean>;
-  editAdress: (data: iEditAdrress) => Promise<void>;
+  editAdress: (data: iEditAdrress) => Promise<boolean>;
   userLogout: () => void;
   modalProfile: boolean;
   setModalProfile: (modalProfile: boolean) => void;
