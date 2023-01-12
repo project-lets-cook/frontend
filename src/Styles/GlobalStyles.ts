@@ -39,12 +39,12 @@ body,html{
 }
 
 body {
-    font-family: "Nunito", sans-serif;
+    font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
 }
 
 button {
-    font-family: "Nunito", sans-serif;
+    font-family: 'Nunito', sans-serif;
     cursor: pointer;
 }
 

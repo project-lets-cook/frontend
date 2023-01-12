@@ -1,10 +1,10 @@
-import { ProductInfosStyled } from "./styled"
-import { StyledTypography } from "../BaseTypography/style"
-import { DonationContext } from "../../contexts/DonationContext"
-import { useContext } from "react"
-import { ImageCategories } from "../ImageCategories"
-import { CardDonation } from "../CardDonation"
-import { iPropsState, iReciver } from "../../contexts/DonationContext/types"
+import { ProductInfosStyled } from './styled'
+import { StyledTypography } from '../BaseTypography/style'
+import { DonationContext } from '../../contexts/DonationContext'
+import { useContext } from 'react'
+import { ImageCategories } from '../ImageCategories'
+import { CardDonation } from '../CardDonation'
+import { iPropsState, iReciver } from '../../contexts/DonationContext/types'
 import { CiFaceFrown } from "react-icons/ci";
 
 export const ProductDonor = ({ setState }:iPropsState) => {

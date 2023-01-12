@@ -27,7 +27,7 @@ export const CardDonation = ({ request, setState }: Irequest) => {
     <StyledCardDonation>
       <div className="containerli">
         {request ? <img src={request.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> :
-          <img src={imgError} alt="profilepic" />}
+          <img src={imgError} alt='profilepic' />}
         <StyledTypography classText="Caption" tag="p">
           {request.name?.substring(0, 10)}
         </StyledTypography>
