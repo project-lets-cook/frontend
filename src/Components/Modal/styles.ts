@@ -22,6 +22,7 @@ export const StyledModal = styled.div`
     align-items: center;
     overflow-y: auto;
     height: 100%;
+    padding: 0px 20px;
   }
   .modal-box > div {
     width: 100%;

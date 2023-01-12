@@ -29,11 +29,11 @@ interface icard {
 }
 export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
   const { title, category, id, address } = element;
-  console.log(element)
   const { getDonationbyId } = useContext(DonationContext);
   const { isDonor } = useContext(UserContext);
-  
+
   const openModal = async () => {
+    console.log(element);
     setModal(true);
     const state = await getDonationbyId(id);
     setModal(state);
@@ -55,9 +55,11 @@ export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
           <button id="icon" onClick={openModal}>
             Detalhes
           </button>
-           {isDonor && <button id="icon" onClick={() => setEditDonor(true)}>
-            <MdOutlineEdit />
-          </button>} 
+          {isDonor && (
+            <button id="icon" onClick={() => setEditDonor(id)}>
+              <MdOutlineEdit />
+            </button>
+          )}
         </div>
       </div>
     </StyledCard>

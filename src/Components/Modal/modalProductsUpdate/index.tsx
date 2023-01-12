@@ -13,11 +13,14 @@ interface IdataProductUpdate {
 type FormProductUpdate = {
   amounts: number;
 };
+
 interface IPropsModalProductUpdate {
-  id?: number 
+  id: number;
 }
-export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate ) => {
-  const { donations } = useContext(DonationContext);
+
+export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
+  const { donations, editQuantity, deleteDonation } =
+    useContext(DonationContext);
 
   const product = donations.find((donation) => id === donation.id);
 
@@ -27,9 +30,7 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate ) => {
     formState: { errors },
   } = useForm<FormProductUpdate>();
 
-  const testeModalProductUpdate = (data: IdataProductUpdate) => {
-    console.log(data);
-  };
+  const testeModalProductUpdate = (data: IdataProductUpdate) => {};
 
   return (
     <DonationUpdateStyled>
@@ -37,6 +38,10 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate ) => {
         <div>
           <span id="titleDescription">Alimento:</span>
           <span>{product?.title}</span>
+        </div>
+        <div>
+          <span id="titleDescription">Descrição:</span>
+          <span>{product?.descripition}</span>
         </div>
         <div>
           <span id="titleDescription">Categoria:</span>
@@ -47,22 +52,33 @@ export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate ) => {
           <span>{product?.validation}</span>
         </div>
         <div>
-          <span id="titleDescription">Descrição:</span>
-          <span>{product?.descripition}</span>
+          <span id="titleDescription">Quantidade:</span>
+          <span>{product?.amounts}</span>
         </div>
       </div>
-      <form onSubmit={handleSubmit(testeModalProductUpdate)}>
+      <form
+        onSubmit={handleSubmit((data: { amounts: number }) => {
+          editQuantity({ amounts: data.amounts, id: id });
+        })}
+      >
         <Input
           label={"Quantidade"}
           id={"amounts"}
-          type={"number"}
-          placeholder={"Digite aqui a quantidade"}
+          type={"text"}
+          placeholder={"Digite a quantidade desejada"}
           register={register("amounts")}
         ></Input>
         <Button size={"lg"} theme={"primary"} type={"submit"}>
           Atualizar Doação
         </Button>
-        <Button size={"lg"} theme={"white"} type={"submit"}>
+        <Button
+          size={"lg"}
+          type="button"
+          theme={"white"}
+          onclick={() => {
+            deleteDonation(id);
+          }}
+        >
           Deletar
         </Button>
       </form>
