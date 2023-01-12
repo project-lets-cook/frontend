@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { ImageCategories } from "../ImageCategories";
 import { StyledCard } from "./styles";
-import { IconName, MdOutlineEdit } from "react-icons/md";
+import { MdOutlineEdit } from "react-icons/md";
 
 export interface IElement {
   userId: number;
