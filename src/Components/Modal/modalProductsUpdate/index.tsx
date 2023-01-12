@@ -19,7 +19,7 @@ interface IPropsModalProductUpdate {
   setState: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ModalProductUpdate = ({ id, setState }: IPropsModalProductUpdate) => {
+export const ModalProductUpdate = ({ setState, id }: IPropsModalProductUpdate) => {
   const { donations, editQuantity, deleteDonation } =
     useContext(DonationContext);
 

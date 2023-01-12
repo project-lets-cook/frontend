@@ -19,7 +19,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [reloadPage, setReloadPage] = useState(false);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo);
-  const [requests, setRequests] = useState([] as iUser[]);
+  const [request, setRequest] = useState([] as iUser[]);
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>(
     []
@@ -110,6 +110,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     };
     getMyDonations();
   }, [reloadPage]);
+
   const getDonationbyId = async (id: number) => {
     setModalLoading(true);
     console.log(modalLoading);
@@ -125,7 +126,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`,
         },
       });
-      setRequests(data.request);
+      setRequest(data);
       setDonation(data);
       return true;
     } catch (error) {
@@ -139,6 +140,20 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
+    
+    const body = {
+    userId: request.userId,
+    title: request.title,
+    category: request.category,
+    validation: request.validation,
+    description: request.descripition,
+    amounts: request.amounts,
+    address: {
+      city: request.city,
+      state: request.state,
+    },
+    request: [...request.request, user]
+  };
     if (!token) {
       return false;
     }
@@ -201,6 +216,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
         city: data.city,
         state: data.state,
       },
+      request: []
     };
     if (!token) {
       return null;
@@ -279,7 +295,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
         myDonations,
         filteredMyDonations,
         setFilteredMyDonations,
-        requests,
+        request,
         sendDonation,
         modalLoading,
         setModalLoading,
