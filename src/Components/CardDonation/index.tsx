@@ -6,12 +6,11 @@ import imgError from "../../assets/img/imgnotfound.jpg"
 import { SyntheticEvent, useContext } from "react"
 import { DonationContext } from "../../contexts/DonationContext";
 interface Irequest {
-  request: iReciver
+  request: iReciver,
+  setState: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
-export const CardDonation = ({ request }: Irequest) => {
-
+export const CardDonation = ({ request, setState }: Irequest) => {
 
   const { sendDonation } = useContext(DonationContext)
 
@@ -19,6 +18,10 @@ export const CardDonation = ({ request }: Irequest) => {
     (event.target as HTMLImageElement).src = `${imgError}`;
   }
 
+  const sendDonationConfig = async () => {
+    const state = await sendDonation()
+    setState(state)
+  }
 
   return (
     <StyledCardDonation>
@@ -32,7 +35,7 @@ export const CardDonation = ({ request }: Irequest) => {
           size={"sm"}
           theme={"primary"}
           type={"button"}
-          onclick={() => sendDonation()}
+          onclick={sendDonationConfig}
         >Doar</Button>
       </div>
     </StyledCardDonation>

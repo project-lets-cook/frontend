@@ -52,7 +52,7 @@ export interface iDonationProviderValue {
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>
   requestDonation: (id: number) => Promise<boolean>;
   requests: iUser[];
-  sendDonation: () => void
+  sendDonation: () => Promise<boolean>
   modalLoading: boolean;
   setModalLoading: React.Dispatch<React.SetStateAction<boolean>>
   createDonation: (data: iDonation) => void;

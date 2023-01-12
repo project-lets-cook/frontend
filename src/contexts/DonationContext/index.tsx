@@ -16,12 +16,13 @@ export const DonationContext = createContext({} as iDonationProviderValue);
 export const DonationProvider = ({ children }: iDonationProviderProps) => {
   const [donations, setDonations] = useState<iDonation[]>([]);
   const [modalLoading, setModalLoading] = useState(false);
+  const [reloadPage, setRealoadPage] = useState(false);
   const [filteredDonations, setFilteredDonations] = useState<iDonation[]>([]);
   const [donation, setDonation] = useState<iDonationInfo>({} as iDonationInfo)
   const [requests, setRequests] = useState([] as iUser[])
   const [myDonations, setMyDonations] = useState<iDonation[]>([]);
   const [filteredMyDonations, setFilteredMyDonations] = useState<iDonation[]>([]);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -65,13 +66,55 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     };
     getMyDonations();
   }, [user]);
+  useEffect(() => {
+    const getProducts = async () => {
+      const token = localStorage.getItem("TOKEN");
+
+      if (!token) {
+        return null;
+      }
+      try {
+        const { data } = await api.get("donation/", {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+        })
+        setDonations(data)
+        setFilteredDonations(data)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getProducts();
+    const getMyDonations = async () => {
+      const token = localStorage.getItem("TOKEN");
+      const userId = localStorage.getItem("USER");
+      if (!token) {
+        return null;
+      }
+
+      try {
+        const { data } = await api.get(`donation?userId=${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setMyDonations(data);
+        setFilteredMyDonations(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMyDonations();
+  }, [reloadPage]);
   const getDonationbyId = async (id: number) => {
-    
+
     setModalLoading(true)
     console.log(modalLoading);
 
     const token = localStorage.getItem("TOKEN");
-    
+
     if (!token) {
       return false;
     }
@@ -115,8 +158,9 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
   };
 
-
   const sendDonation = async () => {
+    setModalLoading(true)
+    setRealoadPage(true)
     const token = window.localStorage.getItem("TOKEN");
     const id = donation.id
     try {
@@ -125,10 +169,15 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
           authorization: `Bearer ${token}`,
         }
       })
-      toast.success("Sua Doaçao foi doada ");
+      toast.success("Sua Doaçao foi Concluida");
+      
     } catch (error) {
       console.log(error);
       toast.error("Algo errado por aqui")
+    } finally {
+      setModalLoading(false)
+      setRealoadPage(true)
+      return false
     }
 
   }
@@ -149,23 +198,23 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
     }
     if (!token) {
       return null;
-    } 
+    }
 
     try {
-      const {data}= await api.post('donation/', body, {
+      const { data } = await api.post('donation/', body, {
         headers: {
           authorization: `Bearer ${token}`,
         },
       });
       console.log(data);
-      
+
       toast.success("Doação adicionada com sucesso!");
     } catch (error) {
       console.error(error)
       toast.error("algo deu errado tente novamente!");
     }
   }
- 
+
   return (
     <DonationContext.Provider value={{
       donations,
