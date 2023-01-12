@@ -113,7 +113,6 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const getDonationbyId = async (id: number) => {
     setModalLoading(true);
-    console.log(modalLoading);
 
     const token = localStorage.getItem("TOKEN");
 
@@ -140,8 +139,6 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
 
   const requestDonation = async (id: number) => {
     const token = localStorage.getItem("TOKEN");
-    console.log(request);
-
     const body = request && {
       userId: request.userId,
       title: request.title,
@@ -188,7 +185,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       });
       toast.success("Sua Doaçao foi Concluida");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Algo errado por aqui");
     } finally {
 

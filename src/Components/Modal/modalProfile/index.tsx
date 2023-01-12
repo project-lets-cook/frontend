@@ -39,7 +39,7 @@ export const ModalProfile = () => {
         {user ? 
         <img src={user.profileImgUrl} alt="profilepic" onError={addDefaultImg} /> 
         :
-        <img src={imgError} alt='profilepic' />}
+        <img src={imgError} alt="profilepic" />}
         <div id="text">
           <span id="nome">{user?.name}</span>
           <span>{user?.email}</span>
