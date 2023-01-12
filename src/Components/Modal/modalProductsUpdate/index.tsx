@@ -16,9 +16,10 @@ type FormProductUpdate = {
 
 interface IPropsModalProductUpdate {
   id: number;
+  setState: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ModalProductUpdate = ({ id }: IPropsModalProductUpdate) => {
+export const ModalProductUpdate = ({ setState, id }: IPropsModalProductUpdate) => {
   const { donations, editQuantity, deleteDonation } =
     useContext(DonationContext);
 

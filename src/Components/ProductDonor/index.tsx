@@ -8,15 +8,16 @@ import { iPropsState, iReciver } from '../../contexts/DonationContext/types'
 import { CiFaceFrown } from "react-icons/ci";
 
 export const ProductDonor = ({ setState }:iPropsState) => {
-  const { donation, requests } = useContext(DonationContext)
+  const { donation, request } = useContext(DonationContext)
+  console.log(request)
 
   return (
     <ProductInfosStyled>
       <ImageCategories category={donation.category} />
       <StyledTypography classText="Heading3" tag="h2">{donation.title}</StyledTypography>
       <ul>
-        {requests ? (requests.map((request: iReciver, index) =>
-          <CardDonation request={request} setState={setState } key={index} />)) : (
+        {request.request ? (request.request.map((req: iReciver, index: any) =>
+          <CardDonation request={req} setState={setState } key={index} />)) : (
             <div>
               <StyledTypography classText="Heading" tag="p">
                 Ninguem se canditatou por aqui 
