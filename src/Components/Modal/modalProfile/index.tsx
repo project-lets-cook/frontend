@@ -34,10 +34,6 @@ export const ModalProfile = () => {
     formState: { errors },
   } = useForm<FormNewAndress>();
 
-  const testeModalProfile = (data: IdataProductUpdate) => {
-    console.log(data);
-  };
-
   return (
       <ModalProfileStyled>
         {user ? 
@@ -101,3 +97,6 @@ export const ModalProfile = () => {
       </ModalProfileStyled>
   );
 };
+function setOpenModal(arg0: boolean): void {
+  throw new Error("Function not implemented.");
+}

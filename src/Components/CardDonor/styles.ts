@@ -11,26 +11,26 @@ export const StyledCard = styled.li`
   margin-top: 5%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.45);
   border: 4px solid var(--color-secondary);
-  
+
   figure {
-      background-color: var(--color-secondary);
-      width: 110px;
-      height: 110px;
-      position: absolute;
-      top: -50px;
-      left: 25px;
-      border-radius: 50%;
-      border: 4px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: -50px;
+    left: 25px;
+    border-radius: 50%;
+    border: 4px solid var(--color-secondary);
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 
-  img {
-    transition: 0.3s ease-in;
-    max-height: 100%;
-  }
+    img {
+      transition: 0.3s ease-in;
+      max-height: 100%;
+    }
   }
   :hover img {
     max-height: 130%;
@@ -44,11 +44,26 @@ export const StyledCard = styled.li`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    gap: 5px;
+    gap: 10px;
+    align-self: center;
+    margin-bottom: 10px;
 
     hr {
       width: 100%;
     }
   }
-  
+  div#btn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  button#icon {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--color-primary);
+  }
+  button#icon:hover {
+    opacity: 0.7;
+  }
 `;

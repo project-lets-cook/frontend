@@ -11,12 +11,13 @@ import { StyledDashboard } from "../DashboardDonor/styled";
 import { SearchItens } from "../../Components/SearchItens";
 import { DonationContext } from "../../contexts/DonationContext";
 import { ModalProfile } from "../../Components/Modal/modalProfile";
+import { ModalProductUpdate } from "../../Components/Modal/modalProductsUpdate";
 
 
 export const DashboardReceiver = () => {
-  const [modalProductInfos, setModalProductInfos] = useState(false)
-
-  const { isDonor,  modalProfile, setModalProfile } = useContext(UserContext);
+  const [modalProductInfos, setModalProductInfos] = useState(false);
+  const [modalProductUpdate, setModalProductUpdate] = useState(false);
+  const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
   const { filteredDonations, setFilteredDonations, donations } = useContext(DonationContext);
 
   const changeCategory = (cat: string) => {
@@ -29,45 +30,61 @@ export const DashboardReceiver = () => {
     }
   };
 
-
-  function setAddDonarionForm(arg0: boolean) {
-    throw new Error("Function not implemented.");
-  }
-
   return !isDonor ? (
     <>
-    {modalProfile && 
-      <Modal name={"Editar Perfil"}
-        state={modalProfile}
-        setState={setModalProfile}>
-        <ModalProfile/>
-      </Modal>
+      {modalProfile &&
+        <Modal name={"Editar Perfil"}
+          state={modalProfile}
+          setState={setModalProfile}>
+          <ModalProfile />
+        </Modal>
       }
 
       {modalProductInfos && (
-        <Modal name={""} state={modalProductInfos} setState={setModalProductInfos}>
+        <Modal
+          name={""}
+          state={modalProductInfos}
+          setState={setModalProductInfos}
+        >
           <ProductInfos setState={setModalProductInfos} />
+        </Modal>
+      )}
+      {modalProductUpdate && (
+        <Modal
+          name={""}
+          state={modalProductUpdate}
+          setState={setModalProductUpdate}
+        >
+          <ModalProductUpdate />
         </Modal>
       )}
       <StyledDashboard>
         <Header />
         <main>
-        <section className="container">
-          <SearchItens />
-          <CategoriesMenu />
-          <ul>
-            {filteredDonations.map((element) => (
-              <CardDonor
-                element={element}
-                key={element.id}
-                setModal={setModalProductInfos}
-              />
-            ))}
-          </ul>
-          <select id="categorys" onChange={(event) => changeCategory(event.target.value)}>
-              {categories.map((ele, i) => <option key={i} value={ele}>{ele}</option>)}
+          <section className="container">
+            <SearchItens />
+            <CategoriesMenu />
+            <ul>
+              {filteredDonations.map((element) => (
+                <CardDonor
+                  element={element}
+                  key={element.id}
+                  setModal={setModalProductInfos}
+                  setEditDonor={setModalProductUpdate}
+                />
+              ))}
+            </ul>
+            <select
+              id="categorys"
+              onChange={(event) => changeCategory(event.target.value)}
+            >
+              {categories.map((ele, i) => (
+                <option key={i} value={ele}>
+                  {ele}
+                </option>
+              ))}
             </select>
-        </section>
+          </section>
         </main>
         <Footer />
       </StyledDashboard>

@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { ImageCategories } from "../ImageCategories";
 import { StyledCard } from "./styles";
+import { MdOutlineEdit } from "react-icons/md";
 
 export interface IElement {
   userId: number;
@@ -18,23 +19,25 @@ export interface IElement {
   address: {
     city: string;
     state: string;
-  }
+  };
 }
 
 interface icard {
   element: IElement;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setEditDonor: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const CardDonor = ({ element, setModal }: icard) => {
+export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
   const { title, category, id, address } = element;
   console.log(element)
   const { getDonationbyId } = useContext(DonationContext);
-
+  const { isDonor } = useContext(UserContext);
+  
   const openModal = async () => {
-    setModal(true)
-    const state = await getDonationbyId(id)
-    setModal(state)
-  }
+    setModal(true);
+    const state = await getDonationbyId(id);
+    setModal(state);
+  };
   return (
     <StyledCard>
       <ImageCategories category={category} />
@@ -48,15 +51,14 @@ export const CardDonor = ({ element, setModal }: icard) => {
         <StyledTypography classText="Body" tag="p">
           {address.city} | {address.state}
         </StyledTypography>
-        <Button
-          size={"md"}
-          theme={"transparent"}
-          type={"button"}
-          onclick={openModal}
-        >
-          Detalhes
-        </Button>
-
+        <div id="btn">
+          <button id="icon" onClick={openModal}>
+            Detalhes
+          </button>
+           {isDonor && <button id="icon" onClick={() => setEditDonor(true)}>
+            <MdOutlineEdit />
+          </button>} 
+        </div>
       </div>
     </StyledCard>
   );
