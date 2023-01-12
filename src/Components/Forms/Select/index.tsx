@@ -11,11 +11,13 @@ export const SelectCity = () => {
   const { isDonor} = useContext(UserContext)
   const { donations, setFilteredDonations, myDonations, setFilteredMyDonations } = useContext(DonationContext);
 
+  
+  
+  if (isDonor) {
+    
+    const cities = [...new Set(myDonations.map((ele) => ele.address.city))]
+    
 
-if (isDonor) {
-  
-  const cities = [...new Set(myDonations.map((ele) => ele.address.city))]
-  
   const changeCity = (city: string) => {
     if (city === "all") {
       setFilteredMyDonations(myDonations);
@@ -34,7 +36,7 @@ if (isDonor) {
       >
         <option hidden>Escolher Cidade</option>
         <option value="all">Todas</option>
-        {cities.map((city, i) => (
+        {cities?.map((city, i) => (
           <option key={i} value={city}>
             {city}
           </option>

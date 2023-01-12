@@ -40,7 +40,7 @@ export const DashboardDonor = () => {
           state={modalProductDonor}
           setState={setModalProductDonor}
         >
-          <ProductDonor />
+          <ProductDonor setState={setModalProductDonor} />
         </Modal>
       )}
       {modalAddDonarionForm && (

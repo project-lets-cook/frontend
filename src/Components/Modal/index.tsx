@@ -21,7 +21,7 @@ export const Modal = ({ children, name, state, setState }: iModalProps) => {
   return state ? (
     <StyledModal>
       <div className="modal-box" ref={modalRef}>
-       {modalLoading && <div className="loader-box"><Loader /></div>}
+        {modalLoading && <div className="loader-box"><Loader /></div>}
         <header className="default-modal-header">
           <p>{name}</p>
           <button type="button" onClick={() => setState(!state)}>
