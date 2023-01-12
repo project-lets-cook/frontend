@@ -70,11 +70,9 @@ export const PasswordBox = styled.div`
     z-index: 10;
     position: absolute;
     right: 0;
-    /* top: 20px; */
 
     :hover {
       color: var(--color-primary);
     }
   }
-  /* } */
 `;

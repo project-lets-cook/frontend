@@ -67,7 +67,6 @@ export const StyledInitialPage = styled.div`
     background: none;
 
     header {
-      /* height: auto; */
       margin-top: 20px;
 
       > div {

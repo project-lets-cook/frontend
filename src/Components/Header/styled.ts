@@ -27,7 +27,6 @@ export const StyledHeader = styled.header`
         background-color: transparent;
         border-style: none;
         color: var(--color-grey300);
-        /* border: 1px solid red; */
         display: flex;
         align-items: center;
         justify-content: center;

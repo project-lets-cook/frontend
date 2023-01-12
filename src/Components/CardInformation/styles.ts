@@ -16,7 +16,6 @@ export const StyledCardInformation = styled.div`
   > div {
     display: flex;
     height: 85px;
-    /* width: 10px; */
     align-items: baseline;
 
     > img {
@@ -24,7 +23,6 @@ export const StyledCardInformation = styled.div`
       left: -20px;
       top: 5px;
       height: 100%;
-      /* width: 60%; */
     }
 
     > h2 {
@@ -35,7 +33,6 @@ export const StyledCardInformation = styled.div`
 
   p {
     margin-top: 10px;
-    /* margin-left: 50px; */
     font-size: 11px;
     font-weight: 600;
     width: 140px;
