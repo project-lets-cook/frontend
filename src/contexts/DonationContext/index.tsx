@@ -253,6 +253,7 @@ export const DonationProvider = ({ children }: iDonationProviderProps) => {
       toast.error("Ops! Algo deu errado");
       return true
     } finally {
+      setReloadPage(!reloadPage)
       setModalLoading(false)
     }
   };
