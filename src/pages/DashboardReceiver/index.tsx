@@ -17,6 +17,7 @@ import { ModalProductUpdate } from "../../Components/Modal/modalProductsUpdate";
 export const DashboardReceiver = () => {
   const [modalProductInfos, setModalProductInfos] = useState(false);
   const [modalProductUpdate, setModalProductUpdate] = useState(false);
+  const [idDonate, setidDonate] = useState(0);
   const { isDonor, modalProfile, setModalProfile } = useContext(UserContext);
   const { filteredDonations, setFilteredDonations, donations } = useContext(DonationContext);
 
@@ -55,7 +56,7 @@ export const DashboardReceiver = () => {
           state={modalProductUpdate}
           setState={setModalProductUpdate}
         >
-          <ModalProductUpdate />
+          <ModalProductUpdate setState={setModalProductUpdate} id={idDonate} />
         </Modal>
       )}
       <StyledDashboard>
@@ -71,6 +72,7 @@ export const DashboardReceiver = () => {
                   key={element.id}
                   setModal={setModalProductInfos}
                   setEditDonor={setModalProductUpdate}
+                  setIdModal={setidDonate}
                 />
               ))}
             </ul>

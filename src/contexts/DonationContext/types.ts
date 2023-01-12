@@ -21,7 +21,7 @@ export interface iDonation {
 
 export interface iReciver {
   userId?: number;
-  img?: string;
+  profileImgUrl?: string;
   name?: string;
 }
 
@@ -44,10 +44,10 @@ export interface Ibody {
   descripition: string,
   amounts: number,
   address: {
-    city?: string,
-    state?: string,
+    city: string,
+    state: string,
   },
-  request?: request[]
+  request: request[]
 };
 
 interface request {
@@ -79,7 +79,7 @@ export interface iDonationProviderValue {
   donation: iDonationInfo;
   setDonation: React.Dispatch<React.SetStateAction<iDonationInfo>>;
   requestDonation: (id: number) => Promise<boolean>;
-  requests: iUser[];
+  request: Ibody|null;
   sendDonation: () => Promise<boolean>;
   modalLoading: boolean;
   setModalLoading: React.Dispatch<React.SetStateAction<boolean>>;
