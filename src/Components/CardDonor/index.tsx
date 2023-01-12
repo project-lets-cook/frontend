@@ -31,7 +31,8 @@ export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
   const { title, category, id, address } = element;
   console.log(element)
   const { getDonationbyId } = useContext(DonationContext);
-
+  const { isDonor } = useContext(UserContext);
+  
   const openModal = async () => {
     setModal(true);
     const state = await getDonationbyId(id);
@@ -54,9 +55,9 @@ export const CardDonor = ({ element, setModal, setEditDonor }: icard) => {
           <button id="icon" onClick={openModal}>
             Detalhes
           </button>
-          <button id="icon" onClick={() => setEditDonor(true)}>
+           {isDonor && <button id="icon" onClick={() => setEditDonor(true)}>
             <MdOutlineEdit />
-          </button>
+          </button>} 
         </div>
       </div>
     </StyledCard>
