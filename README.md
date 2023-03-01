@@ -1,40 +1,33 @@
-<h1 align="center">
-  Do.Ação 
-</h1>
+# Do.Ação
 
-<p align = "center">
- Este e o front end da nossa pagina que organiza doaçaoes de alimentos
+Este é o front-end da nossa página que organiza doações de alimentos.
 
-</p>
+> "Você deve desaprender o que aprendeu." - Mestre Yoda
 
-<blockquote align="center">“Você deve desaprender o que aprendeu - Mestre Yoda”</blockquote>
+## Funções Principais
 
-<p align="center">
-  <a href="#Functions">principais Funções</a>
-</p>
+- Criar usuários
+- Fazer login
+- Criar doações
+- Editar doações
+- Aceitar doações
 
-## **Functions**
+## Login
 
-As principais formações criar usuários fazer login criar doações editar doações aceitar doações
-ela foi <br/>
+Para realizar o login, você precisa ter um usuário cadastrado e inserir seu login e senha.
 
+## Cadastro de Doador
 
-## **Login**
+Para fazer o cadastro, é necessário preencher informações como nome, imagem, link da imagem e CPF.
 
-Essa aplicação para realizar login você já tem que ter um usuário cadastrado colocando o login e senha<br/>
+## Cadastro de Receptor
 
-## **Cadastro de doador**
+Para fazer o cadastro, é necessário preencher informações como o link da imagem e o CNPJ.
 
-Para fazer o cadastro é necessário você colocar itens como o nome sua imagem o link de sua imagem o seu CPF<br/>
-## **Cadastro de doador**
+## Página do Doador
 
-Para fazer o cadastro é necessário você colocar itens como oo link de sua imagem o seu cnpj entre outros<br/>
+O doador pode editar o perfil, criar doações, editar suas doações e aceitar a pessoa que deseja doar.
 
-## **Pagina Doador**
+## Página do Receptor
 
-O Doador pode ediar o perfil Criar doaçoes pode  editar suas doaçoes ,e aceitar a pessoa que deseja doar<br/>
-
-
-## **Pagina Receptor**
-
-O Doador pode ediar o perfil pode solicitar doaçaoes e filtrar suas doações<br/>
+O receptor pode editar o perfil, solicitar doações e filtrar suas doações.
